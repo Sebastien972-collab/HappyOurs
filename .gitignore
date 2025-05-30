@@ -1,2 +1,55 @@
+# macOS
 .DS_Store
-HappyOurs.xcodeproj/project.xcworkspace/xcuserdata/<utilisateur>.xcuserdatad/UserInterfaceState.xcuserstate
+.AppleDouble
+.LSOverride
+
+# macOS metadata
+Icon
+._*
+
+# Thumbnails
+ehthumbs.db
+Thumbs.db
+
+# Xcode
+*.xcworkspace
+!default.xcworkspace
+xcuserdata/
+*.xccheckout
+*.xcodeproj/*
+!*.xcodeproj/project.pbxproj
+!*.xcodeproj/xcshareddata/
+*.xcodeproj/xcuserdata/
+HappyOurs.xcodeproj/project.xcworkspace/xcuserdata/sebastiendaguin.xcuserdatad/UserInterfaceState.xcuserstate
+DerivedData/
+.idea/
+
+# SwiftPM
+.build/
+.swiftpm/
+
+# CocoaPods
+Pods/
+Podfile.lock
+
+# Carthage
+Carthage/Build/
+
+# Fastlane
+fastlane/report.xml
+fastlane/screenshots
+fastlane/test_output
+fastlane/.env
+fastlane/.last_run.json
+
+# SPM artifacts
+*.xcodeproj/project.xcworkspace/
+
+# Other
+*.log
+*.tmp
+*.swp
+*.bak
+
+# Git
+.git/
