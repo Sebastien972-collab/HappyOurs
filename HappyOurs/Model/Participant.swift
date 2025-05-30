@@ -10,7 +10,11 @@ import Foundation
 class Participant: User {
     var favoriteCocktail: Cocktail?
     
-     init(username: String, email: String, adresse: String) {
-        super.init(username: username, email: email, adresse: adresse)
+     init(username: String, email: String, ville: String) {
+        super.init(username: username, email: email, ville: ville)
     }
+    
+    let preview: Participant = Participant(username: "Carolinedu94", email: "caro.94@simplon.co", ville: "Vincenne")
+    
+    
 }
