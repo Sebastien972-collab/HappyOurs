@@ -9,6 +9,10 @@ import Foundation
 
 struct Cocktail {
     let name: String
-    let image: Data
+    let imageName: String
     var description: String
+    
+    static var preview: Cocktail {
+        Cocktail(name: "Mojito", imageName: "cocktail-3", description: "Beaucoup d'alcool !")
+    }
 }

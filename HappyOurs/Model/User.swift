@@ -12,7 +12,7 @@ class User: Identifiable {
     var username: String
     var email: String
     var ville: String
-    var currentImage: Data?
+    var currentImageName: String?
     
     init(id: UUID = UUID(), username: String, email: String, ville: String) {
         self.id = id

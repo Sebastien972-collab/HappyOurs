@@ -6,7 +6,11 @@
 //
 
 import Foundation
+import SwiftUICore
 
 class Business: User {
     
+    static var preview: Business {
+        Business(username: "L'empire club", email: "empireclub@empireclub.com", ville: "Chilly-Mazarin")
+    }
 }

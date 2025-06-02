@@ -8,12 +8,12 @@
 import SwiftUI
 
 struct DiscussionRow: View {
-    
+    let event: Event
     var body: some View {
         Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
     }
 }
 
 #Preview {
-    DiscussionRow()
+    DiscussionRow(event: .defaultEvent)
 }

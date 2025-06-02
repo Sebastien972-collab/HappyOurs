@@ -14,7 +14,11 @@ class Participant: User {
         super.init(username: username, email: email, ville: ville)
     }
     
-    let preview: Participant = Participant(username: "Carolinedu94", email: "caro.94@simplon.co", ville: "Vincenne")
+    static var preview: Participant {
+        let participant = Participant(username: "Carolinedu94", email: "caro.94@simplon.co", ville: "Vincenne")
+        participant.currentImageName = "carolineImage"
+        return participant
+    }
     
     
 }
