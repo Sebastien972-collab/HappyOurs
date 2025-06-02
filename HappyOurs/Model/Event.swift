@@ -16,7 +16,17 @@ struct Event: Identifiable {
     var imageNames: [String] = []
     var participants: [User] = []
     var bestCocktail: Cocktail
+    var typeOfEvent: TypeOfEvent = .club
     
+    enum TypeOfEvent: String {
+        case concert = "Concert 🎤"
+        case club = "Club 🪩"
+        case festival = "Festival 🎉 "
+        case degustation = "Dégustation 😋"
+        case openAir = "Open Air ☀️"
+        case classic = "Classique 🎻"
+        
+    }
     static var defaultEvent: Event {
         var event = Event(organisator: .preview, name: "Tropical Summer", date: Date.now, bestCocktail: .preview )
         event.imageEventName = "event-4"
