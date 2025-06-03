@@ -20,5 +20,4 @@ class Participant: User {
         return participant
     }
     
-    
 }

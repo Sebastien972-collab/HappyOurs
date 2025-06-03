@@ -1,18 +1,19 @@
 //
-//  DiscussionList.swift
+//  ChatView.swift
 //  HappyOurs
 //
-//  Created by Sébastien DAGUIN  on 30/05/2025.
+//  Created by caroletm on 03/06/2025.
 //
 
+import Foundation
 import SwiftUI
 
-struct DiscussionList: View {
+struct ChatView: View {
     var body: some View {
         Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
     }
 }
 
 #Preview {
-    DiscussionList()
+    ProfileView()
 }

@@ -104,7 +104,7 @@
 			mainGroup = CFA28FC62DE74453006A9EB1;
 			minimizedProjectReferenceProxies = 1;
 			packageReferences = (
-				CF5C8D802DE755B20010B7E9 /* XCLocalSwiftPackageReference "../../Framework:Library/FestivityUIKit" */,
+				5D11ED732DEF313F0064E685 /* XCLocalSwiftPackageReference "../../../../../Downloads/FestivityUIKit" */,
 			);
 			preferredProjectObjectVersion = 77;
 			productRefGroup = CFA28FD02DE74453006A9EB1 /* Products */;
@@ -338,9 +338,9 @@
 /* End XCConfigurationList section */
 
 /* Begin XCLocalSwiftPackageReference section */
-		CF5C8D802DE755B20010B7E9 /* XCLocalSwiftPackageReference "../../Framework:Library/FestivityUIKit" */ = {
+		5D11ED732DEF313F0064E685 /* XCLocalSwiftPackageReference "../../../../../Downloads/FestivityUIKit" */ = {
 			isa = XCLocalSwiftPackageReference;
-			relativePath = "../../Framework:Library/FestivityUIKit";
+			relativePath = ../../../../../Downloads/FestivityUIKit;
 		};
 /* End XCLocalSwiftPackageReference section */
 
