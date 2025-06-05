@@ -148,9 +148,7 @@ struct ProfileView: View {
                             .padding(.leading, 20)
                     }
                     
-                }
-//              square.and.arrow.up.circle.fill
-               
+                }               
                 HStack (alignment: .center) {
                     ConfirmationButtonView(title: "CONTACTER", action: {})
                 }
@@ -159,10 +157,6 @@ struct ProfileView: View {
                 
             }
         }
-        Image(systemName: "person.circle.fill")
-        
-        
-        
         Spacer()
     }
 }
