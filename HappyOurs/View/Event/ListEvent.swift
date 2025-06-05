@@ -13,7 +13,7 @@ struct ListEvent: View {
         VStack {
             HStack{
                 CircleImage(image: Image("\(manager.currentUser.currentImageName ?? "carolineImage")"))
-                Text("Bonjour \(manager.currentUser.username) ")
+                Text("Bonjour \(manager.currentUser.username)")
                     .foregroundColor(.black)
                     .fontWeight(.bold)
                     .font(.title)
