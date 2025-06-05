@@ -28,7 +28,7 @@ struct DiscussionLine: View {
             Divider()
                 .background(Color.darkYellow100)
             HStack {
-                Image(discussionCreator?.currentImageName ?? "")
+                Image(discussionCreator?.currentImageName ?? "CarolineImage")
                     .resizable()
                     .scaledToFill()
                     .frame(width: 60, height: 60)
