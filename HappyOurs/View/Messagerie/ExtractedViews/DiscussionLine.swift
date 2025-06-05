@@ -23,27 +23,34 @@ struct DiscussionLine: View {
         return nil
     }
     
+    func formattedDate(_ date: Date) -> String {
+        let formatter = DateFormatter()
+        formatter.locale = Locale(identifier: "fr_FR")
+        formatter.dateFormat = "dd/MM à HH:mm"
+        return formatter.string(from: date)
+    }
+    
     var body: some View {
         VStack {
             Divider()
                 .background(Color.darkYellow100)
             HStack {
-                Image(discussionCreator?.currentImageName ?? "CarolineImage")
+                Image(discussionCreator?.currentImageName ?? "Caroline")
                     .resizable()
                     .scaledToFill()
                     .frame(width: 60, height: 60)
                     .clipShape(Circle())
                 VStack (alignment:.leading){
-                    Text("Caroline Payet")
+                    Text(discussionCreator?.username ?? "Carooo")
                         .fontWeight(.semibold)
                         .font(.subheadline)
                     Spacer()
-                    Text("Hello ça va ?")
+                    Text(discussion.description)
                         .font(.subheadline)
                 }
                 Spacer()
                 VStack {
-                    Text("Date")
+                    Text(formattedDate(discussion.lastDateMessage))
                         .font(.caption)
                     Spacer()
                     Image(systemName: "chevron.right")

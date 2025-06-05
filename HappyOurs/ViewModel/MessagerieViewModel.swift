@@ -19,5 +19,4 @@ class MessagerieViewModel : ObservableObject {
     //  MARK: - discussions
     
     
-    
 }

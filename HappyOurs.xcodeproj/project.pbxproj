@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		5D98C0EC2DF1BFD50026DBCD /* FestivityUIKit in Frameworks */ = {isa = PBXBuildFile; productRef = 5D98C0EB2DF1BFD50026DBCD /* FestivityUIKit */; };
 		CF5C8D822DE755B20010B7E9 /* FestivityUIKit in Frameworks */ = {isa = PBXBuildFile; productRef = CF5C8D812DE755B20010B7E9 /* FestivityUIKit */; };
 		CFA28FFE2DE74FDD006A9EB1 /* FestivityUIKit in Frameworks */ = {isa = PBXBuildFile; productRef = CFA28FFD2DE74FDD006A9EB1 /* FestivityUIKit */; };
 /* End PBXBuildFile section */
@@ -30,6 +31,7 @@
 			files = (
 				CFA28FFE2DE74FDD006A9EB1 /* FestivityUIKit in Frameworks */,
 				CF5C8D822DE755B20010B7E9 /* FestivityUIKit in Frameworks */,
+				5D98C0EC2DF1BFD50026DBCD /* FestivityUIKit in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -74,6 +76,7 @@
 			packageProductDependencies = (
 				CFA28FFD2DE74FDD006A9EB1 /* FestivityUIKit */,
 				CF5C8D812DE755B20010B7E9 /* FestivityUIKit */,
+				5D98C0EB2DF1BFD50026DBCD /* FestivityUIKit */,
 			);
 			productName = HappyOurs;
 			productReference = CFA28FCF2DE74453006A9EB1 /* HappyOurs.app */;
@@ -104,7 +107,7 @@
 			mainGroup = CFA28FC62DE74453006A9EB1;
 			minimizedProjectReferenceProxies = 1;
 			packageReferences = (
-				CF5C8D802DE755B20010B7E9 /* XCLocalSwiftPackageReference "../../Framework:Library/FestivityUIKit" */,
+				5D98C0EA2DF1BFD50026DBCD /* XCLocalSwiftPackageReference "../../../../../Downloads/FestivityUIKit" */,
 			);
 			preferredProjectObjectVersion = 77;
 			productRefGroup = CFA28FD02DE74453006A9EB1 /* Products */;
@@ -338,13 +341,17 @@
 /* End XCConfigurationList section */
 
 /* Begin XCLocalSwiftPackageReference section */
-		CF5C8D802DE755B20010B7E9 /* XCLocalSwiftPackageReference "../../Framework:Library/FestivityUIKit" */ = {
+		5D98C0EA2DF1BFD50026DBCD /* XCLocalSwiftPackageReference "../../../../../Downloads/FestivityUIKit" */ = {
 			isa = XCLocalSwiftPackageReference;
-			relativePath = "../../Framework:Library/FestivityUIKit";
+			relativePath = ../../../../../Downloads/FestivityUIKit;
 		};
 /* End XCLocalSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
+		5D98C0EB2DF1BFD50026DBCD /* FestivityUIKit */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = FestivityUIKit;
+		};
 		CF5C8D812DE755B20010B7E9 /* FestivityUIKit */ = {
 			isa = XCSwiftPackageProductDependency;
 			productName = FestivityUIKit;

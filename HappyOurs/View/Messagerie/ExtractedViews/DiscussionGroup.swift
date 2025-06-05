@@ -10,16 +10,21 @@ import SwiftUI
 
 struct DiscussionGroup: View {
     
+    @EnvironmentObject var messagerieViewModel: MessagerieViewModel
+    
     var body: some View {
+        
         NavigationStack {
-            VStack {
-                Text("Conversations groupes")
-                    .font(.title2)
+            
+            ForEach(messagerieViewModel.discussionVM.filter({ $0.type == .group})) { discussion in
+                NavigationLink(destination: ChatView()) {
+                    DiscussionLine(discussion: discussion)
+                }.foregroundColor(.black)
             }
         }
     }
 }
 
 #Preview {
-    DiscussionGroup()
+    DiscussionGroup().environmentObject(MessagerieViewModel())
 }

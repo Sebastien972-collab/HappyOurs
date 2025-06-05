@@ -23,7 +23,6 @@ struct ContentView: View {
                     Text("Messages")
                 }
                 
-                
                 Tab("Profile", systemImage: "person.fill") {
                     Text("Profiles")
                 }

@@ -13,17 +13,19 @@ struct DiscussionAll: View {
     @EnvironmentObject var messagerieViewModel: MessagerieViewModel
     
     var body: some View {
-        NavigationStack {
-
-                ForEach(messagerieViewModel.discussionVM) { discussion in
-                    DiscussionLine(discussion: DatabaseDiscussion.discussionData[0])
-                }
+        
+        NavigationStack {            
+            ForEach(messagerieViewModel.discussionVM) { discussion in
+                NavigationLink(destination: ChatView()) {
+                    DiscussionLine(discussion: discussion)
+                }.foregroundColor(.black)
             }
         }
     }
-    
-    #Preview {
-        DiscussionAll()
-            .environmentObject(MessagerieViewModel())
-    }
-    
+}
+
+#Preview {
+    DiscussionAll()
+        .environmentObject(MessagerieViewModel())
+}
+

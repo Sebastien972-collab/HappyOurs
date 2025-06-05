@@ -10,11 +10,15 @@ import SwiftUI
 
 struct DiscussionPrivate: View {
     
+    @EnvironmentObject var messagerieViewModel: MessagerieViewModel
+    
     var body: some View {
         NavigationStack {
-            VStack {
-                Text("Conversations privées")
-                    .font(.title2)
+            
+            ForEach(messagerieViewModel.discussionVM.filter({ $0.type == .solo})) { discussion in
+                NavigationLink(destination: ChatView()) {
+                    DiscussionLine(discussion: discussion)
+                }.foregroundColor(.black)
             }
         }
     }
@@ -22,4 +26,5 @@ struct DiscussionPrivate: View {
 
 #Preview {
     DiscussionPrivate()
+        .environmentObject(MessagerieViewModel())
 }
