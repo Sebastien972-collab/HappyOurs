@@ -17,12 +17,11 @@ struct ContentView: View {
         ZStack {
             TabView {
                 Tab("Évènements", systemImage: "list.bullet") {
-                    Text("Évènements")
+                    ListEvent()
                 }
                 Tab("Messages", systemImage: "message.fill") {
                     Text("Messages")
                 }
-                
                 
                 Tab("Profile", systemImage: "person.fill") {
                     Text("Profiles")
