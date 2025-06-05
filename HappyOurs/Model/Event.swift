@@ -18,11 +18,11 @@ struct Event: Identifiable {
     var bestCocktail: Cocktail
     var typeOfEvent: TypeOfEvent = .club
     
-    enum TypeOfEvent: String {
+    enum TypeOfEvent: String, CaseIterable {
         case concert = "Concert 🎤"
         case club = "Club 🪩"
         case festival = "Festival 🎉 "
-        case degustation = "Dégustation 😋"
+        case degustation = "Découverte 😋"
         case openAir = "Open Air ☀️"
         case classic = "Classique 🎻"
         
