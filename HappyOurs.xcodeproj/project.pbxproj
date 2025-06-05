@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		CF5C8D822DE755B20010B7E9 /* FestivityUIKit in Frameworks */ = {isa = PBXBuildFile; productRef = CF5C8D812DE755B20010B7E9 /* FestivityUIKit */; };
+		CF5C906A2DF1E6140010B7E9 /* FestivityUIKit in Frameworks */ = {isa = PBXBuildFile; productRef = CF5C90692DF1E6140010B7E9 /* FestivityUIKit */; };
 		CFA28FFE2DE74FDD006A9EB1 /* FestivityUIKit in Frameworks */ = {isa = PBXBuildFile; productRef = CFA28FFD2DE74FDD006A9EB1 /* FestivityUIKit */; };
 		D397D81C2DF18A5500FDFB37 /* FestivityUIKit in Frameworks */ = {isa = PBXBuildFile; productRef = D397D81B2DF18A5500FDFB37 /* FestivityUIKit */; };
 /* End PBXBuildFile section */
@@ -32,6 +33,7 @@
 				CFA28FFE2DE74FDD006A9EB1 /* FestivityUIKit in Frameworks */,
 				CF5C8D822DE755B20010B7E9 /* FestivityUIKit in Frameworks */,
 				D397D81C2DF18A5500FDFB37 /* FestivityUIKit in Frameworks */,
+				CF5C906A2DF1E6140010B7E9 /* FestivityUIKit in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -77,6 +79,7 @@
 				CFA28FFD2DE74FDD006A9EB1 /* FestivityUIKit */,
 				CF5C8D812DE755B20010B7E9 /* FestivityUIKit */,
 				D397D81B2DF18A5500FDFB37 /* FestivityUIKit */,
+				CF5C90692DF1E6140010B7E9 /* FestivityUIKit */,
 			);
 			productName = HappyOurs;
 			productReference = CFA28FCF2DE74453006A9EB1 /* HappyOurs.app */;
@@ -107,7 +110,7 @@
 			mainGroup = CFA28FC62DE74453006A9EB1;
 			minimizedProjectReferenceProxies = 1;
 			packageReferences = (
-				D397D81A2DF18A5500FDFB37 /* XCLocalSwiftPackageReference "../../../Downloads/FestivityUIKit" */,
+				CF5C90682DF1E6140010B7E9 /* XCLocalSwiftPackageReference "../../Framework:Library/FestivityUIKit" */,
 			);
 			preferredProjectObjectVersion = 77;
 			productRefGroup = CFA28FD02DE74453006A9EB1 /* Products */;
@@ -341,14 +344,18 @@
 /* End XCConfigurationList section */
 
 /* Begin XCLocalSwiftPackageReference section */
-		D397D81A2DF18A5500FDFB37 /* XCLocalSwiftPackageReference "../../../Downloads/FestivityUIKit" */ = {
+		CF5C90682DF1E6140010B7E9 /* XCLocalSwiftPackageReference "../../Framework:Library/FestivityUIKit" */ = {
 			isa = XCLocalSwiftPackageReference;
-			relativePath = ../../../Downloads/FestivityUIKit;
+			relativePath = "../../Framework:Library/FestivityUIKit";
 		};
 /* End XCLocalSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
 		CF5C8D812DE755B20010B7E9 /* FestivityUIKit */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = FestivityUIKit;
+		};
+		CF5C90692DF1E6140010B7E9 /* FestivityUIKit */ = {
 			isa = XCSwiftPackageProductDependency;
 			productName = FestivityUIKit;
 		};
