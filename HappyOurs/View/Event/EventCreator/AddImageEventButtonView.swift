@@ -6,7 +6,7 @@
 //
 
 import SwiftUI
-
+///A image with a camera SFSymbols
 struct AddImageEventButtonView: View {
     var action: () -> Void
     
