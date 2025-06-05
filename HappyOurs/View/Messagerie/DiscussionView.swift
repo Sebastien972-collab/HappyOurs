@@ -13,13 +13,13 @@ struct DiscussionView: View {
     var tabs = ["Toutes", "Groupes", "Privées"]
     @State var selectedTab = "Toutes"
     
+    @EnvironmentObject var messagerieViewModel: MessagerieViewModel
+    
     var body: some View {
         NavigationStack {
             VStack {
-                ScrollView {
-                    
                     DiscussionHeader(selectedTab: $selectedTab)
-                    
+                ScrollView {
                     if selectedTab == "Toutes" {
                         DiscussionAll()
                     }else if selectedTab == "Groupes" {
@@ -35,5 +35,5 @@ struct DiscussionView: View {
 }
 
 #Preview {
-    DiscussionView()
+    DiscussionView().environmentObject(MessagerieViewModel())
 }

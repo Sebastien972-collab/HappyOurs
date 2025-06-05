@@ -10,14 +10,20 @@ import SwiftUI
 
 struct DiscussionAll: View {
     
+    @EnvironmentObject var messagerieViewModel: MessagerieViewModel
+    
     var body: some View {
         NavigationStack {
-            DiscussionLine()
+
+                ForEach(messagerieViewModel.discussionVM) { discussion in
+                    DiscussionLine(discussion: DatabaseDiscussion.discussionData[0])
+                }
+            }
         }
     }
-}
-
-#Preview {
-    DiscussionAll()
-}
-
+    
+    #Preview {
+        DiscussionAll()
+            .environmentObject(MessagerieViewModel())
+    }
+    

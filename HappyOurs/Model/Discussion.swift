@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct Discussion {
+struct Discussion : Identifiable {
     let id: UUID
     let interlocutorID: UUID
     let type : DiscussionType

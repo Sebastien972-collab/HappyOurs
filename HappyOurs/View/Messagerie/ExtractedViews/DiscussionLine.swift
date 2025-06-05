@@ -9,11 +9,26 @@ import SwiftUI
 import Foundation
 
 struct DiscussionLine: View {
+    
+    @EnvironmentObject var messagerieViewModel: MessagerieViewModel
+    
+    var discussion : Discussion
+    
+    var discussionCreator: User? {
+        for participant in messagerieViewModel.participantsVM {
+            if participant.id == discussion.interlocutorID {
+                return participant
+            }
+        }
+        return nil
+    }
+    
     var body: some View {
         VStack {
             Divider()
+                .background(Color.darkYellow100)
             HStack {
-                Image("carolineImage")
+                Image(discussionCreator?.currentImageName ?? "")
                     .resizable()
                     .scaledToFill()
                     .frame(width: 60, height: 60)
@@ -35,14 +50,14 @@ struct DiscussionLine: View {
                         .resizable()
                         .scaledToFit()
                         .frame(width: 15, height: 15)
+                        .foregroundColor(.darkYellow100)
                 }
             }
             .frame(width : .infinity, height: 50)
             .padding(10)
-            Divider()
         }
     }
 }
 #Preview {
-    DiscussionLine()
+    DiscussionLine(discussion : DatabaseDiscussion.discussionData[0]).environmentObject(MessagerieViewModel())
 }
