@@ -1,17 +1,17 @@
 //
-//  DiscussionList.swift
+//  DiscussionHeader.swift
 //  HappyOurs
 //
-//  Created by caroletm on 03/06/2025.
+//  Created by caroletm on 04/06/2025.
 //
 
 import Foundation
 import SwiftUI
 
-struct DiscussionList: View {
+struct DiscussionHeader: View {
     
     var tabs = ["Toutes", "Groupes", "Privées"]
-    @State var selectedTab = "Toutes"
+    @Binding var selectedTab : String
     
     var body: some View {
         NavigationStack {
@@ -21,12 +21,14 @@ struct DiscussionList: View {
                     .fontWeight(.semibold)
                 
                 Picker_Discussion_View (selectedTab: $selectedTab, tabs: tabs)
+                    .padding(5)
                 
             }
         }
     }
 }
 
+
 #Preview {
-    DiscussionList()
+    DiscussionHeader(selectedTab: .constant("Toutes"))
 }

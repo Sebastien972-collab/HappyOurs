@@ -21,4 +21,11 @@ class User: Identifiable {
         self.ville = ville
     }
     
+    init(username: String, email: String, ville: String, currentImageName: String) {
+        self.username = username
+        self.email = email
+        self.ville = ville
+        self.currentImageName = currentImageName
+    }
+    
 }
