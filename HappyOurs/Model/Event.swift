@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct Event: Identifiable {
+struct Event: Identifiable{
     var id: UUID = UUID()
     var organisator: Business
     var name: String
@@ -27,6 +27,8 @@ struct Event: Identifiable {
         case classic = "Classique 🎻"
         
     }
+    
+    
     static var defaultEvent: Event {
         var event = Event(organisator: .preview, name: "Tropical Summer", date: Date.now, bestCocktail: .preview )
         event.imageEventName = "event-4"
