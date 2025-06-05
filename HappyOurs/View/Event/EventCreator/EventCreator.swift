@@ -12,7 +12,8 @@ struct EventCreator: View {
     var body: some View {
         ScrollView {
             VStack(alignment: .center, spacing: 10) {
-                AddImageEventButtonView {}
+                AddImageEventButtonView() {}
+                    .frame(height: 200)
                     .navigationTitle(Text("Créer un évènement"))
                     .navigationBarTitleDisplayMode(.inline)
                 

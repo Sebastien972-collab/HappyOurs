@@ -8,8 +8,8 @@
 import SwiftUI
 ///A image with a camera SFSymbols
 struct AddImageEventButtonView: View {
+    var systemImage: String?
     var action: () -> Void
-    
     var body: some View {
         Button {
             
@@ -22,22 +22,31 @@ struct AddImageEventButtonView: View {
                             .stroke(Color.darkYellow, lineWidth: 1)
                         
                     }
-                    .frame(width: 360, height: 126)
+                    .frame(maxWidth: .infinity, maxHeight: 200)
                     .padding()
                 VStack(spacing: 10) {
-                    Image("cameraImage")
-                        .resizable()
-                        .frame(width: 40, height: 40)
-                        .padding(.bottom, 5)
+                    if let systemImage = systemImage {
+                        Image(systemName: systemImage)
+                            .resizable()
+                            .frame(width: 40, height: 40)
+                            .padding(.bottom, 5)
+                            .foregroundStyle(.darkYellow200)
+                    } else {
+                        Image(.camera)
+                            .resizable()
+                            .frame(width: 40, height: 40)
+                            .padding(.bottom, 5)
+                        
+                    }
                     Text("Ajouter une photo ")
                         .foregroundStyle(.black)
                 }
             }
         }
-
+        
     }
 }
 
 #Preview {
-    AddImageEventButtonView(action: {})
+    AddImageEventButtonView(systemImage: "plus.circle", action: {})
 }
