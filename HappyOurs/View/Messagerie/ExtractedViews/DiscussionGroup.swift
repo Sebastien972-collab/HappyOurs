@@ -17,7 +17,7 @@ struct DiscussionGroup: View {
         NavigationStack {
             
             ForEach(messagerieViewModel.discussionVM.filter({ $0.type == .group})) { discussion in
-                NavigationLink(destination: ChatView()) {
+                NavigationLink(destination: Text("Chat destination")) {
                     DiscussionLine(discussion: discussion)
                 }.foregroundColor(.black)
             }

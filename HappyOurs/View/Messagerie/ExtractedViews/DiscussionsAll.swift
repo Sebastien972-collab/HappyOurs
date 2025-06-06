@@ -16,7 +16,7 @@ struct DiscussionAll: View {
         
         NavigationStack {            
             ForEach(messagerieViewModel.discussionVM) { discussion in
-                NavigationLink(destination: ChatView()) {
+                NavigationLink(destination: Text("Navigation discussion")) {
                     DiscussionLine(discussion: discussion)
                 }.foregroundColor(.black)
             }

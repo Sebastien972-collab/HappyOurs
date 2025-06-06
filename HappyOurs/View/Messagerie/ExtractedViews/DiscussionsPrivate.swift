@@ -16,7 +16,7 @@ struct DiscussionPrivate: View {
         NavigationStack {
             
             ForEach(messagerieViewModel.discussionVM.filter({ $0.type == .solo})) { discussion in
-                NavigationLink(destination: ChatView()) {
+                NavigationLink(destination: Text("Navigation")) {
                     DiscussionLine(discussion: discussion)
                 }.foregroundColor(.black)
             }
