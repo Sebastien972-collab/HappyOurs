@@ -23,6 +23,9 @@ class Participant: User {
         participant.favoriteCocktail = Cocktail.cocktailDb[5]
         return participant
     }
+    override init(username: String, email: String, ville: String, currentImageName: String) {
+           super.init(username: username, email: email, ville: ville, currentImageName: currentImageName)
+       }
     
     
 }
