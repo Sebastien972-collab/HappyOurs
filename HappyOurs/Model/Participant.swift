@@ -9,6 +9,9 @@ import Foundation
 
 class Participant: User {
     var favoriteCocktail: Cocktail?
+    var favortieEvent: TypeOfEvent = .concert
+    var favortieGroups: Groups = .none
+    var age: Int = 18
     
      init(username: String, email: String, ville: String) {
         super.init(username: username, email: email, ville: ville)
@@ -17,6 +20,7 @@ class Participant: User {
     static var preview: Participant {
         let participant = Participant(username: "Carolinedu94", email: "caro.94@simplon.co", ville: "Vincenne")
         participant.currentImageName = "carolineImage"
+        participant.favoriteCocktail = Cocktail.cocktailDb[5]
         return participant
     }
     
