@@ -18,21 +18,20 @@ struct PreferenceView: View {
             HStack {
                 Image(imageName)
                     .resizable()
-                    .padding(5)
                     .frame(width: 50, height: 50)
                     .clipShape(Circle())
                     .overlay(
                         Circle()
                             .stroke(Color.darkYellow200, lineWidth: 0.5)
                     )
-                Text("J'adore les \(text)")
+                Text((text))
                     .padding(.leading, 20)
             }
         }
-        .padding(.top, 20)
+        .padding(.vertical, 5)
         .padding(.horizontal, 15)    }
 }
 
 #Preview {
-    PreferenceView(imageName: Cocktail.cocktailDb.first!.imageName, text: Cocktail.cocktailDb.first!.name)
+    PreferenceView(imageName: "event-1", text: Cocktail.cocktailDb.first!.name)
 }

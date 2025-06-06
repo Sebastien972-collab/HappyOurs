@@ -11,6 +11,7 @@ struct CustomDivider: View {
     var body: some View {
         Divider()
             .overlay(Color.darkYellow200)
+            .padding(.horizontal, 30)
     }
 }
 

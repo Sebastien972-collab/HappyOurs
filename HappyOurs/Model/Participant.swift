@@ -21,6 +21,8 @@ class Participant: User {
         let participant = Participant(username: "Carolinedu94", email: "caro.94@simplon.co", ville: "Vincenne")
         participant.currentImageName = "carolineImage"
         participant.favoriteCocktail = Cocktail.cocktailDb[5]
+        participant.favortieEvent = .festival
+        participant.favortieGroups = .small
         return participant
     }
     

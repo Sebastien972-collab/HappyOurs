@@ -27,7 +27,7 @@ struct Event: Identifiable{
     enum TypeOfEvent: String, CaseIterable {
         case concert = "Concert 🎤"
         case club = "Club 🪩"
-        case festival = "Festival 🎉 "
+        case festival = "Festival 🎉"
         case degustation = "Découverte 😋"
         case openAir = "Open Air ☀️"
         case classic = "Classique 🎻"

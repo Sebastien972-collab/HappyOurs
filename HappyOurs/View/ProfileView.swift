@@ -21,6 +21,7 @@ struct ProfileView: View {
                         .scaledToFit()
                         .clipped()
                         .frame(height: 300)
+                        
                                         
                     HStack {
                         Text(manager.currentParticipant.username)
@@ -32,6 +33,7 @@ struct ProfileView: View {
                         Spacer()
                     }
                 }
+                
                 VStack {
                     Text ("'' Je ne dis jamais non à un bon mojito ''")
                         .foregroundColor(.black)
@@ -90,65 +92,26 @@ struct ProfileView: View {
                     Text("Graphiste de métier, curieuse de nature, j’adore les conversations qui durent plus longtemps que le cocktail dans mon verre. Si tu aimes les échanges spontanés, les soirées pleines de rires et les rencontres qui sortent du cadre, on risque bien de se comprendre.")
                         .frame(maxWidth: .infinity, alignment: .leading)
                         .padding()
-                        .multilineTextAlignment(.leading)
+//                        .multilineTextAlignment(.leading)
                         .background(Color.newBeige)
                         .clipShape(RoundedRectangle(cornerRadius: 10))
-
                         .padding(.horizontal, 15)
                 }
                 
                 VStack (alignment: .leading) {
-                    PreferenceView(imageName: manager.currentParticipant.favoriteCocktail?.imageName ?? "cocktail-1", text: Cocktail.cocktailDb.first!.name)
+                    PreferenceView(imageName: manager.currentParticipant.favoriteCocktail?.imageName ?? "cocktail-1", text: "Mon cocktail préféré : \( Cocktail.cocktailDb.first!.name)")
+
                     
-                    Divider()
-                        .overlay(Color("dark-yellow-100"))
-
-//                    HStack {
-//                        Image("cocktail-3")
-//                            .resizable()
-//                            .padding(5)
-//                            .frame(width: 50, height: 50)
-//                            .clipShape(Circle())
-//                            .overlay(
-//                                Circle()
-//                                    .stroke(Color("dark-yellow-100"), lineWidth: 0.5)
-//                            )
-//                            
-//                        Text("J'adore les mojitos")
-//                            .padding(.leading, 20)
-//                    }
-             
-                    HStack {
-                        Image("event-1")
-                            .resizable()
-                            .frame(width: 50, height: 50)
-                            .clipShape(Circle())
-                            .overlay(
-                                Circle()
-                                    .stroke(Color("dark-yellow-100"), lineWidth: 0.5)
-                            )
-
-                        Text("Les sorties, le cinéma")
-                            .padding(.leading, 20)
-                    }
-                    Divider()
-                        .overlay(Color("dark-yellow-100"))
-                                        
-                    HStack {
-                        Image("event-2")
-                            .resizable()
-                            .frame(width: 50, height: 50)
-                            .clipShape(Circle())
-                            .overlay(
-                                Circle()
-                                    .stroke(Color("dark-yellow-100"), lineWidth: 0.5)
-                            )
-
-                        Text("Je préfère les petits groupes")
-                            .padding(.leading, 20)
-                    }
+                    CustomDivider()
                     
-                }               
+                    PreferenceView(imageName:"event-3", text: "Mes sorties préférées : \(manager.currentParticipant.favortieEvent.rawValue)")
+
+                    CustomDivider()
+                    
+                    PreferenceView(imageName:"event-1", text: "Je préfère les \(manager.currentParticipant.favortieGroups.rawValue)" )
+                }
+                .padding(.top, 20)
+                
                 HStack (alignment: .center) {
                     ConfirmationButtonView(title: "CONTACTER", action: {})
                 }
@@ -156,7 +119,9 @@ struct ProfileView: View {
                 .frame(maxWidth: .infinity)
                 
             }
+            
         }
+        .ignoresSafeArea()
         Spacer()
     }
 }
