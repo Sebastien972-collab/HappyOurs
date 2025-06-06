@@ -7,12 +7,19 @@
 
 import SwiftUI
 
+
 struct MignatureParticipant: View {
     var body: some View {
-        Image (systemName: "person.circle.fill")
-            .resizable()
-            .frame(width: 12, height: 12)
-            
+        ZStack {
+            ForEach(0..<3, id: \.self) { index in
+                Image(.caroline)
+                    .resizable()
+                    .scaledToFill()
+                    .frame(width: 15, height: 15)
+                    .clipShape(Circle())
+                    .offset(x: CGFloat(index) * 13)
+            }
+        }
     }
 }
 

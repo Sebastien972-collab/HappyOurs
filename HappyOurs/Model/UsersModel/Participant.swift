@@ -13,9 +13,16 @@ class Participant: User {
     var favortieGroups: Groups = .none
     var age: Int = 18
     
-     init(username: String, email: String, ville: String) {
+    init(username: String, email: String, ville: String) {
         super.init(username: username, email: email, ville: ville)
     }
+    
+    override init(username: String, email: String, ville: String, currentImageName: String) {
+        super.init(username: username, email: email, ville: ville, currentImageName: currentImageName)
+    }
+    
+    
+    
     
     static var preview: Participant {
         let participant = Participant(username: "Carolinedu94", email: "caro.94@simplon.co", ville: "Vincenne")
@@ -25,6 +32,5 @@ class Participant: User {
         participant.favortieGroups = .small
         return participant
     }
-    
     
 }

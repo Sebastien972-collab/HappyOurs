@@ -23,10 +23,10 @@ struct TypeOfEventBubble: View {
                     .padding(6)
                     .background {
                         Capsule()
-                            .fill(typeOfEvent ==  currentType ? Color.darkYellow200 : Color.newBeige )
+                            .fill(typeOfEvent ==  currentType ? Color.darkYellow50 : Color.newBeige )
                             .overlay {
                                 Capsule()
-                                    .stroke(Color.darkYellow200, lineWidth: 1)
+                                    .stroke(typeOfEvent ==  currentType ? Color.newBeige : Color.darkYellow100, lineWidth: 0.5)
                                     .frame(maxWidth: .infinity)
                                 
                             }

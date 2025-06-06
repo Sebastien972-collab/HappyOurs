@@ -12,6 +12,7 @@ struct ContentView: View {
     case event, message, profile
     }
     @State private var selection: Selection = .event
+    @EnvironmentObject var messagerieModel: MessagerieViewModel
     
     var body: some View {
         ZStack {
@@ -20,13 +21,14 @@ struct ContentView: View {
                     ListEvent()
                 }
                 Tab("Messages", systemImage: "message.fill") {
-                    Text("Messages")
+                    DiscussionView()
                 }
                 
                 Tab("Profile", systemImage: "person.fill") {
-                    Text("Profiles")
+                    ProfileView()
                 }
             }
+            .environmentObject(messagerieModel)
         }
         
     }
@@ -34,4 +36,5 @@ struct ContentView: View {
 
 #Preview {
     ContentView()
+        .environmentObject(MessagerieViewModel())
 }
