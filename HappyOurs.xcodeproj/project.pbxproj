@@ -107,7 +107,7 @@
 			mainGroup = CFA28FC62DE74453006A9EB1;
 			minimizedProjectReferenceProxies = 1;
 			packageReferences = (
-				D397D81A2DF18A5500FDFB37 /* XCLocalSwiftPackageReference "../../../Downloads/FestivityUIKit" */,
+				7D9E2F792DEF369100B92C83 /* XCLocalSwiftPackageReference "../../../../../Downloads/FestivityUIKit" */,
 			);
 			preferredProjectObjectVersion = 77;
 			productRefGroup = CFA28FD02DE74453006A9EB1 /* Products */;
@@ -341,15 +341,9 @@
 /* End XCConfigurationList section */
 
 /* Begin XCLocalSwiftPackageReference section */
-<<<<<<< HEAD
-		D397D81A2DF18A5500FDFB37 /* XCLocalSwiftPackageReference "../../../Downloads/FestivityUIKit" */ = {
-			isa = XCLocalSwiftPackageReference;
-			relativePath = ../../../Downloads/FestivityUIKit;
-=======
 		7D9E2F792DEF369100B92C83 /* XCLocalSwiftPackageReference "../../../../../Downloads/FestivityUIKit" */ = {
 			isa = XCLocalSwiftPackageReference;
 			relativePath = ../../../../../Downloads/FestivityUIKit;
->>>>>>> profile-Arnaud
 		};
 /* End XCLocalSwiftPackageReference section */
 
