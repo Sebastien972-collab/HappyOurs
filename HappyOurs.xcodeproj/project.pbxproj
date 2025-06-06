@@ -8,9 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		CF5C8D822DE755B20010B7E9 /* FestivityUIKit in Frameworks */ = {isa = PBXBuildFile; productRef = CF5C8D812DE755B20010B7E9 /* FestivityUIKit */; };
-		CF5C906A2DF1E6140010B7E9 /* FestivityUIKit in Frameworks */ = {isa = PBXBuildFile; productRef = CF5C90692DF1E6140010B7E9 /* FestivityUIKit */; };
+		CF5C90EC2DF2DCE40010B7E9 /* FestivityUIKit in Frameworks */ = {isa = PBXBuildFile; productRef = CF5C90EB2DF2DCE40010B7E9 /* FestivityUIKit */; };
 		CFA28FFE2DE74FDD006A9EB1 /* FestivityUIKit in Frameworks */ = {isa = PBXBuildFile; productRef = CFA28FFD2DE74FDD006A9EB1 /* FestivityUIKit */; };
-		D397D81C2DF18A5500FDFB37 /* FestivityUIKit in Frameworks */ = {isa = PBXBuildFile; productRef = D397D81B2DF18A5500FDFB37 /* FestivityUIKit */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -32,8 +31,7 @@
 			files = (
 				CFA28FFE2DE74FDD006A9EB1 /* FestivityUIKit in Frameworks */,
 				CF5C8D822DE755B20010B7E9 /* FestivityUIKit in Frameworks */,
-				D397D81C2DF18A5500FDFB37 /* FestivityUIKit in Frameworks */,
-				CF5C906A2DF1E6140010B7E9 /* FestivityUIKit in Frameworks */,
+				CF5C90EC2DF2DCE40010B7E9 /* FestivityUIKit in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -78,8 +76,7 @@
 			packageProductDependencies = (
 				CFA28FFD2DE74FDD006A9EB1 /* FestivityUIKit */,
 				CF5C8D812DE755B20010B7E9 /* FestivityUIKit */,
-				D397D81B2DF18A5500FDFB37 /* FestivityUIKit */,
-				CF5C90692DF1E6140010B7E9 /* FestivityUIKit */,
+				CF5C90EB2DF2DCE40010B7E9 /* FestivityUIKit */,
 			);
 			productName = HappyOurs;
 			productReference = CFA28FCF2DE74453006A9EB1 /* HappyOurs.app */;
@@ -110,11 +107,7 @@
 			mainGroup = CFA28FC62DE74453006A9EB1;
 			minimizedProjectReferenceProxies = 1;
 			packageReferences = (
-<<<<<<< HEAD
-				CF5C90682DF1E6140010B7E9 /* XCLocalSwiftPackageReference "../../Framework:Library/FestivityUIKit" */,
-=======
-				7D9E2F792DEF369100B92C83 /* XCLocalSwiftPackageReference "../../../../../Downloads/FestivityUIKit" */,
->>>>>>> 498655d38d738d46e8653cf6fd52ad51abaa8727
+				CF5C90EA2DF2DCE40010B7E9 /* XCRemoteSwiftPackageReference "FestivityUIKit" */,
 			);
 			preferredProjectObjectVersion = 77;
 			productRefGroup = CFA28FD02DE74453006A9EB1 /* Products */;
@@ -347,33 +340,28 @@
 		};
 /* End XCConfigurationList section */
 
-/* Begin XCLocalSwiftPackageReference section */
-<<<<<<< HEAD
-		CF5C90682DF1E6140010B7E9 /* XCLocalSwiftPackageReference "../../Framework:Library/FestivityUIKit" */ = {
-			isa = XCLocalSwiftPackageReference;
-			relativePath = "../../Framework:Library/FestivityUIKit";
-=======
-		7D9E2F792DEF369100B92C83 /* XCLocalSwiftPackageReference "../../../../../Downloads/FestivityUIKit" */ = {
-			isa = XCLocalSwiftPackageReference;
-			relativePath = ../../../../../Downloads/FestivityUIKit;
->>>>>>> 498655d38d738d46e8653cf6fd52ad51abaa8727
+/* Begin XCRemoteSwiftPackageReference section */
+		CF5C90EA2DF2DCE40010B7E9 /* XCRemoteSwiftPackageReference "FestivityUIKit" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/Sebastien972-collab/FestivityUIKit";
+			requirement = {
+				branch = main;
+				kind = branch;
+			};
 		};
-/* End XCLocalSwiftPackageReference section */
+/* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
 		CF5C8D812DE755B20010B7E9 /* FestivityUIKit */ = {
 			isa = XCSwiftPackageProductDependency;
 			productName = FestivityUIKit;
 		};
-		CF5C90692DF1E6140010B7E9 /* FestivityUIKit */ = {
+		CF5C90EB2DF2DCE40010B7E9 /* FestivityUIKit */ = {
 			isa = XCSwiftPackageProductDependency;
+			package = CF5C90EA2DF2DCE40010B7E9 /* XCRemoteSwiftPackageReference "FestivityUIKit" */;
 			productName = FestivityUIKit;
 		};
 		CFA28FFD2DE74FDD006A9EB1 /* FestivityUIKit */ = {
-			isa = XCSwiftPackageProductDependency;
-			productName = FestivityUIKit;
-		};
-		D397D81B2DF18A5500FDFB37 /* FestivityUIKit */ = {
 			isa = XCSwiftPackageProductDependency;
 			productName = FestivityUIKit;
 		};
