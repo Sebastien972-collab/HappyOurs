@@ -17,7 +17,7 @@ struct EventCreator: View {
                     .navigationTitle(Text("Créer un évènement"))
                     .navigationBarTitleDisplayMode(.inline)
                 
-                CustomTextFieldWithImageView(systemName: "tag", placeholder: eventCreator.convertDateInString(), text: $eventCreator.nameOfEvent)
+                CustomTextFieldWithImageView(systemName: "tag", placeholder: "Nom de l'évènement", text: $eventCreator.nameOfEvent)
                     .padding(.horizontal)
                 CustomTextFieldWithImageView(systemName: "mappin.and.ellipse", placeholder: "Addresse de l'évènement", text: $eventCreator.localisationOfEvent)
                     .padding(.horizontal)

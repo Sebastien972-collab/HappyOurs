@@ -9,9 +9,12 @@ import SwiftUI
 
 struct MignatureParticipant: View {
     var body: some View {
-        Image (systemName: "person.circle.fill")
+        Image (.caroline)
             .resizable()
-            .frame(width: 12, height: 12)
+            .scaledToFill()
+            .frame(width: 15, height: 15)
+            .clipShape(Circle())
+        
             
     }
 }

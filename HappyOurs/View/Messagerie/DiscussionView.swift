@@ -17,9 +17,11 @@ struct DiscussionView: View {
     
     var body: some View {
         NavigationStack {
-            VStack {
-                    DiscussionHeader(selectedTab: $selectedTab)
-                ScrollView {
+            ScrollView {
+                VStack {
+                    Picker_Discussion_View (selectedTab: $selectedTab, tabs: tabs)
+                        .padding(5)
+                    
                     if selectedTab == "Toutes" {
                         DiscussionAll()
                     }else if selectedTab == "Groupes" {
@@ -28,6 +30,9 @@ struct DiscussionView: View {
                         DiscussionPrivate()
                     }
                     Spacer()
+                    
+                        .navigationTitle("Conversations")
+                    
                 }
             }
         }
@@ -35,5 +40,8 @@ struct DiscussionView: View {
 }
 
 #Preview {
-    DiscussionView().environmentObject(MessagerieViewModel())
+    NavigationStack {
+        DiscussionView()
+            .environmentObject(MessagerieViewModel())
+    }
 }

@@ -14,9 +14,10 @@ struct ImagesEvent: View {
        var body: some View {
            Image(imagaName)
                .resizable()
-               .renderingMode(.original)
+               .aspectRatio(contentMode: .fit)
                .frame(width: 70, height: 70)
                .clipShape(RoundedRectangle(cornerRadius: 10))
+    
        }
 
 }

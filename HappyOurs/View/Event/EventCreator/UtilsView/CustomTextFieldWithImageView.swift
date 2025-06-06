@@ -16,7 +16,7 @@ struct CustomTextFieldWithImageView: View {
             Image(systemName: systemName)
                 .resizable()
                 .frame(width: 30, height: 30)
-                .foregroundStyle(Color.darkYellow200)
+                .foregroundStyle(Color.darkYellow100)
             CustomTextField(text: $text, placeholder: placeholder)
         }
     }
