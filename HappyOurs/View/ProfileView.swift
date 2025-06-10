@@ -16,7 +16,7 @@ struct ProfileView: View {
         ScrollView {
             VStack (alignment: .leading){
                 ZStack (alignment: .bottomLeading){
-                    Image(.caroline)
+                    Image(manager.currentParticipant.currentImageName ?? "default")
                         .resizable()
                         .scaledToFit()
                         .clipped()
@@ -35,7 +35,7 @@ struct ProfileView: View {
                 }
                 
                 VStack {
-                    Text ("'' Je ne dis jamais non à un bon mojito ''")
+                    Text ("'' \(manager.currentParticipant.punchline) ''")
                         .foregroundColor(.black)
                         .bold()
                         .padding(10)
@@ -47,8 +47,10 @@ struct ProfileView: View {
                     
                     HStack {
                         VStack {
-                            Image("cocktailPicto")
-                            Text("Amatrice")
+                            Image(manager.currentParticipant.drinkingHabit?.imageName ?? "cocktailPicto")
+                                .resizable()
+                                .aspectRatio(contentMode: .fit)
+                            Text(manager.currentParticipant.drinkingHabit?.description ?? "-")
                         }
                         .foregroundColor(.black)
                         .bold()
@@ -60,7 +62,7 @@ struct ProfileView: View {
                         Spacer()
                         VStack {
                             Image("personsPicto")
-                            Text("25 soirées")
+                            Text("\(manager.currentParticipant.numberOfParties ?? 0) soirées")
                         }
                         .foregroundColor(.black)
                         .bold()
@@ -72,7 +74,7 @@ struct ProfileView: View {
                         Spacer()
                         VStack {
                             Image("placerPicto")
-                            Text("Lyon")
+                            Text(manager.currentParticipant.ville)
                         }
                         .foregroundColor(.black)
                         .bold()
@@ -89,10 +91,9 @@ struct ProfileView: View {
                     Text("Description")
                         .padding(.leading, 15)
                         .font(.title2)
-                    Text("Graphiste de métier, curieuse de nature, j’adore les conversations qui durent plus longtemps que le cocktail dans mon verre. Si tu aimes les échanges spontanés, les soirées pleines de rires et les rencontres qui sortent du cadre, on risque bien de se comprendre.")
+                    Text(manager.currentParticipant.description ?? "-")
                         .frame(maxWidth: .infinity, alignment: .leading)
                         .padding()
-//                        .multilineTextAlignment(.leading)
                         .background(Color.newBeige)
                         .clipShape(RoundedRectangle(cornerRadius: 10))
                         .padding(.horizontal, 15)
@@ -121,6 +122,7 @@ struct ProfileView: View {
             }
             
         }
+        .navigationTitle("Mon profil")
         .ignoresSafeArea()
         Spacer()
     }

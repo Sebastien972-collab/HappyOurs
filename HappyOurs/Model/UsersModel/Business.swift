@@ -9,8 +9,16 @@ import Foundation
 import SwiftUICore
 
 class Business: User {
+    var cocktails: [String] = [""]
+    var events: [String] = [""]
+    
+    
     
     static var preview: Business {
-        Business(username: "L'empire club", email: "empireclub@empireclub.com", ville: "Chilly-Mazarin")
+        let business = Business(username: "L'empire club", email: "empireclub@empireclub.com", ville: "Chilly-Mazarin",)
+        business.cocktails = ["Rhum Coca", "Rhum Red Bull", "Rhum Ananas"]
+        business.events = ["La Caribéenne", "La BedRoom Pyjama Party", "Fête de la Musique"]
+        
+        return business
     }
 }
