@@ -18,12 +18,13 @@ struct EventDetailsView: View {
                         .resizable()
                         .aspectRatio(contentMode: .fill)
                         .frame(maxWidth: .infinity, maxHeight: 400)
+                        .clipped()
                     Text(event.name)
                         .bold()
                         .font(.title)
                         .padding()
                     
-                    HStack(spacing: 30) {
+                    HStack(spacing: 15) {
                         VStack(alignment: .leading, spacing: 5) {
                             HStack {
                                 Image(systemName: "calendar")
@@ -42,10 +43,11 @@ struct EventDetailsView: View {
                                     .lineLimit(2)
                             }
                         }
-                        .padding(.horizontal)
+                        Spacer()
                         CocktailImageView(cocktail: event.bestCocktail)
+                            .padding(.horizontal)
                     }
-                    
+                    .padding(.horizontal)
                     CustomDivider()
                         .padding(.top)
                     VStack(alignment: .leading) {
@@ -92,16 +94,20 @@ struct EventDetailsView: View {
                             RoundedRectangle(cornerRadius: 6)
                                 .fill(Color.newBeige)
                                 .frame(width: 360)
-                                
+                            
                         }
                     }
                     .padding(.horizontal)
-                    
-                    
                 }
                 
             }
-            .ignoresSafeArea(edges: .vertical)
+            .toolbar {
+                ToolbarItem(placement: .principal) {
+                    Text("Détails de l'évènmemnt")
+                    
+                }
+            }
+            
         }
     }
 }
