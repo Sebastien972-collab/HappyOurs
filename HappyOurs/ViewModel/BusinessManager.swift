@@ -1,3 +1,4 @@
+
 //
 //  ParticipantManager.swift
 //  HappyOurs
@@ -8,11 +9,11 @@
 import Foundation
 
 
-class ParticipantManager: ObservableObject {
+class BusinessManager: ObservableObject {
     let manager: UserManager
-    var currentUser: Participant {
-//        manager.currentUser as! Participant
-        Participant.preview
+    var currentUser: Business {
+//        manager.currentUser as! Business
+        Business.preview
     }
     init(manager: UserManager) {
         self.manager = manager

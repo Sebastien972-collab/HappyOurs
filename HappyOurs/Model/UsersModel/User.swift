@@ -13,6 +13,7 @@ class User: Identifiable, Equatable, Hashable {
     var email: String
     var ville: String
     var currentImageName: String?
+    var description: String? 
 
     init(id: UUID = UUID(), username: String, email: String, ville: String, currentImageName: String? = nil) {
         self.id = id
@@ -27,7 +28,7 @@ class User: Identifiable, Equatable, Hashable {
         hasher.combine(email)
     }
     
-    static let guest = User(id: UUID(), username: "Invité", email: "invité@exemple.com", ville: "Nulle part et partout")
+    static let guest = Participant(username: "Invité", email: "invité@exemple.com", ville: "Nulle part et partout")
     
     static func == (lhs: User, rhs: User) -> Bool {
         lhs.username == rhs.username && lhs.email == rhs.email

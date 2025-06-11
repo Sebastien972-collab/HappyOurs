@@ -7,15 +7,17 @@
 
 import SwiftUI
 
-struct EventCuriousView: View {
+struct EventBusinessView: View {
     var body: some View {
         VStack{
-            Text("Pour les curieux")
+            Text("Mes événements")
                 .font(.title)
                 .fontWeight(.bold)
                 .frame(maxWidth:.infinity, alignment: .leading)
             
             VStack{
+                EventCard(event: .defaultEvent)
+                CustomDivider()
                 EventCard(event: .defaultEvent)
                 CustomDivider()
                 EventCard(event: .defaultEvent)
@@ -35,5 +37,5 @@ struct EventCuriousView: View {
 }
 
 #Preview {
-    EventCuriousView()
+    EventBusinessView()
 }

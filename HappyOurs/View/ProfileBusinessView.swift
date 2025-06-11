@@ -8,11 +8,13 @@
 import SwiftUI
 import FestivityUIKit
 
-struct ProfileView: View {
+struct ProfileBusinessView: View {
     @EnvironmentObject var userManager: UserManager
     
-    let manager: ParticipantManager = ParticipantManager(manager: UserManager())
+    @State private var eventManager = EventManager()
     
+    let manager: BusinessManager = BusinessManager(manager: UserManager())
+
     var body: some View {
         ScrollView {
             VStack (alignment: .leading){
@@ -22,9 +24,7 @@ struct ProfileView: View {
                         .frame(height: 300)
                         .scaledToFit()
                         .clipped()
-                        
-                                        
-                   
+                                    
                         HStack {
                             Text(manager.currentUser.username)
                                 .font(.title)
@@ -36,22 +36,11 @@ struct ProfileView: View {
                 }
                 
                 VStack {
-                    Text ("'' \(manager.currentUser.punchline) ''")
-                        .foregroundColor(.black)
-                        .bold()
-                        .padding(10)
-                        .frame(maxWidth: .infinity, maxHeight: 60)
-                        .background(Color(.newBeige))
-                        .clipShape(RoundedRectangle(cornerRadius: 10))
-                        .padding(.horizontal, 15)
-
-                    
                     HStack {
                         VStack {
-                            Image(manager.currentUser.drinkingHabit?.imageName ?? "cocktailPicto")
-                                .resizable()
-                                .aspectRatio(contentMode: .fit)
-                            Text(manager.currentUser.drinkingHabit?.description ?? "-")
+                            Text("Soirées")
+                            Text("\(manager.currentUser.events.count)")
+                            
                         }
                         .foregroundColor(.black)
                         .bold()
@@ -62,8 +51,8 @@ struct ProfileView: View {
                         
                         Spacer()
                         VStack {
-                            Image("personsPicto")
-                            Text("\(manager.currentUser.numberOfParties ?? 0) soirées")
+                            Text("Participants")
+                            Text("27")
                         }
                         .foregroundColor(.black)
                         .bold()
@@ -74,8 +63,8 @@ struct ProfileView: View {
                         
                         Spacer()
                         VStack {
-                            Image("placerPicto")
-                            Text(manager.currentUser.ville)
+                            Text("Cocktails")
+                            Text("\(manager.currentUser.cocktails.count)")
                         }
                         .foregroundColor(.black)
                         .bold()
@@ -100,19 +89,7 @@ struct ProfileView: View {
                         .padding(.horizontal, 15)
                 }
                 
-                VStack (alignment: .leading) {
-                    PreferenceView(imageName: manager.currentUser.favoriteCocktail?.imageName ?? "cocktail-1", text: "Mon cocktail préféré : \( Cocktail.cocktailDb.first!.name)")
-
-                    
-                    CustomDivider()
-                    
-                    PreferenceView(imageName:"event-3", text: "Mes sorties préférées : \(manager.currentUser.favortieEvent.rawValue)")
-
-                    CustomDivider()
-                    
-                    PreferenceView(imageName:"event-1", text: "Je préfère les \(manager.currentUser.favortieGroups.rawValue)" )
-                }
-                .padding(.top, 20)
+                EventBusinessView()
                 
                 HStack (alignment: .center) {
                     ConfirmationButtonView(title: "CONTACTER", action: {})
@@ -130,6 +107,6 @@ struct ProfileView: View {
 }
 
 #Preview {
-    ProfileView()
+    ProfileBusinessView()
         .environmentObject(UserManager())
 }

@@ -8,6 +8,7 @@
 import SwiftUI
 
 struct EventCard: View {
+    
     let event: Event
     
     var body: some View {
