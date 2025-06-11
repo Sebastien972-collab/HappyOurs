@@ -13,6 +13,7 @@ class User: Identifiable, Equatable {
     var email: String
     var ville: String
     var currentImageName: String?
+    var description: String?
     
     init(id: UUID = UUID(), username: String, email: String, ville: String) {
         self.id = id
