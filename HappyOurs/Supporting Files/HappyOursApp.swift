@@ -10,10 +10,12 @@ import SwiftUI
 @main
 struct HappyOursApp: App {
     @StateObject var messagerieModel: MessagerieViewModel = MessagerieViewModel()
+    @StateObject private var userManager: UserManager = .init()
     var body: some Scene {
         WindowGroup {
             ContentView()
                 .environmentObject(messagerieModel)
+                .environmentObject(userManager)
         }
     }
 }

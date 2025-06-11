@@ -22,12 +22,14 @@ class User: Identifiable, Equatable, Hashable {
         self.currentImageName = currentImageName
     }
 
-    static func == (lhs: User, rhs: User) -> Bool {
-        lhs.username == rhs.username && lhs.email == rhs.email
-    }
-
     func hash(into hasher: inout Hasher) {
         hasher.combine(username)
         hasher.combine(email)
+    }
+    
+    static let guest = User(id: UUID(), username: "Invité", email: "invité@exemple.com", ville: "Nulle part et partout")
+    
+    static func == (lhs: User, rhs: User) -> Bool {
+        lhs.username == rhs.username && lhs.email == rhs.email
     }
 }

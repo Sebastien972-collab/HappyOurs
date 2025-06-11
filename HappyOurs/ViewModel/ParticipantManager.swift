@@ -9,9 +9,7 @@ import Foundation
 
 @Observable
 class ParticipantManager {
-    
     var currentParticipant: Participant = .preview
-     
 }
 
 

@@ -13,7 +13,7 @@ struct ContentView: View {
     }
     @State private var selection: Selection = .event
     @EnvironmentObject var messagerieModel: MessagerieViewModel
-    
+    @EnvironmentObject var userManager: UserManager
     var body: some View {
         ZStack {
             TabView {
@@ -36,5 +36,6 @@ struct ContentView: View {
 
 #Preview {
     ContentView()
+        .environmentObject(MessagerieViewModel())
         .environmentObject(MessagerieViewModel())
 }
