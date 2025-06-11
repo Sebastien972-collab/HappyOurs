@@ -12,6 +12,7 @@ struct DiscussionView: View {
     
     var tabs = ["Toutes", "Groupes", "Privées"]
     @State var selectedTab = "Toutes"
+    @State var selectedParticipant: Participant?
     
     @EnvironmentObject var messagerieViewModel: MessagerieViewModel
     

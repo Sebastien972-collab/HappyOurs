@@ -11,6 +11,7 @@ struct ChatView : View {
     
     @EnvironmentObject var messagerieViewModel: MessagerieViewModel
     @State var text = ""
+    @Binding var selectedParticipant : Participant?
     
     var body: some View {
         
@@ -21,7 +22,7 @@ struct ChatView : View {
                     VStack (spacing : 8){
                         
                         ForEach (messagerieViewModel.messagesVM) { message in
-                            MessageBubble(message: message)
+                            MessageBubble(message: message, selectedParticipant: $selectedParticipant)
                         }
                     }
                 }
@@ -33,7 +34,7 @@ struct ChatView : View {
                         .frame(maxWidth : .infinity, maxHeight: 90)
                        
                     HStack {
-                        TextField("Hello there", text: $text, axis: .vertical)
+                        TextField("Hello", text: $text, axis: .vertical)
                             .padding()
                             .background(Color.white)
                             .cornerRadius(25)
@@ -51,12 +52,12 @@ struct ChatView : View {
             .toolbar {
                 ToolbarItem(placement: .principal) {
                     HStack {
-                        Image("Brenda")
+                        Image(selectedParticipant?.currentImageName ?? "Caroo")
                             .resizable()
                             .scaledToFill()
                             .clipShape(Circle())
                             .frame(width: 40, height: 40)
-                        Text("Andrew Parker")
+                        Text(selectedParticipant?.username ?? "Caroo")
                             .font(.title3)
                             .fontWeight(.bold)
                     }
@@ -67,6 +68,6 @@ struct ChatView : View {
 }
 
 #Preview {
-    ChatView()
+    ChatView(selectedParticipant: .constant(DatabaseParticipants.participantData[2]))
         .environmentObject(MessagerieViewModel())
 }

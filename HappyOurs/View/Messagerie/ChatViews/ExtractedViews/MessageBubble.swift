@@ -10,6 +10,7 @@ import SwiftUI
 struct MessageBubble: View {
     
     var message: Message
+    @Binding var selectedParticipant : Participant?
     
     var body: some View {
         
@@ -27,7 +28,7 @@ struct MessageBubble: View {
                 .foregroundStyle(.black)
                 .cornerRadius(10)
                 
-                Image("Brenda")
+                Image(selectedParticipant?.username ?? "Stan")
                     .resizable()
                     .scaledToFill()
                     .clipShape(Circle())
@@ -62,5 +63,5 @@ struct MessageBubble: View {
 }
 
 #Preview {
-    MessageBubble(message:DatabaseMessages.messagesData[0])
+    MessageBubble(message:DatabaseMessages.messagesData[0], selectedParticipant: .constant(DatabaseParticipants.participantData[0]))
 }
