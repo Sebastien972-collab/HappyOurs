@@ -20,7 +20,7 @@ class Participant: User {
         super.init(username: username, email: email, ville: ville)
     }
     
-    override init(username: String, email: String, ville: String, currentImageName: String) {
+     init(username: String, email: String, ville: String, currentImageName: String) {
         super.init(username: username, email: email, ville: ville, currentImageName: currentImageName)
     }
     
@@ -28,8 +28,8 @@ class Participant: User {
     
     
     static var preview: Participant {
-        let participant = Participant(username: "Carolinedu94", email: "caro.94@simplon.co", ville: "Vincennes")
-        participant.currentImageName = "carolineImage"
+        let participant = Participant(username: "Carolinedu94", email: "caro.94@simplon.co", ville: "Vincenne")
+        participant.currentImageName = "Caroline"
         participant.favoriteCocktail = Cocktail.cocktailDb[5]
         participant.favortieEvent = .festival
         participant.favortieGroups = .small

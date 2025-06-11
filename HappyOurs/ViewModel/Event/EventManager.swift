@@ -14,4 +14,8 @@ class EventManager {
     var IsABusseiness: Bool {
         currentUser is Business
     }
+    
+    var trandingEvents: [Event] = [.defaultEvent, .defaultEvent, .defaultEvent]
+    var allEvents: [Event] = Event.allEvents
+    
 }

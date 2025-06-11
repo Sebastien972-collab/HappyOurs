@@ -12,9 +12,9 @@ struct ImagesEvent: View {
     var imagaName: String
     
        var body: some View {
-           Image(imagaName)
+           Image(.event1)
                .resizable()
-               .aspectRatio(contentMode: .fit)
+               .aspectRatio(contentMode: .fill)
                .frame(width: 70, height: 70)
                .clipShape(RoundedRectangle(cornerRadius: 10))
     
@@ -23,5 +23,5 @@ struct ImagesEvent: View {
 }
 
 #Preview {
-    ImagesEvent(imagaName: "cocktail-1")
+    ImagesEvent(imagaName: "event1")
 }

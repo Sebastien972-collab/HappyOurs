@@ -1,0 +1,33 @@
+//
+//  EventCard.swift
+//  HappyOurs
+//
+//  Created by Dembo on 10/06/2025.
+//
+
+import SwiftUI
+
+struct EventCard: View {
+    let event: Event
+    
+    var body: some View {
+        HStack {
+            ImagesEvent(imagaName: event.imageEventName ?? "event-1")
+            VStack (alignment : .leading) {
+                
+                TextEvent(event: event)
+                MignatureParticipant()
+
+            }
+            .frame(maxWidth:.infinity, maxHeight : 75, alignment: .leading)
+            .padding(.leading,10)
+            
+            ImageCocktailEvent()
+            
+        }
+    }
+}
+
+#Preview {
+    EventCard(event: Event.allEvents[5])
+}

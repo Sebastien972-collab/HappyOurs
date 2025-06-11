@@ -8,6 +8,7 @@
 import SwiftUI
 
 struct EventDetailsView: View {
+    
     @Binding var event: Event
     var body: some View {
         VStack(alignment: .leading) {

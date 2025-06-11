@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct Cocktail {
+struct Cocktail: Hashable {
     let name: String
     let imageName: String
     var description: String
