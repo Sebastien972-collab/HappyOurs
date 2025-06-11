@@ -15,6 +15,7 @@ struct CarouselRowView: View {
             ImageEventCarouselView(imagaName: event.imageEventName ?? "event-1")
             Text("Soirée à l'opéra")
                 .bold()
+                .foregroundStyle(.black)
         }
     }
 }

@@ -26,6 +26,7 @@ struct TextEvent: View {
                     .lineLimit(1)
                 
             }
+            .foregroundStyle(.black)
     }
 }
 

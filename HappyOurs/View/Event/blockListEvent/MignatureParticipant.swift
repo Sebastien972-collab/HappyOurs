@@ -24,6 +24,7 @@ struct MignatureParticipant: View {
            .padding(.trailing, 25)
             Text("3 participants")
                 .font(.system(size: 10))
+                .foregroundStyle(.black)
 
             
         }

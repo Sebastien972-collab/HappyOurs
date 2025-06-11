@@ -15,7 +15,7 @@ class Participant: User {
     var punchline: String = ""
     var drinkingHabit: DrinkingHabits?
     var numberOfParties: Int? 
-    
+    var description: String?
     init(username: String, email: String, ville: String) {
         super.init(username: username, email: email, ville: ville)
     }

@@ -14,30 +14,27 @@ struct EventNearYouView: View {
         events.filter { $0.typeOfEvent.rawValue == type.rawValue }
     }
     var body: some View {
-        VStack{
+        VStack(alignment: .leading) {
             Text(type.rawValue)
                 .font(.title)
                 .fontWeight(.bold)
-                .frame(maxWidth:.infinity, alignment: .leading)
-            
-            VStack{
+                .frame(maxWidth: .infinity, alignment: .leading)
+                
+            VStack(alignment: .leading) {
                 ForEach(eventsToShow , id: \.self ){ event in
-                    EventCard(event: event)
+                    NavigationLink {
+                        EventDetailsView(event: .constant(event))
+                    } label: {
+                        EventCard(event: event)
+                    }
                     Divider()
                 }
             }
-            .padding(5)
             .background(Color.newBeige)
             .clipShape(RoundedRectangle(cornerRadius: 10))
-            
-
-            
-
-                
         }
-        .padding(.horizontal,15)
+        .padding(.horizontal, 4)
     }
-    
 }
 
 #Preview {

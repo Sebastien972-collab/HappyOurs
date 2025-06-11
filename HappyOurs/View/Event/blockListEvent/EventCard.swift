@@ -20,7 +20,7 @@ struct EventCard: View {
 
             }
             .frame(maxWidth:.infinity, maxHeight : 75, alignment: .leading)
-            .padding(.leading,10)
+            .padding(.horizontal)
             
             ImageCocktailEvent()
             
@@ -29,5 +29,7 @@ struct EventCard: View {
 }
 
 #Preview {
-    EventCard(event: Event.allEvents[5])
+    NavigationStack {
+        EventCard(event: Event.allEvents[5])
+    }
 }

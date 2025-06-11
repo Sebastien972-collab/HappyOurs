@@ -15,7 +15,7 @@ struct Carouselle: View {
             Text("Tes prochaines sorties")
                 .font(.title2)
                 .bold()
-                .padding(.leading)
+                .padding(.horizontal)
             
             ScrollView(.horizontal, showsIndicators: false) {
                 HStack(spacing: 16) {
