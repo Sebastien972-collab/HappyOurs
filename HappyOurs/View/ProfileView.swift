@@ -154,7 +154,6 @@ struct ProfileView: View {
                 }
                 .padding(.top, 20)
                 .frame(maxWidth: .infinity)
-                
             }
         }
         Spacer()

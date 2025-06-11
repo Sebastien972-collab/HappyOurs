@@ -16,8 +16,11 @@ struct DiscussionView: View {
     @EnvironmentObject var messagerieViewModel: MessagerieViewModel
     
     var body: some View {
+        
         NavigationStack {
+            
             ScrollView {
+                
                 VStack {
                     Picker_Discussion_View (selectedTab: $selectedTab, tabs: tabs)
                         .padding(5)
@@ -30,18 +33,20 @@ struct DiscussionView: View {
                         DiscussionPrivate()
                     }
                     Spacer()
-                    
-                        .navigationTitle("Conversations")
-                    
                 }
             }
+            .toolbar {
+                ToolbarItem(placement: .principal) {
+                    Text("Conversations")
+                        .font(.title2)
+                        .fontWeight(.bold)
+                }
+            } .navigationBarTitleDisplayMode(.inline)
         }
     }
 }
 
 #Preview {
-    NavigationStack {
-        DiscussionView()
-            .environmentObject(MessagerieViewModel())
-    }
+    DiscussionView()
+        .environmentObject(MessagerieViewModel())
 }
