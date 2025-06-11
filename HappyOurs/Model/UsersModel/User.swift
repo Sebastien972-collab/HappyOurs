@@ -7,7 +7,7 @@
 
 import Foundation
 
-class User: Identifiable {
+class User: Identifiable, Equatable {
     var id = UUID()
     var username: String
     var email: String
@@ -26,5 +26,11 @@ class User: Identifiable {
            self.ville = ville
            self.currentImageName = currentImageName
        }
+    
+    static let guest = User(id: UUID(), username: "Invité", email: "invité@exemple.com", ville: "Nulle part et partout")
+    
+    static func == (lhs: User, rhs: User) -> Bool {
+        lhs.username == rhs.username && lhs.email == rhs.email
+    }
     
 }
