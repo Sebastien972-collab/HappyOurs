@@ -13,6 +13,7 @@ class User: Identifiable, Equatable, Hashable {
     var email: String
     var ville: String
     var currentImageName: String?
+    var events: [Event] = []
 
     init(id: UUID = UUID(), username: String, email: String, ville: String, currentImageName: String? = nil) {
         self.id = id
