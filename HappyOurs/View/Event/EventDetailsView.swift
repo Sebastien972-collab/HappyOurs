@@ -17,32 +17,88 @@ struct EventDetailsView: View {
                         .resizable()
                         .aspectRatio(contentMode: .fill)
                         .frame(maxWidth: .infinity, maxHeight: 400)
-                        
                     Text(event.name)
                         .bold()
                         .font(.title)
                         .padding()
                     
-                    HStack {
-                        Image(systemName: "calendar")
-                        Text(event.dateFormatted.capitalized)
-                            .fontWeight(.medium)
+                    HStack(spacing: 30) {
+                        VStack(alignment: .leading, spacing: 5) {
+                            HStack {
+                                Image(systemName: "calendar")
+                                Text(event.dateFormatted.capitalized)
+                                    .fontWeight(.medium)
+                                    .font(.custom("SF Pro", size: 16))
+                                    .fontWeight(.regular)
+                                
+                                
+                            }
+                            HStack {
+                                Image(systemName: "mappin.and.ellipse")
+                                Text(event.address)
+                                    .font(.custom("SF Pro", size: 16))
+                                    .fontWeight(.regular)
+                                    .lineLimit(2)
+                            }
+                        }
+                        .padding(.horizontal)
+                        CocktailImageView(cocktail: event.bestCocktail)
+                    }
+                    
+                    CustomDivider()
+                        .padding(.top)
+                    VStack(alignment: .leading) {
+                        Text("\(event.participants.count) participants")
                             .font(.title2)
-                            
+                            .bold()
+                        ParticopantBubbleList(participants: event.participants)
                     }
                     .padding(.horizontal)
-                    HStack {
-                        Image(systemName: "mappin.and.ellipse")
-                        Text(event.address)
-                            .fontWeight(.medium)
-                            .font(.title3)
-                            .lineLimit(2)
-                            .minimumScaleFactor(0.5)
-                            
+                    .padding(.bottom)
+                    CustomDivider()
+                    Text(event.description)
+                        .multilineTextAlignment(.leading)
+                        .background {
+                            RoundedRectangle(cornerRadius: 6)
+                                .fill(Color.newBeige)
+                        }
+                        .padding()
+                    CustomDivider()
+                    VStack(alignment: .leading) {
+                        HStack {
+                            Text("Cocktail proposé : ")
+                                .font(.title2)
+                            Spacer()
+                            Text(event.bestCocktail.name)
+                                .font(.custom("SF Pro", size: 16))
+                                .fontWeight(.bold)
+                        }
+                    }
+                    .padding()
+                    CustomDivider()
+                    VStack(alignment: .leading, spacing: 10) {
+                        Text("Contenu du verre : ")
+                            .font(.title2)
+                            .fontWeight(.bold)
+                        
+                        VStack(alignment: .leading, spacing: 5) {
+                            ForEach(event.bestCocktail.ingredients ?? [], id: \.self) { ingredient in
+                                Text("\u{00B7} \(ingredient)")
+                                    .font(.custom("SF Pro", size: 14))
+                            }
+                        }
+                        .background {
+                            RoundedRectangle(cornerRadius: 6)
+                                .fill(Color.newBeige)
+                                .frame(width: 360)
+                                
+                        }
                     }
                     .padding(.horizontal)
-                    Spacer()
+                    
+                    
                 }
+                
             }
             .ignoresSafeArea(edges: .vertical)
         }

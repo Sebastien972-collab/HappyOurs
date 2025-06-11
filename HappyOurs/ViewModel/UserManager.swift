@@ -6,7 +6,6 @@
 //
 
 import Foundation
-
 class UserManager: ObservableObject {
     
     var currentUser: User = .guest
@@ -18,9 +17,6 @@ class UserManager: ObservableObject {
     var isABussinesUser: Bool {
         currentUser is Business
     }
-    
-    
-    
     
     //MARK: - Connexion method
     

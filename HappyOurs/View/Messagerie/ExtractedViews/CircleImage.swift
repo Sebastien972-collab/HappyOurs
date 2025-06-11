@@ -13,7 +13,7 @@ struct CircleImage: View {
         image
             .resizable()
             .scaledToFill()
-            .frame(width: 80, height: 80)
+            .frame(maxWidth: 80, maxHeight: 80)
             .clipShape(Circle())
             .overlay {
                 Circle()

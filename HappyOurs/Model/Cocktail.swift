@@ -11,7 +11,7 @@ struct Cocktail {
     let name: String
     let imageName: String
     var description: String
-    
+    var ingredients: [String]?
     
     
     static var cocktailDb: [Cocktail] = [
@@ -28,6 +28,14 @@ struct Cocktail {
     ]
     
     static var preview: Cocktail {
-        Cocktail(name: "Mojito", imageName: "cocktail-3", description: "Beaucoup d'alcool !")
+       Cocktail(name: "Mojito", imageName: "cocktail-3", description: "Beaucoup d'alcool !", ingredients:[
+        "10 feuilles de menthe fraîche",
+        "1/2 citron vert coupé en quartiers",
+        "2 cuillères à café de sucre de canne",
+        "4 cl de rhum blanc",
+        "6 cl d’eau gazeuse",
+        "Glaçons à volonté"
+    ])
+        
     }
 }
