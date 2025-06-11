@@ -8,28 +8,35 @@
 import SwiftUI
 
 struct Carouselle: View {
-    let events: [Event]
+    @Binding var events: [Event]
+    
     var body: some View {
-        VStack{
+        VStack(alignment: .leading) {
             Text("Tes prochaines sorties")
-                .frame(maxWidth:.infinity, alignment: .leading)
                 .font(.title2)
                 .bold()
+                .padding(.leading)
             
             ScrollView(.horizontal, showsIndicators: false) {
-                HStack {
-                   ForEach(events) { event in
-                        CarouselRowView(event: event)
+                HStack(spacing: 16) {
+                    ForEach(events) { event in
+                        NavigationLink {
+                            EventDetailsView(event: $events[events.firstIndex(where: { $0.id == event.id })!])
+                        } label: {
+                            CarouselRowView(event: event)
+                        }
                     }
                 }
+                .padding(.horizontal)
+            }
         }
-        
-            
-        }
-        .padding()
+        .padding(.vertical)
     }
 }
 
+
 #Preview {
-    Carouselle(events: [.defaultEvent, .defaultEvent, .defaultEvent])
+    NavigationStack {
+        Carouselle(events: .constant([.defaultEvent, .defaultEvent, .defaultEvent]))
+    }
 }

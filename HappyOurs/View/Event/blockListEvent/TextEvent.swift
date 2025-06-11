@@ -8,29 +8,27 @@
 import SwiftUI
 
 struct TextEvent: View {
+    let event: Event
     var body: some View {
-        VStack {
+       
             
             VStack (alignment: .leading) {
-                Text("Concert de Jazz")
-                    .font(.title3)
+                Text(event.name)
+                    .font(.system(size: 16))
                     .bold()
-                Text("Mardi 5 juin à 20h30")
+                    .lineLimit(1)
+                Text(event.dateFormatted)
+                    .font(.system(size: 10))
                     .font(.callout)
-                Text("Salle Pleyel")
-                    .font(.callout)
+                Text(event.address)
+                    .font(.system(size: 10))
+                    .truncationMode(.tail)
+                    .lineLimit(1)
+                
             }
-            .frame(maxWidth:.infinity, alignment: .leading)
-            .background(Color.yellow)
-            .padding(.leading,10)
-            HStack {
-        
-                Text("TextEvent")
-            }
-        }
     }
 }
 
 #Preview {
-    TextEvent()
+    TextEvent(event: .defaultEvent)
 }

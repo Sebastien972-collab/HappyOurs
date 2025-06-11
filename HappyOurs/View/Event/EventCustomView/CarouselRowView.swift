@@ -20,5 +20,7 @@ struct CarouselRowView: View {
 }
 
 #Preview {
-    CarouselRowView(event: .defaultEvent)
+    NavigationStack {
+        CarouselRowView(event: .defaultEvent)
+    }
 }

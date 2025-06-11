@@ -27,6 +27,6 @@ struct CircleImage: View {
 #Preview {
     ZStack {
         Color.coffe_brown.ignoresSafeArea()
-        CircleImage(image: Image("carolineImage"))
+        CircleImage(image: Image("Caroline"))
     }
 }
