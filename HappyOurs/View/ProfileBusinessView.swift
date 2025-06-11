@@ -100,8 +100,13 @@ struct ProfileBusinessView: View {
             }
             
         }
-        .navigationTitle("Mon profil")
-        .environmentObject(userManager)
+        .toolbar {
+            ToolbarItem(placement: .principal) {
+                Text("Mon profil")
+                    .font(.title2)
+                    .fontWeight(.bold)
+            }
+        } .navigationBarTitleDisplayMode(.inline)        .environmentObject(userManager)
         Spacer()
     }
 }
