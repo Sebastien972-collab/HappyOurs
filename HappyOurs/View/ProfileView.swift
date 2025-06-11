@@ -124,25 +124,31 @@ struct ProfileView: View {
                 }
                 
             }
-            
-            .navigationTitle("Mon profil")
-            .navigationBarTitleDisplayMode(.inline)
-            .environmentObject(userManager)
-        }
-        .toolbar {
-            ToolbarItem(placement: .principal) {
-                Text("Mon profil")
-                    .font(.title2)
-                    .fontWeight(.bold)
+            .toolbar {
+                ToolbarItem(placement: .principal) {
+                    Text("Mon profil")
+                        .font(.title2)
+                        .fontWeight(.bold)
+                }
+                
+                ToolbarItem(placement: .topBarTrailing) {
+                    NavigationLink {
+                        SettingsView()
+                    } label: {
+                        Image(systemName: "gear")
+                            .foregroundStyle(.black)
+                        
+                    }
+
+                }
             }
-        } .navigationBarTitleDisplayMode(.inline)        .environmentObject(userManager)
-        Spacer()
+        }
+        .environmentObject(userManager)
     }
 }
 
 #Preview {
-    TabView {
+    
         ProfileView()
             .environmentObject(UserManager())
-    }
 }

@@ -22,7 +22,7 @@ struct ListEvent: View {
                             .fontWeight(.bold)
                             .minimumScaleFactor(0.7)
                     }
-                    if manager.currentUser is Business {
+                    if manager.currentUser is Participant {
                         Carouselle(events: $manager.trandingEvents )
                     } else {
                         NavigationLink {
