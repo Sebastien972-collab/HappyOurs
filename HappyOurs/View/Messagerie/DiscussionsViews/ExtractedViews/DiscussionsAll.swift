@@ -11,12 +11,14 @@ import SwiftUI
 struct DiscussionAll: View {
     
     @EnvironmentObject var messagerieViewModel: MessagerieViewModel
+    @State var selectedParticipant: Participant?
     
     var body: some View {
         
-        NavigationStack {            
+        NavigationStack {
+            
             ForEach(messagerieViewModel.discussionVM) { discussion in
-                NavigationLink(destination: Text("Navigation discussion")) {
+                NavigationLink(destination: ChatView( selectedParticipant: $selectedParticipant)) {
                     DiscussionLine(discussion: discussion)
                 }.foregroundColor(.black)
             }

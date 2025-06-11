@@ -18,5 +18,13 @@ class MessagerieViewModel : ObservableObject {
     
     //  MARK: - discussions
     
+    //  MARK: - messages
+    
+    @Published var messagesVM : [Message] = DatabaseMessages.messagesData
+    
+    func sendMessage(message : String) {
+        print(message)
+    }
     
 }
+
