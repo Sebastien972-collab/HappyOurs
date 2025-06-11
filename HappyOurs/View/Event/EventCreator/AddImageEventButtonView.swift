@@ -12,7 +12,7 @@ struct AddImageEventButtonView: View {
     var action: () -> Void
     var body: some View {
         Button {
-            
+            action()
         } label: {
             ZStack {
                 RoundedRectangle(cornerRadius: 10)

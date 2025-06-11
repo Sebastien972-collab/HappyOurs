@@ -22,7 +22,7 @@ struct ProfileBusinessView: View {
                     Image(manager.currentUser.currentImageName ?? "default")
                         .resizable()
                         .frame(height: 300)
-                        .scaledToFit()
+                        .aspectRatio(contentMode: .fit)
                         .clipped()
                                     
                         HStack {
