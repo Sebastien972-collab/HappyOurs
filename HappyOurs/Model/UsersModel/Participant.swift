@@ -12,6 +12,9 @@ class Participant: User {
     var favortieEvent: TypeOfEvent = .concert
     var favortieGroups: Groups = .none
     var age: Int = 18
+    var punchline: String = ""
+    var drinkingHabit: DrinkingHabits?
+    var numberOfParties: Int? 
     
     init(username: String, email: String, ville: String) {
         super.init(username: username, email: email, ville: ville)
@@ -25,9 +28,16 @@ class Participant: User {
     
     
     static var preview: Participant {
-        let participant = Participant(username: "Carolinedu94", email: "caro.94@simplon.co", ville: "Vincenne")
+        let participant = Participant(username: "Carolinedu94", email: "caro.94@simplon.co", ville: "Vincennes")
         participant.currentImageName = "carolineImage"
         participant.favoriteCocktail = Cocktail.cocktailDb[5]
+        participant.favortieEvent = .festival
+        participant.favortieGroups = .small
+        participant.currentImageName = "Caroline"
+        participant.punchline = "Je ne dis jamais non à un bon mojito"
+        participant.drinkingHabit = DrinkingHabits.alcoolLoverType[1]
+        participant.numberOfParties = 25
+        participant.description = "Graphiste de métier, curieuse de nature, j’adore les conversations qui durent plus longtemps que le cocktail dans mon verre. Si tu aimes les échanges spontanés, les soirées pleines de rires et les rencontres qui sortent du cadre, on risque bien de se comprendre."
         return participant
     }
     

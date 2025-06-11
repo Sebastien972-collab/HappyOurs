@@ -9,8 +9,8 @@ import Foundation
 
 enum Groups: String, CaseIterable {
     case none = "Pas de préférence"
-    case small = "Petit groupe"
-    case medium = "Moyen groupe"
-    case large = "Grand groupe"
+    case small = "petits groupes"
+    case medium = "groupes moyens"
+    case large = "grands groupes"
 }
 
