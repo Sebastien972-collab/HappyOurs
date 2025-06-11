@@ -20,7 +20,6 @@ struct CircleImage: View {
                     .stroke(Color.darkYellow, lineWidth: 3)
                     
             }
-            
     }
 }
 

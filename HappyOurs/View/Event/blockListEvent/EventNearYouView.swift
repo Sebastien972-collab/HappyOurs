@@ -11,7 +11,7 @@ struct EventNearYouView: View {
     var type: TypeOfEvent
     var events: [Event]
     var eventsToShow : [Event] {
-        events.filter { $0.typeOfEvent.rawValue == type.rawValue }
+        events.filter { $0.typeOfEvent.rawValue == type.rawValue}
     }
     var body: some View {
         VStack(alignment: .leading) {

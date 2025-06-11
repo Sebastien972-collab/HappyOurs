@@ -24,7 +24,6 @@ class UserManager: ObservableObject {
     ///Sing in User in application
     func signIn(as user: User) {
         currentUser = user
-        
     }
     
     ///Sing Out User in application

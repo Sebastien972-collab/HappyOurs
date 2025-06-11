@@ -60,7 +60,7 @@ struct DiscussionLine: View {
                         .foregroundColor(.darkYellow100)
                 }
             }
-            .frame(width : .infinity, height: 50)
+            .frame(maxWidth : .infinity, maxHeight: 50)
             .padding(10)
         }
     }

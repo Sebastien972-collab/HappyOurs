@@ -9,8 +9,7 @@ import Foundation
 
 class Business: User {
     var cocktails: [String] = [""]
-    var events: [String] = [""]
-    
+
     
     
     static var preview: Business {
