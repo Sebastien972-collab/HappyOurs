@@ -9,6 +9,7 @@ import SwiftUI
 ///A image with a camera SFSymbols
 struct AddImageEventButtonView: View {
     var systemImage: String?
+    var text: String = ""
     var action: () -> Void
     var body: some View {
         Button {
@@ -38,7 +39,7 @@ struct AddImageEventButtonView: View {
                             .padding(.bottom, 5)
                         
                     }
-                    Text("Ajouter une photo ")
+                    Text(text)
                         .foregroundStyle(.black)
                 }
             }

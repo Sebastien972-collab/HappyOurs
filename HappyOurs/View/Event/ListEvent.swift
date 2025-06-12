@@ -24,7 +24,7 @@ struct ListEvent: View {
                     if manager.currentUser is Participant {
                         Carouselle(events: $manager.trandingEvents )
                     } else {
-                        AddImageEventButtonView(systemImage: "plus.circle") { }
+                        AddImageEventButtonView(systemImage: "plus.circle", text: "Ajouter un événement") { }
                             .frame(height: 150)
                         
                     }
