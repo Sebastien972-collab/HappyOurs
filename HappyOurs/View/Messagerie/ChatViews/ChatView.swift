@@ -12,6 +12,7 @@ struct ChatView : View {
     @EnvironmentObject var messagerieViewModel: MessagerieViewModel
     @State var text = ""
     @Binding var selectedParticipant : Participant?
+    var discussion : Discussion
     
     var body: some View {
         
@@ -19,9 +20,8 @@ struct ChatView : View {
             VStack {
                 ScrollView (showsIndicators: false) {
                     
-                    VStack (spacing : 8){
-                        
-                        ForEach (messagerieViewModel.messagesVM) { message in
+                    VStack (spacing : 25){
+                        ForEach (messagerieViewModel.messages(for: selectedParticipant)) { message in
                             MessageBubble(message: message, selectedParticipant: $selectedParticipant)
                         }
                     }
@@ -29,17 +29,17 @@ struct ChatView : View {
                 
                 ZStack {
                     Rectangle()
-                        .fill(Color.darkYellow200)
+                        .fill(Color.black.opacity(0.2))
                         .ignoresSafeArea()
-                        .frame(maxWidth : .infinity, maxHeight: 90)
+                        .frame(maxWidth : .infinity, maxHeight: 80)
                        
                     HStack {
-                        TextField("Hello", text: $text, axis: .vertical)
-                            .padding()
+                        TextField("Envoie un message...", text: $text, axis: .vertical)
+                            .padding(8)
                             .background(Color.white)
                             .cornerRadius(25)
                         Button {
-                            messagerieViewModel.sendMessage(message: text)
+                            messagerieViewModel.sendMessage(message: text, to: selectedParticipant ?? DatabaseParticipants.participantData[1])
                             text = ""
                         }label:{
                             Image(systemName: "paperplane")
@@ -68,6 +68,6 @@ struct ChatView : View {
 }
 
 #Preview {
-    ChatView(selectedParticipant: .constant(DatabaseParticipants.participantData[2]))
+    ChatView(selectedParticipant: .constant(DatabaseParticipants.participantData[1]), discussion: DatabaseDiscussion.discussionData[1])
         .environmentObject(MessagerieViewModel())
 }

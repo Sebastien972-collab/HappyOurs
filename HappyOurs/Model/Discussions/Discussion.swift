@@ -13,6 +13,7 @@ struct Discussion : Identifiable {
     let type : DiscussionType
     let description: String
     let lastDateMessage: Date
+    let messages : [Message]
 }
 
 enum DiscussionType : String {

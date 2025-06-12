@@ -11,10 +11,11 @@ struct MessageBubble: View {
     
     var message: Message
     @Binding var selectedParticipant : Participant?
+    @EnvironmentObject var messagerieViewModel: MessagerieViewModel
     
     var body: some View {
         
-        if message.isFromCurrentUser() {
+        if messagerieViewModel.isFromCurrentUser(message: message) {
             
             HStack {
                 
@@ -28,7 +29,7 @@ struct MessageBubble: View {
                 .foregroundStyle(.black)
                 .cornerRadius(10)
                 
-                Image(selectedParticipant?.username ?? "Stan")
+                Image("Caroline")
                     .resizable()
                     .scaledToFill()
                     .clipShape(Circle())
@@ -41,7 +42,7 @@ struct MessageBubble: View {
              
         } else {
             HStack {
-                Image("Stan")
+                Image(selectedParticipant?.currentImageName ?? "Caroline")
                     .resizable()
                     .scaledToFill()
                     .clipShape(Circle())
@@ -54,7 +55,7 @@ struct MessageBubble: View {
                 }
                 .frame(alignment: .leading)
                 .background(.darkYellow50)
-                .foregroundStyle(.white)
+                .foregroundStyle(.black)
                 .cornerRadius(10)
             }
             .frame(maxWidth : 360, alignment : .leading)
@@ -63,5 +64,6 @@ struct MessageBubble: View {
 }
 
 #Preview {
-    MessageBubble(message:DatabaseMessages.messagesData[0], selectedParticipant: .constant(DatabaseParticipants.participantData[0]))
+    MessageBubble(message:DatabaseMessages.messagesData[0], selectedParticipant: .constant(DatabaseParticipants.participantData[1]))
+        .environmentObject(MessagerieViewModel())
 }

@@ -27,7 +27,7 @@ struct DiscussionView: View {
                         .padding(5)
                     
                     if selectedTab == "Toutes" {
-                        DiscussionAll()
+                        DiscussionAll(selectedParticipant: $selectedParticipant)
                     }else if selectedTab == "Groupes" {
                         DiscussionGroup()
                     }else{

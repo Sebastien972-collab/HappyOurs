@@ -7,14 +7,17 @@
 
 import SwiftUI
 import FestivityUIKit
+
 struct ContentView: View {
     enum Selection {
     case event, message, profile
     }
+    
     @State private var selection: Selection = .event
     @EnvironmentObject var messagerieModel: MessagerieViewModel
     @EnvironmentObject var userManager: UserManager
     var body: some View {
+        
         ZStack {
             TabView {
                 Tab("Évènements", systemImage: "list.bullet") {
@@ -23,14 +26,12 @@ struct ContentView: View {
                 Tab("Messages", systemImage: "message.fill") {
                     DiscussionView()
                 }
-                
                 Tab("Profile", systemImage: "person.fill") {
                     ProfileView()
                 }
             }
             .environmentObject(messagerieModel)
         }
-        
     }
 }
 

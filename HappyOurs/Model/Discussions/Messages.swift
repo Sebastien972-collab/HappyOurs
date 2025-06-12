@@ -9,14 +9,13 @@ import Foundation
 
 struct Message : Identifiable, Decodable{
     var id = UUID()
-    var interlocutorID : UUID
+    var receiverID : UUID
+    var senderID : UUID
     var text : String
     var photoSender : String
     var createdAt : Date
     
-    func isFromCurrentUser() -> Bool {
-        return true
-    }
+
 }
 
 

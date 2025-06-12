@@ -16,50 +16,57 @@ struct DatabaseDiscussion {
                 id: UUID(),
                 interlocutorID: participants[7].id,
                 type: .group,
-                description: "Hello ça va?",
-                lastDateMessage: Date()
+                description: "Que penses tu de cette nouvelle idée de restaurant",
+                lastDateMessage: Date(),
+                messages: DatabaseMessages.messagesData
             ),
             Discussion(
                 id: UUID(),
                 interlocutorID: participants[1].id,
                 type: .solo,
-                description: "Que penses tu de cette nouvelle idée de restaurant?",
-                lastDateMessage: Date()
+                description: "Hello, ça va?",
+                lastDateMessage: Date(),
+                messages: DatabaseMessages.messagesData
             ),
             Discussion(
                 id: UUID(),
                 interlocutorID: participants[2].id,
                 type: .group,
                 description: "Organisation du week-end hackathon avec tout le groupe",
-                lastDateMessage: Date()
+                lastDateMessage: Date(),
+                messages: DatabaseMessages.messagesData
             ),
             Discussion(
                 id: UUID(),
                 interlocutorID: participants[3].id,
                 type: .solo,
                 description: "Voici ce que j'ai fait pour le week-end",
-                lastDateMessage: Date()
+                lastDateMessage: Date(),
+                messages: DatabaseMessages.messagesData
             ),
             Discussion(
                 id: UUID(),
                 interlocutorID: participants[4].id,
                 type: .group,
                 description: "Merci",
-                lastDateMessage: Date()
+                lastDateMessage: Date(),
+                messages: DatabaseMessages.messagesData
             ),
             Discussion(
                 id: UUID(),
                 interlocutorID: participants[5].id,
                 type: .group,
                 description: "Tous les jours en groupe",
-                lastDateMessage: Date()
+                lastDateMessage: Date(),
+                messages: DatabaseMessages.messagesData
             ),
             Discussion(
                 id: UUID(),
                 interlocutorID: participants[6].id,
                 type: .solo,
                 description: "Hackathon pour les amis",
-                lastDateMessage: Date()
+                lastDateMessage: Date(),
+                messages:DatabaseMessages.messagesData
             )
         ]
     }
