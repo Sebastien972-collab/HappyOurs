@@ -64,7 +64,7 @@ struct ProfileParticipantView: View {
                             Spacer()
                             VStack {
                                 Image("personsPicto")
-                                Text("\(manager.currentUser.numberOfParties ?? 0) soirées")
+                                Text("\(manager.currentUser.events.count) soirées")
                             }
                             .foregroundColor(.black)
                             .bold()
@@ -148,12 +148,6 @@ struct ProfileParticipantView: View {
 }
 
 #Preview {
-<<<<<<< HEAD:HappyOurs/View/Profile/ProfileParticipantView.swift
-    ProfileParticipantView()
-        .environmentObject(UserManager())
-=======
-    
         ProfileView()
             .environmentObject(UserManager())
->>>>>>> main:HappyOurs/View/ProfileView.swift
 }

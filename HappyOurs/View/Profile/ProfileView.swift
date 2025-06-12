@@ -8,11 +8,20 @@
 import SwiftUI
 
 struct ProfileView: View {
+    @EnvironmentObject var manager: UserManager
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+        ZStack {
+            if manager.currentUser is Participant || manager.currentUser == .guest {
+                ProfileParticipantView()
+            } else {
+                ProfileBusinessView()
+            }
+        }
+            
     }
 }
 
 #Preview {
     ProfileView()
+        .environmentObject(UserManager())
 }

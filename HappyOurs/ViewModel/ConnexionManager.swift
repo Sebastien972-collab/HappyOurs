@@ -35,9 +35,9 @@ class ConnexionManager {
     func signIn(_ user: User) {
         switch currentSignUpAccountType {
         case .particpant:
-            <#code#>
+            print("user")
         case .bussines:
-            <#code#>
+            print("user")
         }
     }
 }
