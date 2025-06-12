@@ -10,9 +10,9 @@ import Foundation
 @Observable
 class ConnexionManager {
     
-    
-    
+    var manager: UserManager
     var username: String = ""
+    var email: String = ""
     var city: String = ""
     var currentImage: String?
     var description: String = ""
@@ -28,16 +28,35 @@ class ConnexionManager {
     var currentConnexionType: ConnexionType = .signIn
     var currentSignUpAccountType: SignUpAccountType = .particpant
     
+    init(manager: UserManager) {
+        self.manager = manager
+    }
     
     
-    
-    
-    func signIn(_ user: User) {
+    ///Inscription User
+    func signUp(_ user: User) {
+        guard !username.isEmpty && !email.isEmpty && !city.isEmpty else { return }
         switch currentSignUpAccountType {
         case .particpant:
-            print("user")
+            manager.currentUser = Participant(username: username, email: email, ville: city)
         case .bussines:
-            print("user")
+            manager.currentUser = Business(username: username, email: email, ville: city)
         }
+    }
+    ///Connexion User
+    func signIn() {
+        guard !username.isEmpty && !email.isEmpty else { return }
+        
+        switch currentSignUpAccountType {
+        case .particpant:
+            manager.currentUser = Participant.preview
+        case .bussines:
+            manager.currentUser = Business.preview
+        }
+    }
+    
+    ///Deconnexion User
+    func signOut() {
+        manager.currentUser = .guest
     }
 }

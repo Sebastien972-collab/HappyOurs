@@ -8,10 +8,9 @@
 import Foundation
 import Observation
 
-class MessagerieViewModel : ObservableObject {
+class MessagerieViewModel: ObservableObject {
     
     //  MARK: - App data
-    
     @Published var participantsVM = DatabaseParticipants.participantData
     @Published var businessVM = DatabaseBusiness.businessData
     @Published var discussionVM = DatabaseDiscussion.discussionData
@@ -19,7 +18,6 @@ class MessagerieViewModel : ObservableObject {
     //  MARK: - discussions
     
     //  MARK: - messages
-    
     @Published var messagesVM : [Message] = DatabaseMessages.messagesData
     
     func sendMessage(message : String) {
