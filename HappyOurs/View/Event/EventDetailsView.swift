@@ -61,6 +61,7 @@ struct EventDetailsView: View {
                     CustomDivider()
                     Text(event.description)
                         .multilineTextAlignment(.leading)
+                        .padding()
                         .background {
                             RoundedRectangle(cornerRadius: 6)
                                 .fill(Color.newBeige)
@@ -84,17 +85,17 @@ struct EventDetailsView: View {
                             .font(.title2)
                             .fontWeight(.bold)
                         
-                        VStack(alignment: .leading, spacing: 5) {
-                            ForEach(event.bestCocktail.ingredients ?? [], id: \.self) { ingredient in
-                                Text("\u{00B7} \(ingredient)")
-                                    .font(.custom("SF Pro", size: 14))
+                        ZStack {
+                            Color.newBeige
+                                .clipShape(RoundedRectangle(cornerRadius: 10))
+                            VStack(alignment: .leading, spacing: 5) {
+                                ForEach(event.bestCocktail.ingredients ?? [], id: \.self) { ingredient in
+                                    Text("\u{00B7} \(ingredient)")
+                                        .font(.custom("SF Pro", size: 14))
+                                }
                             }
-                        }
-                        .background {
-                            RoundedRectangle(cornerRadius: 6)
-                                .fill(Color.newBeige)
-                                .frame(width: 360)
-                            
+                            .frame(maxWidth: .infinity, alignment: .leading)
+                            .padding()
                         }
                     }
                     .padding(.horizontal)
