@@ -17,9 +17,9 @@ class ConnexionManager {
     var currentImage: String?
     var description: String = ""
     
-    enum ConnexionType {
-        case signUp
-        case signIn
+    enum ConnexionType: String {
+        case signUp = "Inscription"
+        case signIn = "Connexion"
     }
     enum SignUpAccountType {
         case particpant
@@ -32,9 +32,16 @@ class ConnexionManager {
         self.manager = manager
     }
     
-    
+    func connection() {
+        switch currentConnexionType {
+        case .signUp:
+            signUp()
+        case .signIn:
+            signIn()
+        }
+    }
     ///Inscription User
-    func signUp(_ user: User) {
+    private func signUp() {
         guard !username.isEmpty && !email.isEmpty && !city.isEmpty else { return }
         switch currentSignUpAccountType {
         case .particpant:
@@ -44,7 +51,7 @@ class ConnexionManager {
         }
     }
     ///Connexion User
-    func signIn() {
+    private func signIn() {
         guard !username.isEmpty && !email.isEmpty else { return }
         
         switch currentSignUpAccountType {
