@@ -10,27 +10,33 @@ import FestivityUIKit
 
 struct ConnectionFormView: View {
     @ObservedObject var manager: ConnexionManager
-    let connectionType: ConnexionManager.ConnexionType
     
     var body: some View {
         Form {
             Section {
                 TextField("Username", text: $manager.username)
-                TextField("Email", text: $manager.email)
-                TextField("Ville", text: $manager.city)
+                if manager.currentConnexionType == .signUp {
+                    TextField("Email", text: $manager.email)
+                    TextField("Ville", text: $manager.city)
+                }
                 
             } header: {
                 Text(manager.currentConnexionType.rawValue)
             }
-            ConfirmationButtonView(title: connectionType.rawValue) {
+            ConfirmationButtonView(title: manager.currentConnexionType.rawValue) {
                 manager.connection()
             }
-
+            .alert("Attention !", isPresented: $manager.showError) {
+                Button("OK", role: .cancel) { }
+            } message: {
+                Text(manager.error.localizedDescription)
+            }
         }
         
+                
     }
 }
 
 #Preview {
-    ConnectionFormView(manager: .init(manager: .init()), connectionType: .signUp)
+    ConnectionFormView(manager: .init(manager: .init()))
 }

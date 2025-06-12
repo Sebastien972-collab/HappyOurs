@@ -9,17 +9,16 @@ import SwiftUI
 
 struct ConnectionView: View {
     
-    @EnvironmentObject var manager: UserManager
-
+    @ObservedObject var manager: ConnexionManager
     var body: some View {
         NavigationStack {
-            ConnectionFormView(manager: ConnexionManager(manager: manager), connectionType: .signUp)
+            ConnectionFormView(manager: manager)
         }
         .environmentObject(manager)
     }
 }
 
 #Preview {
-    ConnectionView()
-        .environmentObject(UserManager())
+    ConnectionView(manager: .init(manager: .init()))
+        
 }
