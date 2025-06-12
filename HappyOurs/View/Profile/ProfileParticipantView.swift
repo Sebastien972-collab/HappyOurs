@@ -148,12 +148,6 @@ struct ProfileParticipantView: View {
 }
 
 #Preview {
-<<<<<<< HEAD:HappyOurs/View/Profile/ProfileParticipantView.swift
-    ProfileParticipantView()
+    ProfileView()
         .environmentObject(UserManager())
-=======
-    
-        ProfileView()
-            .environmentObject(UserManager())
->>>>>>> main:HappyOurs/View/ProfileView.swift
 }
