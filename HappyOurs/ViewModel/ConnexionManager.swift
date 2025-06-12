@@ -7,8 +7,8 @@
 
 import Foundation
 
-@Observable
-class ConnexionManager {
+
+class ConnexionManager: ObservableObject {
     
     var manager: UserManager
     var username: String = ""
