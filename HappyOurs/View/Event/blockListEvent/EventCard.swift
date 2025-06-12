@@ -26,6 +26,7 @@ struct EventCard: View {
             ImageCocktailEvent()
             
         }
+        .padding(.horizontal, 10)
     }
 }
 

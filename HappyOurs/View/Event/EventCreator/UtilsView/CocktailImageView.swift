@@ -12,7 +12,7 @@ struct CocktailImageView: View {
     var body: some View {
         Image(cocktail.imageName)
             .resizable()
-            .renderingMode(.original)
+            .aspectRatio(contentMode: .fill)
             .frame(width: 40, height: 40)
             .background {
                 Circle()

@@ -10,6 +10,7 @@ import SwiftUI
 struct ListEvent: View {
     @State private var manager = EventManager()
     @State private var isPresented: Bool = false
+    
     var body: some View {
         NavigationStack {
             ScrollView {
@@ -23,7 +24,7 @@ struct ListEvent: View {
                             .minimumScaleFactor(0.7)
                     }
                     if manager.currentUser is Participant {
-                        Carouselle(events: $manager.trandingEvents )
+                        Carrousel(events: $manager.trandingEvents )
                     } else {
                         NavigationLink {
                             EventCreator()
@@ -34,13 +35,11 @@ struct ListEvent: View {
                             .frame(height: 150)        
                                 
                         }
-
-                        
                     }
                     ForEach(TypeOfEvent.allCases, id: \.self) { typeOfEvent in
                         EventNearYouView(type: typeOfEvent, events: Event.allEvents)
                     }
-                    .padding(.horizontal)
+                    .padding(.horizontal, 4)
                     Spacer()
                 }
                 .frame(maxWidth: .infinity)

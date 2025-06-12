@@ -47,7 +47,7 @@ struct ProfileParticipantView: View {
                             .padding(.horizontal, 15)
                         
                         
-                        HStack {
+                        HStack (spacing: 10) {
                             VStack {
                                 Image(manager.currentUser.drinkingHabit?.imageName ?? "cocktailPicto")
                                     .resizable()

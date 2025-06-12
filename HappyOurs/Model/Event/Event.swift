@@ -35,7 +35,7 @@ struct Event: Identifiable, Equatable, Hashable  {
         case concert = "Concert 🎤"
         case club = "Club 🪩"
         case festival = "Festival 🎉"
-        case degustation = "Découverte 😋"
+        case degustation = "Dégustation 😋"
         case openAir = "Open Air ☀️"
         case classic = "Classique 🎻"
         
