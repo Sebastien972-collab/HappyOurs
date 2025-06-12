@@ -9,6 +9,7 @@ import SwiftUI
 
 struct ListEvent: View {
     @State private var manager = EventManager()
+    @State private var isPresented: Bool = false
     var body: some View {
         NavigationStack {
             ScrollView {
@@ -24,8 +25,21 @@ struct ListEvent: View {
                     if manager.currentUser is Participant {
                         Carouselle(events: $manager.trandingEvents )
                     } else {
+<<<<<<< HEAD
                         AddImageEventButtonView(systemImage: "plus.circle", text: "Ajouter un événement") { }
+=======
+                        NavigationLink {
+                            EventCreator()
+                        } label: {
+                            AddImageEventButtonView(systemImage: "plus.circle") {
+                                isPresented = true
+                            }
+>>>>>>> main
                             .frame(height: 150)
+                            
+                                
+                        }
+
                         
                     }
                     ForEach(TypeOfEvent.allCases, id: \.self) { typeOfEvent in
@@ -37,6 +51,10 @@ struct ListEvent: View {
                 .frame(maxWidth: .infinity)
             }
         }
+        .fullScreenCover(isPresented: $isPresented) {
+            EventCreator()
+        }
+        
     }
     
     
