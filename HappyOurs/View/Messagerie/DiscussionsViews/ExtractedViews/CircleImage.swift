@@ -15,11 +15,6 @@ struct CircleImage: View {
             .scaledToFill()
             .frame(maxWidth: 80, maxHeight: 80)
             .clipShape(Circle())
-            .overlay {
-                Circle()
-                    .stroke(Color.darkYellow, lineWidth: 3)
-                    
-            }
     }
 }
 
