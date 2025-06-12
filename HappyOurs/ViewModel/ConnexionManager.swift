@@ -6,3 +6,38 @@
 //
 
 import Foundation
+
+@Observable
+class ConnexionManager {
+    
+    
+    
+    var username: String = ""
+    var city: String = ""
+    var currentImage: String?
+    var description: String = ""
+    
+    enum ConnexionType {
+        case signUp
+        case signIn
+    }
+    enum SignUpAccountType {
+        case particpant
+        case bussines
+    }
+    var currentConnexionType: ConnexionType = .signIn
+    var currentSignUpAccountType: SignUpAccountType = .particpant
+    
+    
+    
+    
+    
+    func signIn(_ user: User) {
+        switch currentSignUpAccountType {
+        case .particpant:
+            <#code#>
+        case .bussines:
+            <#code#>
+        }
+    }
+}
