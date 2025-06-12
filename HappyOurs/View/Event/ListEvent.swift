@@ -33,17 +33,28 @@ struct ListEvent: View {
                             }
                             .frame(height: 150)        
                                 
+                            }
+                            
+                            
                         }
-
-                        
+                        ForEach(TypeOfEvent.allCases, id: \.self) { typeOfEvent in
+                            EventNearYouView(type: typeOfEvent, events: Event.allEvents)
+                        }
+                        .padding(.horizontal)
+                        Spacer()
                     }
-                    ForEach(TypeOfEvent.allCases, id: \.self) { typeOfEvent in
-                        EventNearYouView(type: typeOfEvent, events: Event.allEvents)
-                    }
-                    .padding(.horizontal)
-                    Spacer()
+                    .frame(maxWidth: .infinity)
                 }
-                .frame(maxWidth: .infinity)
+                VStack {
+                    Spacer()
+                    NavigationLink {
+                        QRCodeView()
+                    } label: {
+                       BoutonFlottant()
+                        }
+                    Spacer()
+                        .frame(height: 20)
+                }
             }
         }
         .fullScreenCover(isPresented: $isPresented) {

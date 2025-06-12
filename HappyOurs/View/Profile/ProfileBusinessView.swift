@@ -31,7 +31,6 @@ struct ProfileBusinessView: View {
                                 .shadow(radius: 15)
                                 .padding()
                         }
-                    
                 }
                 
                 VStack {

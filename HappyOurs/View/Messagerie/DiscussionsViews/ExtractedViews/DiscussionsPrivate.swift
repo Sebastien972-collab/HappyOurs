@@ -9,22 +9,35 @@ import Foundation
 import SwiftUI
 
 struct DiscussionPrivate: View {
-    
+
     @EnvironmentObject var messagerieViewModel: MessagerieViewModel
+    @Binding var selectedParticipant: Participant?
     
     var body: some View {
+        
         NavigationStack {
             
-            ForEach(messagerieViewModel.discussionVM.filter({ $0.type == .solo})) { discussion in
-                NavigationLink(destination: Text("Navigation")) {
+            // Boucle pour afficher toutes les discussions filtrées par type de discussion : privateChat
+
+            ForEach(messagerieViewModel.discussionVM.filter({ $0.type == .privateChat})) { discussion in
+                
+                NavigationLink(destination: ChatView(selectedParticipant: $selectedParticipant, discussion: discussion)) {
                     DiscussionLine(discussion: discussion)
-                }.foregroundColor(.black)
+                    
+                } .simultaneousGesture(TapGesture().onEnded {
+                    
+                    // a partir de l'interlocuteur.id on retrouve le participant sélectionné parmi tous les participants
+                    
+                    if let participant = messagerieViewModel.participantsVM.first(where: { $0.id == discussion.interlocutorID }) {
+                        selectedParticipant = participant
+                    }
+                }).foregroundColor(.black)
             }
         }
     }
 }
 
 #Preview {
-    DiscussionPrivate()
+    DiscussionPrivate(selectedParticipant: .constant(DatabaseParticipants.participantData[0]))
         .environmentObject(MessagerieViewModel())
 }
