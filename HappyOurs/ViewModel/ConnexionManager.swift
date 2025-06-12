@@ -7,16 +7,18 @@
 
 import Foundation
 
-@Observable
-class ConnexionManager {
+
+class ConnexionManager: ObservableObject {
     
-    var manager: UserManager
-    var username: String = ""
-    var email: String = ""
-    var city: String = ""
-    var currentImage: String?
-    var description: String = ""
+    @Published var manager: UserManager = UserManager()
+    @Published var username: String = ""
+    @Published var email: String = ""
+    @Published var city: String = ""
+    @Published var currentImage: String?
+    @Published var description: String = ""
     
+    @Published var error: Error = ConnectionError.uknowError
+    @Published var showError: Bool = false
     enum ConnexionType: String {
         case signUp = "Inscription"
         case signIn = "Connexion"
@@ -33,6 +35,11 @@ class ConnexionManager {
     }
     
     func connection() {
+        guard !username.isEmpty || !email.isEmpty || !city.isEmpty else {
+            self.error = ConnectionError.fieldEmpty
+            self.showError = true
+            return
+        }
         switch currentConnexionType {
         case .signUp:
             signUp()
@@ -42,7 +49,7 @@ class ConnexionManager {
     }
     ///Inscription User
     private func signUp() {
-        guard !username.isEmpty && !email.isEmpty && !city.isEmpty else { return }
+        
         switch currentSignUpAccountType {
         case .particpant:
             manager.currentUser = Participant(username: username, email: email, ville: city)
@@ -52,7 +59,6 @@ class ConnexionManager {
     }
     ///Connexion User
     private func signIn() {
-        guard !username.isEmpty && !email.isEmpty else { return }
         
         switch currentSignUpAccountType {
         case .particpant:
