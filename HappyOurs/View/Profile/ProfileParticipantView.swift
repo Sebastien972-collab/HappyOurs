@@ -8,7 +8,7 @@
 import SwiftUI
 import FestivityUIKit
 
-struct ProfileView: View {
+struct ProfileParticipantView: View {
     @EnvironmentObject var userManager: UserManager
     
     let manager: ParticipantManager = ParticipantManager(manager: UserManager())
@@ -148,7 +148,12 @@ struct ProfileView: View {
 }
 
 #Preview {
+<<<<<<< HEAD:HappyOurs/View/Profile/ProfileParticipantView.swift
+    ProfileParticipantView()
+        .environmentObject(UserManager())
+=======
     
         ProfileView()
             .environmentObject(UserManager())
+>>>>>>> main:HappyOurs/View/ProfileView.swift
 }
