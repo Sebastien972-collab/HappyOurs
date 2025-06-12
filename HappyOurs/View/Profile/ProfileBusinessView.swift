@@ -10,7 +10,6 @@ import FestivityUIKit
 
 struct ProfileBusinessView: View {
     @EnvironmentObject var userManager: UserManager
-    
     @State private var eventManager = EventManager()
     
     let manager: BusinessManager = BusinessManager(manager: UserManager())
