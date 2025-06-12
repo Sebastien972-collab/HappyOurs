@@ -26,12 +26,14 @@ struct DiscussionView: View {
                     Picker_Discussion_View (selectedTab: $selectedTab, tabs: tabs)
                         .padding(5)
                     
+                    // changement de page en fonction du selected Tab
+                    
                     if selectedTab == "Toutes" {
                         DiscussionAll(selectedParticipant: $selectedParticipant)
-                    }else if selectedTab == "Groupes" {
-                        DiscussionGroup()
-                    }else{
-                        DiscussionPrivate()
+                    } else if selectedTab == "Groupes" {
+                        DiscussionGroup(selectedParticipant: $selectedParticipant)
+                    } else {
+                        DiscussionPrivate(selectedParticipant: $selectedParticipant)
                     }
                     Spacer()
                 }

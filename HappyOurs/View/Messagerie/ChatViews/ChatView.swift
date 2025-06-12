@@ -21,6 +21,9 @@ struct ChatView : View {
                 ScrollView (showsIndicators: false) {
                     
                     VStack (spacing : 25){
+                        
+                        // Boucle pour aller chercher dans la database messages, tous les messages bubble en lien avec le participant sélectionné
+                        
                         ForEach (messagerieViewModel.messages(for: selectedParticipant)) { message in
                             MessageBubble(message: message, selectedParticipant: $selectedParticipant)
                         }
@@ -38,6 +41,9 @@ struct ChatView : View {
                             .padding(8)
                             .background(Color.white)
                             .cornerRadius(25)
+                        
+                        //Bouton paperplane pour envoyer le message au participant sélectionné
+                        
                         Button {
                             messagerieViewModel.sendMessage(message: text, to: selectedParticipant ?? DatabaseParticipants.participantData[1])
                             text = ""
@@ -50,18 +56,40 @@ struct ChatView : View {
                 }
             }
             .toolbar {
-                ToolbarItem(placement: .principal) {
-                    HStack {
-                        Image(selectedParticipant?.currentImageName ?? "Caroo")
-                            .resizable()
-                            .scaledToFill()
-                            .clipShape(Circle())
-                            .frame(width: 40, height: 40)
-                        Text(selectedParticipant?.username ?? "Caroo")
-                            .font(.title3)
-                            .fontWeight(.bold)
+                
+                // Premiere condition par type de discussion. Si privateChat, l'image et le nom de l'interlocuteur s'affiche dans la toolbar
+                
+                if discussion.type == .privateChat {
+                    ToolbarItem(placement: .principal) {
+                        HStack {
+                            Image(selectedParticipant?.currentImageName ?? "Caroo")
+                                .resizable()
+                                .scaledToFill()
+                                .clipShape(Circle())
+                                .frame(width: 40, height: 40)
+                            Text(selectedParticipant?.username ?? "Caroo")
+                                .font(.title3)
+                                .fontWeight(.bold)
+                        }
+                    }
+                }else{
+                    
+                    // Autre condition par type de discussion. Si publicChat, l'image et le nom de l'évent s'affiche dans la toolbar
+                    
+                    ToolbarItem(placement: .principal) {
+                        HStack {
+                            Image(discussion.photoEvent ?? "event-1")
+                                .resizable()
+                                .scaledToFill()
+                                .clipShape(Circle())
+                                .frame(width: 40, height: 40)
+                            Text(discussion.nameEvent ?? "Nom Event")
+                                .font(.title3)
+                                .fontWeight(.bold)
+                        }
                     }
                 }
+
             }.navigationBarTitleDisplayMode(.inline)
         }
     }

@@ -14,8 +14,6 @@ struct Message : Identifiable, Decodable{
     var text : String
     var photoSender : String
     var createdAt : Date
-    
-
 }
 
 

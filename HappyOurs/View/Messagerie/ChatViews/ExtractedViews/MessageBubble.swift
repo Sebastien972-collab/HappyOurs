@@ -15,6 +15,8 @@ struct MessageBubble: View {
     
     var body: some View {
         
+        // Message bubble rose à droite si le message vient du CurrentUser
+        
         if messagerieViewModel.isFromCurrentUser(message: message) {
             
             HStack {
@@ -41,6 +43,9 @@ struct MessageBubble: View {
             .frame(maxWidth : 360, alignment : .trailing)
              
         } else {
+            
+            // Message bubble jaune à gauche si le message vient du CurrentUser
+            
             HStack {
                 Image(selectedParticipant?.currentImageName ?? "Caroline")
                     .resizable()
