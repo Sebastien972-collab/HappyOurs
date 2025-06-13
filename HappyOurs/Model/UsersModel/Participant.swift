@@ -37,5 +37,17 @@ class Participant: User {
         participant.events = Event.allEvents.filter({ $0.typeOfEvent == .festival })
         return participant
     }
+    static var sebAccount: Participant {
+        let participant = Participant(username: "Sébastien", email: "sebastien.daguin94@simplon.co", ville: "Villejuif")
+        participant.currentImageName = "seb"
+        participant.favoriteCocktail = Cocktail.cocktailDb[3]
+        participant.favortieEvent = .club
+        participant.favortieGroups = .large
+        participant.punchline = "Le plus simple 🍕⚽️🎤"
+        participant.drinkingHabit = DrinkingHabits.alcoolLoverType[2]
+        participant.description = "Développeur iOS passioné à la recherche d'amis pour un soir ou pour la vie"
+        participant.events = Event.allEvents.filter({ $0.typeOfEvent == .club })
+        return participant
+    }
     
 }

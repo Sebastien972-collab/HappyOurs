@@ -9,6 +9,7 @@ import Foundation
 
 class UserManager: ObservableObject {
     
+    ///Is the current application user logged in or not
     @Published var currentUser: User = .guest
     
     /// Check if the current user is a guest account
@@ -23,14 +24,4 @@ class UserManager: ObservableObject {
     //MARK: - Connexion method
     
     ///Sing in User in application
-    func signIn(as user: User) {
-        currentUser = user
-    }
-    
-    ///Sing Out User in application
-    func signOut() {
-        currentUser = .guest
-    }
-    
-    
 }

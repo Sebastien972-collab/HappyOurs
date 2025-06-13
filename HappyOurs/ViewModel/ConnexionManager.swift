@@ -44,7 +44,7 @@ class ConnexionManager: ObservableObject {
         case .signUp:
             signUp()
         case .signIn:
-            signUp()
+            signIn()
         }
     }
     ///Inscription User
@@ -64,11 +64,15 @@ class ConnexionManager: ObservableObject {
             
             
         case .bussines:
-            manager.signIn(as: Business(username: username, email: email, ville: city))
-            manager.signIn(as:  Participant(username: username, email: email, ville: city))
+            let user = Business(username: username, email: email, ville: city)
+            user.description = Business.preview.description
+            user.currentImageName = Business.preview.currentImageName
+            user.events = Business.preview.events
             manager.currentUser.description = Business.preview.description
             manager.currentUser.currentImageName = Business.preview.currentImageName
             manager.currentUser.events = Business.preview.events
+
+            manager.currentUser = user
         }
     }
     ///Connexion User
@@ -76,9 +80,11 @@ class ConnexionManager: ObservableObject {
         
         switch currentSignUpAccountType {
         case .particpant:
-            manager.signIn(as:  Participant(username: username, email: email, ville: city))
+            manager.currentUser = Participant.sebAccount
+            manager.currentUser.username = username
         case .bussines:
-            manager.signIn(as: Business(username: username, email: email, ville: city))
+            //manager.signIn(as: Business(username: username, email: email, ville: city))
+            print("Sella")
         }
     }
     

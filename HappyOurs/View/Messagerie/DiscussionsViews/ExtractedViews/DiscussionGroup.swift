@@ -39,5 +39,5 @@ struct DiscussionGroup: View {
 }
 
 #Preview {
-    DiscussionGroup(selectedParticipant: .constant(DatabaseParticipants.participantData[1])).environmentObject(MessagerieViewModel())
+    DiscussionGroup(selectedParticipant: .constant(DatabaseParticipants.participantData[1])).environmentObject(MessagerieViewModel(userManager: .init()))
 }

@@ -7,11 +7,7 @@
 
 import Foundation
 
-struct Event: Identifiable, Equatable, Hashable  {
-    
-    static func == (lhs: Event, rhs: Event) -> Bool {
-        lhs.name == rhs.name && lhs.organisator == rhs.organisator
-    }
+struct Event: Identifiable, Equatable, Hashable, Comparable  {
     
     var id: UUID = UUID()
     var organisator: Business
@@ -24,6 +20,7 @@ struct Event: Identifiable, Equatable, Hashable  {
     var typeOfEvent: TypeOfEvent = .club
     var address: String = ""
     var description: String = ""
+    var url: String =  ""
     
     var dateFormatted: String {
         let formatter = DateFormatter()
@@ -42,6 +39,12 @@ struct Event: Identifiable, Equatable, Hashable  {
         
     }
     
+    static func == (lhs: Event, rhs: Event) -> Bool {
+        lhs.name == rhs.name && lhs.organisator == rhs.organisator
+    }
+    static func < (lhs: Event, rhs: Event) -> Bool {
+        lhs.date < rhs.date
+    }
     
     static var defaultEvent: Event {
         var event = Event(organisator: .preview, name: "Tropical Summer", date: Date.now, bestCocktail: .preview )
