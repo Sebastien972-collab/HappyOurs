@@ -17,8 +17,10 @@ struct ConnectionFormView: View {
                 TextField("Username", text: $manager.username)
                 if manager.currentConnexionType == .signUp {
                     TextField("Email", text: $manager.email)
+                        .keyboardType(.emailAddress)
                     TextField("Ville", text: $manager.city)
                 }
+                SecureField("Mot de passe", text: .constant("Password"))
                 
             } header: {
                 Text(manager.currentConnexionType.rawValue)
@@ -26,6 +28,9 @@ struct ConnectionFormView: View {
             ConfirmationButtonView(title: manager.currentConnexionType.rawValue) {
                 manager.connection()
             }
+            .frame(maxWidth: .infinity, alignment: .center)
+            .navigationTitle(manager.currentConnexionType.rawValue)
+            .navigationBarTitleDisplayMode(.inline)
             .alert("Attention !", isPresented: $manager.showError) {
                 Button("OK", role: .cancel) { }
             } message: {
@@ -38,5 +43,7 @@ struct ConnectionFormView: View {
 }
 
 #Preview {
-    ConnectionFormView(manager: .init(manager: .init()))
+    NavigationStack {
+        ConnectionFormView(manager: .init(manager: .init()))
+    }
 }

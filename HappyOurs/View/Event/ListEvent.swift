@@ -8,37 +8,39 @@
 import SwiftUI
 
 struct ListEvent: View {
+    @EnvironmentObject private var userManger: UserManager
     @State private var manager = EventManager()
+    @State private var eventCreator = EventCreatorManager()
     @State private var isPresented: Bool = false
     var body: some View {
         NavigationStack {
-            ScrollView {
-                VStack(alignment: .leading) {
-                    HStack{
-                        CircleImage(image: Image("\(manager.currentUser.currentImageName ?? "carolineImage")"))
-                        
-                        Text("Bonjour \(manager.currentUser.username)")
-                            .font(.title3)
-                            .fontWeight(.bold)
-                            .minimumScaleFactor(0.7)
-                    }
-                    if manager.currentUser is Business {
-                        Carouselle(events: $manager.trandingEvents )
-                    } else {
-                        NavigationLink {
-                            EventCreator()
-                        } label: {
+            ZStack {
+                ScrollView {
+                    VStack(alignment: .leading) {
+                        HStack{
+                            CircleImage(image: Image("\(manager.currentUser.currentImageName ?? "carolineImage")"))
+                            
+                            Text("Bonjour \(manager.currentUser.username)")
+                                .font(.title3)
+                                .fontWeight(.bold)
+                                .minimumScaleFactor(0.7)
+                        }
+                        if manager.currentUser is Participant {
+                            Carouselle(events: $manager.trandingEvents )
+                        } else {
                             AddImageEventButtonView(systemImage: "plus.circle") {
+                                eventCreator.userManager = userManger
                                 isPresented = true
                             }
-                            .frame(height: 150)        
-                                
+                            .frame(height: 150)
+                            .navigationDestination(isPresented: $isPresented) {
+                                EventCreator(eventCreator: $eventCreator)
                             }
                             
                             
                         }
                         ForEach(TypeOfEvent.allCases, id: \.self) { typeOfEvent in
-                            EventNearYouView(type: typeOfEvent, events: Event.allEvents)
+                            EventNearYouView(type: typeOfEvent, events: manager.allEvents)
                         }
                         .padding(.horizontal)
                         Spacer()
@@ -50,25 +52,23 @@ struct ListEvent: View {
                     NavigationLink {
                         QRCodeView()
                     } label: {
-                       BoutonFlottant()
-                        }
+                        BoutonFlottant()
+                    }
                     Spacer()
                         .frame(height: 20)
                 }
             }
+            
         }
-        .fullScreenCover(isPresented: $isPresented) {
-            EventCreator()
-        }
+        .environmentObject(userManger)
+        
         
     }
-    
-    
-    
     
 }
 
 
 #Preview {
     ListEvent()
+        .environmentObject(UserManager())
 }

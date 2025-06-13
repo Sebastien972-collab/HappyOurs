@@ -9,7 +9,7 @@ import Foundation
 
 class UserManager: ObservableObject {
     
-    var currentUser: User = .guest
+    @Published var currentUser: User = .guest
     
     /// Check if the current user is a guest account
      var isAuthenticated: Bool {

@@ -35,7 +35,7 @@ class ConnexionManager: ObservableObject {
     }
     
     func connection() {
-        guard !username.isEmpty || !email.isEmpty || !city.isEmpty else {
+        guard !username.isEmpty || !email.isEmpty else {
             self.error = ConnectionError.fieldEmpty
             self.showError = true
             return
@@ -49,12 +49,11 @@ class ConnexionManager: ObservableObject {
     }
     ///Inscription User
     private func signUp() {
-        
         switch currentSignUpAccountType {
         case .particpant:
-            manager.currentUser = Participant(username: username, email: email, ville: city)
+            manager.signIn(as:  Participant(username: username, email: email, ville: city))
         case .bussines:
-            manager.currentUser = Business(username: username, email: email, ville: city)
+            manager.signIn(as: Business(username: username, email: email, ville: city))
         }
     }
     ///Connexion User
@@ -62,9 +61,9 @@ class ConnexionManager: ObservableObject {
         
         switch currentSignUpAccountType {
         case .particpant:
-            manager.currentUser = Participant.preview
+            manager.signIn(as:  Participant(username: username, email: email, ville: city))
         case .bussines:
-            manager.currentUser = Business.preview
+            manager.signIn(as: Business(username: username, email: email, ville: city))
         }
     }
     
