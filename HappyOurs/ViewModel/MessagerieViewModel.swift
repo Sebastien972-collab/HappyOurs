@@ -36,7 +36,7 @@ class MessagerieViewModel: ObservableObject {
         
     //  MARK: - messages
     
-    
+
     //fonction pour envoyer des messages, si le champ est vide, ça ne fait rien.
 
      func sendMessage(message text: String, to participant: Participant) {
