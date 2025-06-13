@@ -19,7 +19,7 @@ struct ListEvent: View {
                 ScrollView {
                     VStack(alignment: .leading) {
                         HStack {
-                            CircleImage(image: Image("\(manager.currentUser.currentImageName ?? "carolineImage")"))
+                            CircleImage(image: Image("\(userManager.currentUser.currentImageName ?? "carolineImage")"))
 
                             Text("Bonjour \(userManager.currentUser.username)")
                                 .font(.title3)
