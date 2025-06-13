@@ -8,9 +8,9 @@
 import SwiftUI
 
 struct ImageEventCarouselView: View {
-    var imagaName: String
+    var imageName: String
     var body: some View {
-        Image(imagaName)
+        Image(imageName)
             .resizable()
 //            .renderingMode(.original)
             .aspectRatio(contentMode: .fill)
@@ -20,5 +20,5 @@ struct ImageEventCarouselView: View {
 }
 
 #Preview {
-    ImageEventCarouselView(imagaName: "event-1")
+    ImageEventCarouselView(imageName: "event-1")
 }
