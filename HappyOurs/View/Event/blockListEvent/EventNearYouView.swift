@@ -15,20 +15,22 @@ struct EventNearYouView: View {
     }
     var body: some View {
         VStack(alignment: .leading) {
-            Text(type.rawValue)
-                .font(.title)
-                .fontWeight(.bold)
+            Text(type.descriptionCategorie)
+                .font(.system(size: 20))                .fontWeight(.bold)
                 .frame(maxWidth: .infinity, alignment: .leading)
                 .padding(.horizontal, 10)
+                .padding(.top, 25)
                 
             VStack(alignment: .leading) {
-                ForEach(eventsToShow , id: \.self ){ event in
+                ForEach(Array(eventsToShow.enumerated()) , id: \.element ){ index, event in
                     NavigationLink {
                         EventDetailsView(event: .constant(event))
                     } label: {
                         EventCard(event: event)
                     }
-                    Divider()
+                    if index != eventsToShow.count-1 {
+                        Divider()
+                    }
                 }
             }
             .background(Color.newBeige)

@@ -11,9 +11,10 @@ struct CarouselRowView: View {
     var event: Event
     
     var body: some View {
-        VStack(alignment: .leading) {
+        VStack {
             ImageEventCarouselView(imageName: event.imageEventName ?? "event-2")
             Text(event.name)
+                .font(.system(size: 14))
                 .bold()
                 .foregroundStyle(.black)
         }
