@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct Carouselle: View {
+struct Carrousel: View {
     @Binding var events: [Event]
     
     var body: some View {
@@ -37,6 +37,6 @@ struct Carouselle: View {
 
 #Preview {
     NavigationStack {
-        Carouselle(events: .constant([.defaultEvent, .defaultEvent, .defaultEvent]))
+        Carrousel(events: .constant([.defaultEvent, .defaultEvent, .defaultEvent]))
     }
 }

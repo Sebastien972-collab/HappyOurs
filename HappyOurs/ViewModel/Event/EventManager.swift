@@ -9,7 +9,7 @@ import SwiftUI
 
 @Observable
 class EventManager {
-    var currentUser: User = Business.preview
+    var currentUser: User = Participant.preview
     var isLoggedIn: Bool = true
     var IsABusseiness: Bool {
         currentUser is Business

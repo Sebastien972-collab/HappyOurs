@@ -8,16 +8,17 @@
 import SwiftUI
 
 struct ImageEventCarouselView: View {
-    var imagaName: String
+    var imageName: String
     var body: some View {
-        Image(imagaName)
+        Image(imageName)
             .resizable()
-            .renderingMode(.original)
+//            .renderingMode(.original)
+            .aspectRatio(contentMode: .fill)
             .frame(width: 160, height: 100)
             .clipShape(RoundedRectangle(cornerRadius: 10))
     }
 }
 
 #Preview {
-    ImageEventCarouselView(imagaName: "event-1")
+    ImageEventCarouselView(imageName: "event-1")
 }

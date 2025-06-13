@@ -13,7 +13,7 @@ struct EventCard: View {
     
     var body: some View {
         HStack {
-            ImagesEvent(imagaName: event.imageEventName ?? "event-1")
+            ImagesEvent(imageName: event.imageEventName ?? "event-1")
             VStack (alignment : .leading) {
                 
                 TextEvent(event: event)
@@ -26,6 +26,7 @@ struct EventCard: View {
             ImageCocktailEvent()
             
         }
+        .padding(.horizontal, 10)
     }
 }
 

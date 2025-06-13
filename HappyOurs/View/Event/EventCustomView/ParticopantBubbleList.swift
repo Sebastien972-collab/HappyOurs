@@ -15,7 +15,7 @@ struct ParticopantBubbleList: View {
                 if !participants.isEmpty {
                     ForEach(participants) { participant in
                         if let imageName = participant.currentImageName {
-                            CircleImage(image: Image(imageName))
+                            CircleImageEvent(image: Image(imageName))
                                 .frame(width: 40, height: 40)
                         }
                     }
