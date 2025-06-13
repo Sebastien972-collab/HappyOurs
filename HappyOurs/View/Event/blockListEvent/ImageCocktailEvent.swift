@@ -11,10 +11,7 @@ struct ImageCocktailEvent: View {
     var body: some View {
         ZStack{
             Color.white
-//            Circle()
-//                .stroke(Color.darkYellow, lineWidth: 0.5)
-//                .frame(width: 60, height: 60)
-            Image(.cocktail1)
+            Image(.cocktail2)
                 .resizable()
                 .frame(width: 25, height: 50)
                 .aspectRatio(contentMode: .fill)

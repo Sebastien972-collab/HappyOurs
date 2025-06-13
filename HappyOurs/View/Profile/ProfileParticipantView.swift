@@ -36,7 +36,7 @@ struct ProfileParticipantView: View {
                         
                     }
                     
-                    VStack {
+                    VStack (spacing: 15){
                         Text ("'' \(manager.currentUser.punchline) ''")
                             .foregroundColor(.black)
                             .bold()
@@ -102,24 +102,24 @@ struct ProfileParticipantView: View {
                     }
                     
                     VStack (alignment: .leading) {
-                        PreferenceView(imageName: manager.currentUser.favoriteCocktail?.imageName ?? "cocktail-1", text: "Mon cocktail préféré : \( Cocktail.cocktailDb.first!.name)")
+                        PreferenceCocktailView(imageName: manager.currentUser.favoriteCocktail?.imageName ?? "cocktail-1", text: "Mon cocktail préféré : \( Cocktail.cocktailDb.first!.name)")
                         
                         
                         CustomDivider()
                         
-                        PreferenceView(imageName:"event-3", text: "Mes sorties préférées : \(manager.currentUser.favortieEvent.rawValue)")
+                        PreferenceEventsView(imageName:"event-3", text: "Mes sorties préférées : \(manager.currentUser.favortieEvent.rawValue)")
                         
                         CustomDivider()
                         
-                        PreferenceView(imageName:"event-1", text: "Je préfère les \(manager.currentUser.favortieGroups.rawValue)" )
+                        PreferenceEventsView(imageName:"event-1", text: "Je préfère les \(manager.currentUser.favortieGroups.rawValue)" )
                     }
                     .padding(.top, 20)
                     
-                    HStack (alignment: .center) {
-                        ConfirmationButtonView(title: "CONTACTER", action: {})
-                    }
-                    .padding(.top, 20)
-                    .frame(maxWidth: .infinity)
+//                    HStack (alignment: .center) {
+//                        ConfirmationButtonView(title: "CONTACTER", action: {})
+//                    }
+//                    .padding(.top, 20)
+//                    .frame(maxWidth: .infinity)
                     
                 }
                 
