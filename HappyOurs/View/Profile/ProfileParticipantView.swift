@@ -95,16 +95,16 @@ struct ProfileParticipantView: View {
                         }
                         
                         VStack (alignment: .leading) {
-                            PreferenceView(imageName: user.favoriteCocktail?.imageName ?? "cocktail-1", text: "Mon cocktail préféré : \( Cocktail.cocktailDb.first!.name)")
+                            PreferenceCocktailView(imageName: user.favoriteCocktail?.imageName ?? "cocktail-1", text: "Mon cocktail préféré : \( Cocktail.cocktailDb.first!.name)")
                             
                             
                             CustomDivider()
                             
-                            PreferenceView(imageName:"event-3", text: "Mes sorties préférées : \(user.favortieEvent.rawValue)")
+                            PreferenceEventsView(imageName:"event-3", text: "Mes sorties préférées : \(user.favortieEvent.rawValue)")
                             
                             CustomDivider()
                             
-                            PreferenceView(imageName:"event-1", text: "Je préfère les \(user.favortieGroups.rawValue)" )
+                            PreferenceEventsView(imageName:"event-1", text: "Je préfère les \(user.favortieGroups.rawValue)" )
                         }
                         .padding(.top, 20)
                     }
