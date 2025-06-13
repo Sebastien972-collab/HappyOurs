@@ -12,49 +12,54 @@ struct ListEvent: View {
     @State private var manager = EventManager()
     @State private var eventCreator = EventCreatorManager()
     @State private var isPresented: Bool = false
+    @State private var showModal : Bool = false
     
     var body: some View {
         NavigationStack {
-            ScrollView {
-                VStack(alignment: .leading) {
-                    HStack{
-                        CircleImage(image: Image("\(manager.currentUser.currentImageName ?? "carolineImage")"))
-                        
-                        Text("Bonjour \(userManager.currentUser.username)")
-                            .font(.title3)
-                            .fontWeight(.bold)
-                            .minimumScaleFactor(0.7)
-                    }
-                    if manager.currentUser is Participant {
-                        Carrousel(events: $manager.currentUser.events )
-                    } else {
-                        AddImageEventButtonView(systemImage: "plus.circle") {
-                            eventCreator.userManager = userManager
-                            isPresented = true
+            ZStack {
+                ScrollView {
+                    VStack(alignment: .leading) {
+                        HStack{
+                            CircleImage(image: Image("\(manager.currentUser.currentImageName ?? "carolineImage")"))
+                            
+                            Text("Bonjour \(userManager.currentUser.username)")
+                                .font(.system(size: 24))
+                                .fontWeight(.bold)
+                                .minimumScaleFactor(0.7)
                         }
-                        .frame(height: 150)
-                        .navigationDestination(isPresented: $isPresented) {
-                            EventCreator(eventCreator: $eventCreator)
+                        if manager.currentUser is Participant {
+                            Carrousel(events: $manager.currentUser.events )
+                        } else {
+                            AddImageEventButtonView(systemImage: "plus.circle") {
+                                eventCreator.userManager = userManager
+                                isPresented = true
+                            }
+                            .frame(height: 150)
+                            .navigationDestination(isPresented: $isPresented) {
+                                EventCreator(eventCreator: $eventCreator)
+                            }
                         }
+                        ForEach(TypeOfEvent.allCases, id: \.self) { typeOfEvent in
+                            EventNearYouView(type: typeOfEvent, events: manager.allEvents)
+                        }
+                        .padding(.horizontal)
+                        Spacer()
                     }
-                    ForEach(TypeOfEvent.allCases, id: \.self) { typeOfEvent in
-                        EventNearYouView(type: typeOfEvent, events: manager.allEvents)
-                    }
-                    .padding(.horizontal)
-                    Spacer()
                 }
                 VStack {
                     Spacer()
-                    NavigationLink {
-                        QRCodeView()
-                    } label: {
+                    Button {
+                    showModal.toggle()
+                    }label : {
                         BoutonFlottant()
                     }
                     Spacer()
                         .frame(height: 20)
                 }
             }
-            
+            .sheet(isPresented: $showModal) {
+                QRCodeView()
+            }
         }
         .environmentObject(userManager)
         
