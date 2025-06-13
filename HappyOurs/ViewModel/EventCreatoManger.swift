@@ -12,6 +12,4 @@ class EventCreatoManger: ObservableObject {
     var nameOfEvent: String = ""
     var dateOfEvenet: Date = .now
     var typeOfEvenet: TypeOfEvent = .concert
-    
-    
 }

@@ -13,7 +13,7 @@ struct BoutonFlottant: View {
     
     var body: some View {
         
-        let iconName = manager.currentUser is Participant ? "qrcode" : "qrcode.viewfinder"
+        let iconName = manager.currentUser is Business ? "qrcode" : "qrcode.viewfinder"
         
         VStack {
             Image(systemName: iconName)
