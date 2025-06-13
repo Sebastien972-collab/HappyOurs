@@ -12,22 +12,25 @@ struct ListEvent: View {
     @State private var manager = EventManager()
     @State private var eventCreator = EventCreatorManager()
     @State private var isPresented: Bool = false
+    
     var body: some View {
         NavigationStack {
-            ZStack {
-                ScrollView {
-                    VStack(alignment: .leading) {
-                        HStack{
-                            CircleImage(image: Image("\(manager.currentUser.currentImageName ?? "carolineImage")"))
-                            
-                            Text("Bonjour \(manager.currentUser.username)")
-                                .font(.title3)
-                                .fontWeight(.bold)
-                                .minimumScaleFactor(0.7)
-                        }
-                        if manager.currentUser is Participant {
-                            Carouselle(events: $manager.trandingEvents )
-                        } else {
+            ScrollView {
+                VStack(alignment: .leading) {
+                    HStack{
+                        CircleImage(image: Image("\(manager.currentUser.currentImageName ?? "carolineImage")"))
+                        
+                        Text("Bonjour \(manager.currentUser.username)")
+                            .font(.title3)
+                            .fontWeight(.bold)
+                            .minimumScaleFactor(0.7)
+                    }
+                    if manager.currentUser is Participant {
+                        Carrousel(events: $manager.trandingEvents )
+                    } else {
+                        NavigationLink {
+                            EventCreator()
+                        } label: {
                             AddImageEventButtonView(systemImage: "plus.circle") {
                                 eventCreator.userManager = userManger
                                 isPresented = true

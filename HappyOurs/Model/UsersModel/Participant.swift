@@ -25,7 +25,7 @@ class Participant: User {
     
     
     static var preview: Participant {
-        let participant = Participant(username: "Carolinedu94", email: "caro.94@simplon.co", ville: "Vincenne")
+        let participant = Participant(username: "Carolinedu94", email: "caro.94@simplon.co", ville: "Vincennes")
         participant.currentImageName = "Caroline"
         participant.favoriteCocktail = Cocktail.cocktailDb[5]
         participant.favortieEvent = .festival
