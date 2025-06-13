@@ -10,7 +10,7 @@ import Foundation
 enum TypeOfEvent: String, CaseIterable {
     case concert = "Concert 🎤"
     case club = "Club 🪩"
-    case festival = "Festival 🎉 "
+    case festival = "Festival 🎉"
     case degustation = "Dégustation 😋"
     case openAir = "Open Air ☀️"
     case classic = "Classique 🎻"
