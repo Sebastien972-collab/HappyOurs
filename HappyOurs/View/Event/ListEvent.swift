@@ -12,7 +12,8 @@ struct ListEvent: View {
     @State private var manager = EventManager()
     @State private var eventCreator = EventCreatorManager()
     @State private var isPresented: Bool = false
-
+    @State private var showModal : Bool = false
+    
     var body: some View {
         NavigationStack {
             ZStack {
@@ -20,15 +21,13 @@ struct ListEvent: View {
                     VStack(alignment: .leading) {
                         HStack {
                             CircleImage(image: Image("\(userManager.currentUser.currentImageName ?? "carolineImage")"))
-
                             Text("Bonjour \(userManager.currentUser.username)")
-                                .font(.title3)
+                                .font(.system(size: 24))
                                 .fontWeight(.bold)
                                 .minimumScaleFactor(0.7)
                         }
-
                         if manager.currentUser is Participant {
-                            Carrousel(events: $manager.currentUser.events)
+                            Carrousel(events: $manager.currentUser.events )
                         } else {
                             AddImageEventButtonView(systemImage: "plus.circle") {
                                 eventCreator.userManager = userManager
@@ -39,7 +38,6 @@ struct ListEvent: View {
                                 EventCreator(eventCreator: $eventCreator)
                             }
                         }
-
                         ForEach(TypeOfEvent.allCases, id: \.self) { typeOfEvent in
                             EventNearYouView(type: typeOfEvent, events: manager.allEvents)
                         }
@@ -53,8 +51,17 @@ struct ListEvent: View {
                 // Bouton flottant
                 VStack {
                     Spacer()
-                    BoutonFlottant()
+                    Button {
+                    showModal.toggle()
+                    }label : {
+                        BoutonFlottant()
+                    }
+                    Spacer()
+                        .frame(height: 20)
                 }
+            }
+            .sheet(isPresented: $showModal) {
+                QRCodeView()
             }
         }
         .environmentObject(userManager)

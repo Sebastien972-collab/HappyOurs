@@ -30,7 +30,7 @@ struct Carrousel: View {
                 .padding(.horizontal)
             }
         }
-        .padding(.vertical)
+        .padding(.top, 10)
     }
 }
 
