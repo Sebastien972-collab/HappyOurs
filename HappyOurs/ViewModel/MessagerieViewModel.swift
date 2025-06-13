@@ -19,10 +19,17 @@ class MessagerieViewModel: ObservableObject {
     @Published var discussionVM = DatabaseDiscussion.discussionData
     @Published var messagesVM : [Message] = DatabaseMessages.messagesData
     
+    @Published var userManager: UserManager
+    
+    init(userManager: UserManager) {
+        self.userManager = userManager
+    }
+    
     //Current user déterminé comme le participant 0 -> a voir pour lier avec le user manager
     
     var currentUserID: UUID {
-        DatabaseParticipants.participantData[0].id
+        userManager.currentUser.id
+        
      }
 
     //  MARK: - discussions
@@ -39,9 +46,9 @@ class MessagerieViewModel: ObservableObject {
 
          let newMessage = Message(
             receiverID : participant.id,
-            senderID : currentUserID,
+            senderID : userManager.currentUser.id,
             text : text,
-            photoSender : participant.currentImageName ?? "Caroline",
+            photoSender : userManager.currentUser.currentImageName ?? "Caroline",
             createdAt : Date(),
          )
         messagesVM.append(newMessage)

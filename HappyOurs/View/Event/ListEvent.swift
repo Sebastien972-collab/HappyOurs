@@ -43,9 +43,13 @@ struct ListEvent: View {
                             EventNearYouView(type: typeOfEvent, events: manager.allEvents)
                         }
                         .padding(.horizontal)
+
                         Spacer()
+                            .frame(height: 100) // Pour ne pas que le contenu cache le bouton
                     }
                 }
+
+                // Bouton flottant
                 VStack {
                     Spacer()
                     Button {
@@ -62,12 +66,8 @@ struct ListEvent: View {
             }
         }
         .environmentObject(userManager)
-        
-        
     }
-    
 }
-
 
 #Preview {
     ListEvent()

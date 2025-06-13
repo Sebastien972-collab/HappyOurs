@@ -10,21 +10,18 @@ import FestivityUIKit
 
 struct ProfileParticipantView: View {
     @EnvironmentObject var userManager: UserManager
-    
-    
+
     var body: some View {
         NavigationStack {
-            ScrollView {
+            ScrollView(showsIndicators: false) {
                 VStack (alignment: .leading){
                     ZStack (alignment: .bottomLeading){
-                        Image(userManager.currentUser.currentImageName ?? "default")
+                        Image(userManager.currentUser.currentImageName ?? "seb")
                             .resizable()
-                            .aspectRatio(contentMode: .fit)
-                            .frame(height: 300)
+                            .scaledToFill()
+                            .frame(maxWidth: .infinity, maxHeight: 300)
                             .clipped()
-                        
-                        
-                        
+                            .ignoresSafeArea(.container, edges: .top)
                         HStack {
                             Text(userManager.currentUser.username)
                                 .font(.title)
@@ -32,9 +29,7 @@ struct ProfileParticipantView: View {
                                 .shadow(radius: 15)
                                 .padding()
                         }
-                        
                     }
-                    
                     if let user = userManager.currentUser as? Participant {
                         VStack {
                             Text ("'' \(user.punchline) ''")
@@ -45,8 +40,6 @@ struct ProfileParticipantView: View {
                                 .background(Color(.newBeige))
                                 .clipShape(RoundedRectangle(cornerRadius: 10))
                                 .padding(.horizontal, 15)
-                            
-                            
                             HStack {
                                 VStack {
                                     Image(user.drinkingHabit?.imageName ?? "cocktailPicto")
@@ -102,16 +95,16 @@ struct ProfileParticipantView: View {
                         }
                         
                         VStack (alignment: .leading) {
-                            PreferenceView(imageName: user.favoriteCocktail?.imageName ?? "cocktail-1", text: "Mon cocktail préféré : \( Cocktail.cocktailDb.first!.name)")
+                            PreferenceCocktailView(imageName: user.favoriteCocktail?.imageName ?? "cocktail-1", text: "Mon cocktail préféré : \( Cocktail.cocktailDb.first!.name)")
                             
                             
                             CustomDivider()
                             
-                            PreferenceView(imageName:"event-3", text: "Mes sorties préférées : \(user.favortieEvent.rawValue)")
+                            PreferenceEventsView(imageName:"event-3", text: "Mes sorties préférées : \(user.favortieEvent.rawValue)")
                             
                             CustomDivider()
                             
-                            PreferenceView(imageName:"event-1", text: "Je préfère les \(user.favortieGroups.rawValue)" )
+                            PreferenceEventsView(imageName:"event-1", text: "Je préfère les \(user.favortieGroups.rawValue)" )
                         }
                         .padding(.top, 20)
                     }
@@ -122,9 +115,7 @@ struct ProfileParticipantView: View {
                     }
                     .padding(.top, 20)
                     .frame(maxWidth: .infinity)
-                    
                 }
-                
             }
             .toolbar {
                 ToolbarItem(placement: .principal) {
@@ -132,16 +123,13 @@ struct ProfileParticipantView: View {
                         .font(.title2)
                         .fontWeight(.bold)
                 }
-                
                 ToolbarItem(placement: .topBarTrailing) {
                     NavigationLink {
                         SettingsView()
                     } label: {
                         Image(systemName: "gear")
                             .foregroundStyle(.black)
-                        
                     }
-
                 }
             }
         }

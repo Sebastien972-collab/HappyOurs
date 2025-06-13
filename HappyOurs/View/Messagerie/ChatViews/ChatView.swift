@@ -97,5 +97,5 @@ struct ChatView : View {
 
 #Preview {
     ChatView(selectedParticipant: .constant(DatabaseParticipants.participantData[1]), discussion: DatabaseDiscussion.discussionData[1])
-        .environmentObject(MessagerieViewModel())
+        .environmentObject(MessagerieViewModel(userManager: .init()))
 }

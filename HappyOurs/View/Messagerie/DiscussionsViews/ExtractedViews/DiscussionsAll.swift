@@ -41,6 +41,6 @@ struct DiscussionAll: View {
 
 #Preview {
     DiscussionAll(selectedParticipant: .constant(DatabaseParticipants.participantData[0]))
-        .environmentObject(MessagerieViewModel())
+        .environmentObject(MessagerieViewModel(userManager: .init()))
 }
 
