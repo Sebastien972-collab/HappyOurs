@@ -23,6 +23,7 @@ struct SettingsView: View {
             
         }
         .navigationTitle(Text("Settings"))
+        .navigationBarTitleDisplayMode(.inline)
         .environmentObject(manager)
     }
 }
