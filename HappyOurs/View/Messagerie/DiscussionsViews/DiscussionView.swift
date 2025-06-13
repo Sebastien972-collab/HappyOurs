@@ -51,5 +51,5 @@ struct DiscussionView: View {
 
 #Preview {
     DiscussionView()
-        .environmentObject(MessagerieViewModel())
+        .environmentObject(MessagerieViewModel(userManager: .init()))
 }

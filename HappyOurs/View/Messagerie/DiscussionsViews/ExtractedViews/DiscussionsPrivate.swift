@@ -39,5 +39,5 @@ struct DiscussionPrivate: View {
 
 #Preview {
     DiscussionPrivate(selectedParticipant: .constant(DatabaseParticipants.participantData[0]))
-        .environmentObject(MessagerieViewModel())
+        .environmentObject(MessagerieViewModel(userManager: .init()))
 }

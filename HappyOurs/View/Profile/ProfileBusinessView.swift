@@ -10,7 +10,6 @@ import FestivityUIKit
 
 struct ProfileBusinessView: View {
     @EnvironmentObject var userManager: UserManager
-    
     @State private var eventManager = EventManager()
     
     let manager: BusinessManager = BusinessManager(manager: UserManager())
@@ -26,7 +25,7 @@ struct ProfileBusinessView: View {
                         .clipped()
                                     
                         HStack {
-                            Text(manager.currentUser.username)
+                            Text(userManager.currentUser.username)
                                 .font(.title)
                                 .foregroundColor(.white)
                                 .shadow(radius: 15)
@@ -38,7 +37,7 @@ struct ProfileBusinessView: View {
                     HStack {
                         VStack {
                             Text("Soirées")
-                            Text("\(manager.currentUser.events.count)")
+                            Text("\(userManager.currentUser.events.count)")
                             
                         }
                         .foregroundColor(.black)
@@ -61,16 +60,18 @@ struct ProfileBusinessView: View {
                         .clipShape(RoundedRectangle(cornerRadius: 10))
                         
                         Spacer()
-                        VStack {
-                            Text("Cocktails")
-                            Text("\(manager.currentUser.cocktails.count)")
+                        if let user = userManager.currentUser as? Business {
+                            VStack {
+                                Text("Cocktails")
+                                Text("\(user.cocktails.count)")
+                            }
+                            .foregroundColor(.black)
+                            .bold()
+                            .padding(10)
+                            .frame(width: 110, height: 80)
+                            .background(Color.newBeige)
+                            .clipShape(RoundedRectangle(cornerRadius: 10))
                         }
-                        .foregroundColor(.black)
-                        .bold()
-                        .padding(10)
-                        .frame(width: 110, height: 80)
-                        .background(Color.newBeige)
-                        .clipShape(RoundedRectangle(cornerRadius: 10))
                         
                     }
                     .padding(.horizontal, 15)
@@ -80,7 +81,7 @@ struct ProfileBusinessView: View {
                     Text("Description")
                         .padding(.leading, 15)
                         .font(.title2)
-                    Text(manager.currentUser.description ?? "-")
+                    Text(userManager.currentUser.description ?? "-")
                         .frame(maxWidth: .infinity, alignment: .leading)
                         .padding()
                         .background(Color.newBeige)
@@ -88,7 +89,9 @@ struct ProfileBusinessView: View {
                         .padding(.horizontal, 15)
                 }
                 
-                EventBusinessView()
+                if let user = userManager.currentUser as? Business {
+                    EventBusinessView(organisator: user)
+                }
                 
                 HStack (alignment: .center) {
                     ConfirmationButtonView(title: "CONTACTER", action: {})

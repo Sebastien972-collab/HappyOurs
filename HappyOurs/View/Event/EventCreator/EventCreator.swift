@@ -8,7 +8,7 @@
 import SwiftUI
 import FestivityUIKit
 struct EventCreator: View {
-    @State private var eventCreator: EventCreatorManager = .init()
+    @Binding var eventCreator: EventCreatorManager
     var body: some View {
         ScrollView {
             VStack(alignment: .center, spacing: 10) {
@@ -82,6 +82,7 @@ struct EventCreator: View {
                 }
                 .padding()
                 ConfirmationButtonView(title: "Créer l'évènement") {
+                    eventCreator.createNewEvent()
                     
                 }
             }
@@ -91,7 +92,7 @@ struct EventCreator: View {
 
 #Preview {
     NavigationStack {
-        EventCreator()
+        EventCreator(eventCreator: .constant(EventCreatorManager()))
     }
 }
 

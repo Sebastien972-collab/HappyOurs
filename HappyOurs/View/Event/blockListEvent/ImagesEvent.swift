@@ -9,10 +9,10 @@ import SwiftUI
 
 struct ImagesEvent: View {
     
-    var imagaName: String
+    var imageName: String
     
        var body: some View {
-           Image(.event1)
+           Image(imageName)
                .resizable()
                .aspectRatio(contentMode: .fill)
                .frame(width: 70, height: 70)
@@ -23,5 +23,5 @@ struct ImagesEvent: View {
 }
 
 #Preview {
-    ImagesEvent(imagaName: "event1")
+    ImagesEvent(imageName: "event-1")
 }

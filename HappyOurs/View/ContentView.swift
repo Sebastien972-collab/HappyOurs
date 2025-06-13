@@ -14,29 +14,34 @@ struct ContentView: View {
     }
     
     @State private var selection: Selection = .event
-    @EnvironmentObject var messagerieModel: MessagerieViewModel
     @EnvironmentObject var userManager: UserManager
     var body: some View {
         
         ZStack {
-            TabView {
-                Tab("Évènements", systemImage: "list.bullet") {
-                    ListEvent()
+            if userManager.isAuthenticated {
+                TabView {
+                    Tab("Évènements", systemImage: "list.bullet") {
+                        ListEvent()
+                    }
+                    Tab("Messages", systemImage: "message.fill") {
+                        DiscussionView()
+                    }
+                    
+                    Tab("Profile", systemImage: "person.fill") {
+                        ProfileView()
+                    }
                 }
-                Tab("Messages", systemImage: "message.fill") {
-                    DiscussionView()
-                }
-                Tab("Profile", systemImage: "person.fill") {
-                    ProfileView()
-                }
+            } else {
+                ConnectionChoiceView(manager: .init(manager: userManager))
             }
-            .environmentObject(messagerieModel)
+            
         }
+        
+        
     }
 }
 
 #Preview {
     ContentView()
-        .environmentObject(MessagerieViewModel())
-        .environmentObject(MessagerieViewModel())
+        .environmentObject( UserManager())
 }

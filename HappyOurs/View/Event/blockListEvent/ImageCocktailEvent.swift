@@ -10,14 +10,19 @@ import SwiftUI
 struct ImageCocktailEvent: View {
     var body: some View {
         ZStack{
-            Image(.cocktail1)
+            Color.white
+            Image(.cocktail2)
                 .resizable()
-                .aspectRatio(contentMode: .fill)
                 .frame(width: 25, height: 50)
-            Circle()
-                .stroke(Color.darkYellow, lineWidth: 0.5)
-                .frame(width: 60, height: 60)
+                .aspectRatio(contentMode: .fill)
+            
         }
+        .clipShape(Circle())
+        .overlay(Circle()
+            .stroke(Color.darkYellow200, lineWidth: 0.5))
+        .frame(width: 60, height: 60)
+
+        
         
         
     }
@@ -25,5 +30,7 @@ struct ImageCocktailEvent: View {
 
 #Preview {
     ImageCocktailEvent()
+        .frame(width:150, height: 150)
+        .background(Color.black)
     
 }

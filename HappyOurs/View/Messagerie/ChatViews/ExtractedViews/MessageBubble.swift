@@ -70,5 +70,5 @@ struct MessageBubble: View {
 
 #Preview {
     MessageBubble(message:DatabaseMessages.messagesData[0], selectedParticipant: .constant(DatabaseParticipants.participantData[1]))
-        .environmentObject(MessagerieViewModel())
+        .environmentObject(MessagerieViewModel(userManager: .init()))
 }

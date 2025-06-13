@@ -1,13 +1,14 @@
 //
-//  CircleImage.swift
+//  CircleImageEvent.swift
 //  HappyOurs
 //
-//  Created by Sébastien DAGUIN  on 30/05/2025.
+//  Created by Arnaud Hayon on 12/06/2025.
 //
 
 import SwiftUI
 import FestivityUIKit
-struct CircleImage: View {
+
+struct CircleImageEvent: View {
     var image: Image
     var body: some View {
         image
@@ -15,12 +16,13 @@ struct CircleImage: View {
             .scaledToFill()
             .frame(maxWidth: 80, maxHeight: 80)
             .clipShape(Circle())
+            
     }
 }
 
 #Preview {
     ZStack {
         Color.coffe_brown.ignoresSafeArea()
-        CircleImage(image: Image("Caroline"))
+        CircleImageEvent(image: Image("Caroline"))
     }
 }

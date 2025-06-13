@@ -25,7 +25,7 @@ class Participant: User {
     
     
     static var preview: Participant {
-        let participant = Participant(username: "Carolinedu94", email: "caro.94@simplon.co", ville: "Vincenne")
+        let participant = Participant(username: "Carolinedu94", email: "caro.94@simplon.co", ville: "Vincennes")
         participant.currentImageName = "Caroline"
         participant.favoriteCocktail = Cocktail.cocktailDb[5]
         participant.favortieEvent = .festival
@@ -34,6 +34,19 @@ class Participant: User {
         participant.punchline = "Je ne dis jamais non à un bon mojito"
         participant.drinkingHabit = DrinkingHabits.alcoolLoverType[1]   
         participant.description = "Graphiste de métier, curieuse de nature, j’adore les conversations qui durent plus longtemps que le cocktail dans mon verre. Si tu aimes les échanges spontanés, les soirées pleines de rires et les rencontres qui sortent du cadre, on risque bien de se comprendre."
+        participant.events = Event.allEvents.filter({ $0.typeOfEvent == .festival })
+        return participant
+    }
+    static var sebAccount: Participant {
+        let participant = Participant(username: "Sébastien", email: "sebastien.daguin94@simplon.co", ville: "Villejuif")
+        participant.currentImageName = "seb"
+        participant.favoriteCocktail = Cocktail.cocktailDb[3]
+        participant.favortieEvent = .club
+        participant.favortieGroups = .large
+        participant.punchline = "Le plus simple 🍕⚽️🎤"
+        participant.drinkingHabit = DrinkingHabits.alcoolLoverType[2]
+        participant.description = "Développeur iOS passioné à la recherche d'amis pour un soir ou pour la vie"
+        participant.events = Event.allEvents.filter({ $0.typeOfEvent == .club })
         return participant
     }
     

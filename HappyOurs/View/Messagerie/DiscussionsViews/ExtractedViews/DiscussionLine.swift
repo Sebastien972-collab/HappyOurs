@@ -112,5 +112,5 @@ struct DiscussionLine: View {
     }
 }
 #Preview {
-    DiscussionLine(discussion : DatabaseDiscussion.discussionData[0]).environmentObject(MessagerieViewModel())
+    DiscussionLine(discussion : DatabaseDiscussion.discussionData[0]).environmentObject(MessagerieViewModel(userManager: .init()))
 }
