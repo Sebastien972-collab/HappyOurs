@@ -13,7 +13,7 @@ struct CarouselRowView: View {
     var body: some View {
         VStack(alignment: .leading) {
             ImageEventCarouselView(imagaName: event.imageEventName ?? "event-1")
-            Text("Soirée à l'opéra")
+            Text(event.name)
                 .bold()
                 .foregroundStyle(.black)
         }

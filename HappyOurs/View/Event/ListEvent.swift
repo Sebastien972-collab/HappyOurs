@@ -26,7 +26,7 @@ struct ListEvent: View {
                             .minimumScaleFactor(0.7)
                     }
                     if manager.currentUser is Participant {
-                        Carrousel(events: $manager.trandingEvents )
+                        Carrousel(events: $manager.currentUser.events )
                     } else {
                         AddImageEventButtonView(systemImage: "plus.circle") {
                             eventCreator.userManager = userManager

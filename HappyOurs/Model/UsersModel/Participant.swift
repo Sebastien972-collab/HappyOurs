@@ -34,6 +34,7 @@ class Participant: User {
         participant.punchline = "Je ne dis jamais non à un bon mojito"
         participant.drinkingHabit = DrinkingHabits.alcoolLoverType[1]   
         participant.description = "Graphiste de métier, curieuse de nature, j’adore les conversations qui durent plus longtemps que le cocktail dans mon verre. Si tu aimes les échanges spontanés, les soirées pleines de rires et les rencontres qui sortent du cadre, on risque bien de se comprendre."
+        participant.events = Event.allEvents.filter({ $0.typeOfEvent == .festival })
         return participant
     }
     
