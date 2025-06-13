@@ -8,6 +8,7 @@
 import SwiftUI
 
 struct EventBusinessView: View {
+    let organisator: Business
     var body: some View {
         VStack{
             Text("Mes événements")
@@ -15,17 +16,24 @@ struct EventBusinessView: View {
                 .fontWeight(.bold)
                 .frame(maxWidth:.infinity, alignment: .leading)
             
-            VStack{
-                EventCard(event: .defaultEvent)
-                CustomDivider()
-                EventCard(event: .defaultEvent)
-                CustomDivider()
-                EventCard(event: .defaultEvent)
-                
-            }
-            .padding(5)
-            .background(Color.newBeige)
-            .clipShape(RoundedRectangle(cornerRadius: 10))
+            VStack {
+                ForEach(0..<organisator.events.count, id: \.self) { index in
+                    EventCard(event: organisator.events[index])
+                }
+            } .padding(5)
+                .background(Color.newBeige)
+                .clipShape(RoundedRectangle(cornerRadius: 10))
+//            VStack{
+//               
+//                CustomDivider()
+//                EventCard(event: .defaultEvent)
+//                CustomDivider()
+//                EventCard(event: .defaultEvent)
+//                
+//            }
+//            .padding(5)
+//            .background(Color.newBeige)
+//            .clipShape(RoundedRectangle(cornerRadius: 10))
             
             
             
@@ -37,5 +45,5 @@ struct EventBusinessView: View {
 }
 
 #Preview {
-    EventBusinessView()
+    EventBusinessView(organisator: .preview)
 }

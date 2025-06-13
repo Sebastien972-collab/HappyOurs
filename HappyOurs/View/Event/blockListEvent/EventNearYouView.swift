@@ -11,7 +11,7 @@ struct EventNearYouView: View {
     var type: TypeOfEvent
     var events: [Event]
     var eventsToShow : [Event] {
-        events.filter { $0.typeOfEvent.rawValue == type.rawValue}
+        events.filter { $0.typeOfEvent.rawValue == type.rawValue }
     }
     var body: some View {
         VStack(alignment: .leading) {
@@ -19,6 +19,7 @@ struct EventNearYouView: View {
                 .font(.title)
                 .fontWeight(.bold)
                 .frame(maxWidth: .infinity, alignment: .leading)
+                .padding(.horizontal, 10)
                 
             VStack(alignment: .leading) {
                 ForEach(eventsToShow , id: \.self ){ event in
@@ -33,7 +34,6 @@ struct EventNearYouView: View {
             .background(Color.newBeige)
             .clipShape(RoundedRectangle(cornerRadius: 10))
         }
-        .padding(.horizontal, 4)
     }
 }
 

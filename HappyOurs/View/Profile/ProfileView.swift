@@ -11,7 +11,7 @@ struct ProfileView: View {
     @EnvironmentObject var manager: UserManager
     var body: some View {
         ZStack {
-            if manager.currentUser is Participant || manager.currentUser == .guest {
+            if manager.currentUser is Participant {
                 ProfileParticipantView()
             } else {
                 ProfileBusinessView()

@@ -12,7 +12,8 @@ struct ImageEventCarouselView: View {
     var body: some View {
         Image(imagaName)
             .resizable()
-            .renderingMode(.original)
+//            .renderingMode(.original)
+            .aspectRatio(contentMode: .fill)
             .frame(width: 160, height: 100)
             .clipShape(RoundedRectangle(cornerRadius: 10))
     }

@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import FestivityUIKit
 
 struct EventDetailsView: View {
     
@@ -61,10 +62,11 @@ struct EventDetailsView: View {
                     .padding(.bottom)
                     CustomDivider()
                     Text(event.description)
+                        .padding()
                         .multilineTextAlignment(.leading)
                         .padding()
                         .background {
-                            RoundedRectangle(cornerRadius: 6)
+                            RoundedRectangle(cornerRadius: 10)
                                 .fill(Color.newBeige)
                         }
                         .padding()
@@ -75,7 +77,7 @@ struct EventDetailsView: View {
                                 .font(.title2)
                             Spacer()
                             Text(event.bestCocktail.name)
-                                .font(.custom("SF Pro", size: 16))
+                                .font(.custom("SF Pro", size: 24))
                                 .fontWeight(.bold)
                         }
                     }
@@ -95,11 +97,23 @@ struct EventDetailsView: View {
                                         .font(.custom("SF Pro", size: 14))
                                 }
                             }
-                            .frame(maxWidth: .infinity, alignment: .leading)
-                            .padding()
                         }
+                        .frame(maxWidth: .infinity, alignment: .leading)
+                        .background {
+                            RoundedRectangle(cornerRadius: 6)
+                                .fill(Color.newBeige)
+                                .frame(width: 360)
+
+                        }
+                        Spacer()
+                        HStack {
+                            ConfirmationButtonView(title: "JE PARTICIPE", action: {})
+                        }
+                        .frame(maxWidth: .infinity, alignment: .center)
+                       
                     }
                     .padding(.horizontal)
+                    
                 }
                 
             }

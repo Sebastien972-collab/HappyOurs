@@ -12,6 +12,7 @@ struct ChatView : View {
     @EnvironmentObject var messagerieViewModel: MessagerieViewModel
     @State var text = ""
     @Binding var selectedParticipant : Participant?
+    var discussion : Discussion
     
     var body: some View {
         
@@ -19,9 +20,11 @@ struct ChatView : View {
             VStack {
                 ScrollView (showsIndicators: false) {
                     
-                    VStack (spacing : 8){
+                    VStack (spacing : 25){
                         
-                        ForEach (messagerieViewModel.messagesVM) { message in
+                        // Boucle pour aller chercher dans la database messages, tous les messages bubble en lien avec le participant sélectionné
+                        
+                        ForEach (messagerieViewModel.messages(for: selectedParticipant)) { message in
                             MessageBubble(message: message, selectedParticipant: $selectedParticipant)
                         }
                     }
@@ -29,17 +32,20 @@ struct ChatView : View {
                 
                 ZStack {
                     Rectangle()
-                        .fill(Color.darkYellow200)
+                        .fill(Color.black.opacity(0.2))
                         .ignoresSafeArea()
-                        .frame(maxWidth : .infinity, maxHeight: 90)
+                        .frame(maxWidth : .infinity, maxHeight: 80)
                        
                     HStack {
-                        TextField("Hello", text: $text, axis: .vertical)
-                            .padding()
+                        TextField("Envoie un message...", text: $text, axis: .vertical)
+                            .padding(8)
                             .background(Color.white)
                             .cornerRadius(25)
+                        
+                        //Bouton paperplane pour envoyer le message au participant sélectionné
+                        
                         Button {
-                            messagerieViewModel.sendMessage(message: text)
+                            messagerieViewModel.sendMessage(message: text, to: selectedParticipant ?? DatabaseParticipants.participantData[1])
                             text = ""
                         }label:{
                             Image(systemName: "paperplane")
@@ -50,24 +56,46 @@ struct ChatView : View {
                 }
             }
             .toolbar {
-                ToolbarItem(placement: .principal) {
-                    HStack {
-                        Image(selectedParticipant?.currentImageName ?? "Caroo")
-                            .resizable()
-                            .scaledToFill()
-                            .clipShape(Circle())
-                            .frame(width: 40, height: 40)
-                        Text(selectedParticipant?.username ?? "Caroo")
-                            .font(.title3)
-                            .fontWeight(.bold)
+                
+                // Premiere condition par type de discussion. Si privateChat, l'image et le nom de l'interlocuteur s'affiche dans la toolbar
+                
+                if discussion.type == .privateChat {
+                    ToolbarItem(placement: .principal) {
+                        HStack {
+                            Image(selectedParticipant?.currentImageName ?? "Caroo")
+                                .resizable()
+                                .scaledToFill()
+                                .clipShape(Circle())
+                                .frame(width: 40, height: 40)
+                            Text(selectedParticipant?.username ?? "Caroo")
+                                .font(.title3)
+                                .fontWeight(.bold)
+                        }
+                    }
+                }else{
+                    
+                    // Autre condition par type de discussion. Si publicChat, l'image et le nom de l'évent s'affiche dans la toolbar
+                    
+                    ToolbarItem(placement: .principal) {
+                        HStack {
+                            Image(discussion.photoEvent ?? "event-1")
+                                .resizable()
+                                .scaledToFill()
+                                .clipShape(Circle())
+                                .frame(width: 40, height: 40)
+                            Text(discussion.nameEvent ?? "Nom Event")
+                                .font(.title3)
+                                .fontWeight(.bold)
+                        }
                     }
                 }
+
             }.navigationBarTitleDisplayMode(.inline)
         }
     }
 }
 
 #Preview {
-    ChatView(selectedParticipant: .constant(DatabaseParticipants.participantData[2]))
+    ChatView(selectedParticipant: .constant(DatabaseParticipants.participantData[1]), discussion: DatabaseDiscussion.discussionData[1])
         .environmentObject(MessagerieViewModel())
 }

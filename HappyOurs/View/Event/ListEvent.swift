@@ -8,8 +8,11 @@
 import SwiftUI
 
 struct ListEvent: View {
+    @EnvironmentObject private var userManager: UserManager
     @State private var manager = EventManager()
+    @State private var eventCreator = EventCreatorManager()
     @State private var isPresented: Bool = false
+    
     var body: some View {
         NavigationStack {
             ScrollView {
@@ -17,47 +20,51 @@ struct ListEvent: View {
                     HStack{
                         CircleImage(image: Image("\(manager.currentUser.currentImageName ?? "carolineImage")"))
                         
-                        Text("Bonjour \(manager.currentUser.username)")
+                        Text("Bonjour \(userManager.currentUser.username)")
                             .font(.title3)
                             .fontWeight(.bold)
                             .minimumScaleFactor(0.7)
                     }
-                    if manager.currentUser is Business {
-                        Carouselle(events: $manager.trandingEvents )
+                    if manager.currentUser is Participant {
+                        Carrousel(events: $manager.trandingEvents )
                     } else {
-                        NavigationLink {
-                            EventCreator()
-                        } label: {
-                            AddImageEventButtonView(systemImage: "plus.circle") {
-                                isPresented = true
-                            }
-                            .frame(height: 150)        
-                                
+                        AddImageEventButtonView(systemImage: "plus.circle") {
+                            eventCreator.userManager = userManager
+                            isPresented = true
                         }
-
-                        
+                        .frame(height: 150)
+                        .navigationDestination(isPresented: $isPresented) {
+                            EventCreator(eventCreator: $eventCreator)
+                        }
                     }
                     ForEach(TypeOfEvent.allCases, id: \.self) { typeOfEvent in
-                        EventNearYouView(type: typeOfEvent, events: Event.allEvents)
+                        EventNearYouView(type: typeOfEvent, events: manager.allEvents)
                     }
                     .padding(.horizontal)
                     Spacer()
                 }
-                .frame(maxWidth: .infinity)
+                VStack {
+                    Spacer()
+                    NavigationLink {
+                        QRCodeView()
+                    } label: {
+                        BoutonFlottant()
+                    }
+                    Spacer()
+                        .frame(height: 20)
+                }
             }
+            
         }
-        .fullScreenCover(isPresented: $isPresented) {
-            EventCreator()
-        }
+        .environmentObject(userManager)
+        
         
     }
-    
-    
-    
     
 }
 
 
 #Preview {
     ListEvent()
+        .environmentObject(UserManager())
 }

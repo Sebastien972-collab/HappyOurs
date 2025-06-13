@@ -7,13 +7,16 @@
 
 import SwiftUI
 import FestivityUIKit
+
 struct ContentView: View {
     enum Selection {
     case event, message, profile
     }
+    
     @State private var selection: Selection = .event
     @EnvironmentObject var userManager: UserManager
     var body: some View {
+        
         ZStack {
             if userManager.isAuthenticated {
                 TabView {

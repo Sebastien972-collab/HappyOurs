@@ -11,55 +11,76 @@ struct DatabaseDiscussion {
 
     static var discussionData: [Discussion] {
         let participants = DatabaseParticipants.participantData
+        
         return [
             Discussion(
                 id: UUID(),
                 interlocutorID: participants[7].id,
-                type: .group,
-                description: "Hello ça va?",
-                lastDateMessage: Date()
+                type: .publicChat,
+                description: "Que penses tu de cette nouvelle idée de restaurant",
+                lastDateMessage: Date(),
+                messages: DatabaseMessages.messagesData,
+                userIDs: [participants[7].id, participants[0].id],
+                photoEvent: Event.allEvents[0].imageEventName ?? "event-1",
+                nameEvent: Event.allEvents[0].name
             ),
             Discussion(
                 id: UUID(),
                 interlocutorID: participants[1].id,
-                type: .solo,
-                description: "Que penses tu de cette nouvelle idée de restaurant?",
-                lastDateMessage: Date()
+                type: .privateChat,
+                description: "Hello, ça va?",
+                lastDateMessage: Date(),
+                messages: DatabaseMessages.messagesData,
+                userIDs: [participants[1].id, participants[0].id]
             ),
             Discussion(
                 id: UUID(),
                 interlocutorID: participants[2].id,
-                type: .group,
-                description: "Organisation du week-end hackathon avec tout le groupe",
-                lastDateMessage: Date()
+                type: .publicChat,
+                description: "Organisation du week-end avec tout le groupe",
+                lastDateMessage: Date(),
+                messages: DatabaseMessages.messagesData,
+                userIDs: [participants[2].id, participants[0].id],
+                photoEvent: Event.allEvents[3].imageEventName ?? "event-1",
+                nameEvent: Event.allEvents[3].name
             ),
             Discussion(
                 id: UUID(),
                 interlocutorID: participants[3].id,
-                type: .solo,
+                type: .privateChat,
                 description: "Voici ce que j'ai fait pour le week-end",
-                lastDateMessage: Date()
+                lastDateMessage: Date(),
+                messages: DatabaseMessages.messagesData,
+                userIDs: [participants[3].id, participants[0].id]
             ),
             Discussion(
                 id: UUID(),
                 interlocutorID: participants[4].id,
-                type: .group,
+                type: .publicChat,
                 description: "Merci",
-                lastDateMessage: Date()
+                lastDateMessage: Date(),
+                messages: DatabaseMessages.messagesData,
+                userIDs: [participants[4].id, participants[0].id],
+                photoEvent: Event.allEvents[1].imageEventName ?? "event-1",
+                nameEvent: Event.allEvents[1].name
             ),
             Discussion(
                 id: UUID(),
                 interlocutorID: participants[5].id,
-                type: .group,
+                type: .privateChat,
                 description: "Tous les jours en groupe",
-                lastDateMessage: Date()
+                lastDateMessage: Date(),
+                messages: DatabaseMessages.messagesData,
+                userIDs: [participants [5].id, participants[0].id]
             ),
             Discussion(
                 id: UUID(),
                 interlocutorID: participants[6].id,
-                type: .solo,
-                description: "Hackathon pour les amis",
-                lastDateMessage: Date()
+                type: .privateChat,
+                description: "Un cadeau pour les amis",
+                lastDateMessage: Date(),
+                messages:DatabaseMessages.messagesData,
+                userIDs: [participants[6].id, participants[0].id]
             )
         ]
     }

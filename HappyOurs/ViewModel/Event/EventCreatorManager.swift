@@ -6,11 +6,12 @@
 //
 
 import Foundation
-import SwiftUICore
+import SwiftUI
 
 @Observable
 class EventCreatorManager {
-    var organisator: Business = .preview
+    var userManager: UserManager = UserManager()
+        // var organisator: Business = .preview
     var nameOfEvent: String = ""
     var dateOfEvent: Date = Date.now
     var localisationOfEvent: String = ""
@@ -21,12 +22,23 @@ class EventCreatorManager {
     var numberOfFreeCocktail: Int = 0
     var cocktailForEvent: Cocktail = .preview
     
+    var error: Error = ConnectionError.uknowError
+    var showError = false
     
     // MARK: - Creator
+    
     /// Cette fonction convertit la date en string
     func createNewEvent() {
-        var newEvent = Event(organisator: organisator, name: nameOfEvent, date: dateOfEvent, bestCocktail: cocktailForEvent)
+        guard let user = userManager.currentUser as? Business else {
+            error = ConnectionError.uknowError
+            showError = true
+            return
+        }
+        
+        var newEvent = Event(organisator: user, name: nameOfEvent, date: dateOfEvent, bestCocktail: cocktailForEvent)
         newEvent.imageEventName = "event-4"
+        user.events.append(newEvent)
+        
         
 
     }

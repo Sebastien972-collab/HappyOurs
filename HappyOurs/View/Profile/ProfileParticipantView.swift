@@ -11,14 +11,13 @@ import FestivityUIKit
 struct ProfileParticipantView: View {
     @EnvironmentObject var userManager: UserManager
     
-    let manager: ParticipantManager = ParticipantManager(manager: UserManager())
     
     var body: some View {
         NavigationStack {
             ScrollView {
                 VStack (alignment: .leading){
                     ZStack (alignment: .bottomLeading){
-                        Image(manager.currentUser.currentImageName ?? "default")
+                        Image(userManager.currentUser.currentImageName ?? "default")
                             .resizable()
                             .aspectRatio(contentMode: .fit)
                             .frame(height: 300)
@@ -27,7 +26,7 @@ struct ProfileParticipantView: View {
                         
                         
                         HStack {
-                            Text(manager.currentUser.username)
+                            Text(userManager.currentUser.username)
                                 .font(.title)
                                 .foregroundColor(.white)
                                 .shadow(radius: 15)
@@ -36,84 +35,87 @@ struct ProfileParticipantView: View {
                         
                     }
                     
-                    VStack {
-                        Text ("'' \(manager.currentUser.punchline) ''")
-                            .foregroundColor(.black)
-                            .bold()
-                            .padding(10)
-                            .frame(maxWidth: .infinity, maxHeight: 60)
-                            .background(Color(.newBeige))
-                            .clipShape(RoundedRectangle(cornerRadius: 10))
+                    if let user = userManager.currentUser as? Participant {
+                        VStack {
+                            Text ("'' \(user.punchline) ''")
+                                .foregroundColor(.black)
+                                .bold()
+                                .padding(10)
+                                .frame(maxWidth: .infinity, maxHeight: 60)
+                                .background(Color(.newBeige))
+                                .clipShape(RoundedRectangle(cornerRadius: 10))
+                                .padding(.horizontal, 15)
+                            
+                            
+                            HStack {
+                                VStack {
+                                    Image(user.drinkingHabit?.imageName ?? "cocktailPicto")
+                                        .resizable()
+                                        .aspectRatio(contentMode: .fit)
+                                    Text(user.drinkingHabit?.description ?? "-")
+                                }
+                                .foregroundColor(.black)
+                                .bold()
+                                .padding(10)
+                                .frame(width: 110, height: 80)
+                                .background(Color.newBeige)
+                                .clipShape(RoundedRectangle(cornerRadius: 10))
+                                
+                                Spacer()
+                                VStack {
+                                    Image("personsPicto")
+                                    Text("\(user.events.count) soirées")
+                                }
+                                .foregroundColor(.black)
+                                .bold()
+                                .padding(10)
+                                .frame(width: 110, height: 80)
+                                .background(Color.newBeige)
+                                .clipShape(RoundedRectangle(cornerRadius: 10))
+                                
+                                Spacer()
+                                VStack {
+                                    Image("placerPicto")
+                                    Text(userManager.currentUser.ville)
+                                }
+                                .foregroundColor(.black)
+                                .bold()
+                                .padding(10)
+                                .frame(width: 110, height: 80)
+                                .background(Color.newBeige)
+                                .clipShape(RoundedRectangle(cornerRadius: 10))
+                                
+                            }
                             .padding(.horizontal, 15)
-                        
-                        
-                        HStack {
-                            VStack {
-                                Image(manager.currentUser.drinkingHabit?.imageName ?? "cocktailPicto")
-                                    .resizable()
-                                    .aspectRatio(contentMode: .fit)
-                                Text(manager.currentUser.drinkingHabit?.description ?? "-")
-                            }
-                            .foregroundColor(.black)
-                            .bold()
-                            .padding(10)
-                            .frame(width: 110, height: 80)
-                            .background(Color.newBeige)
-                            .clipShape(RoundedRectangle(cornerRadius: 10))
-                            
-                            Spacer()
-                            VStack {
-                                Image("personsPicto")
-                                Text("\(manager.currentUser.events.count) soirées")
-                            }
-                            .foregroundColor(.black)
-                            .bold()
-                            .padding(10)
-                            .frame(width: 110, height: 80)
-                            .background(Color.newBeige)
-                            .clipShape(RoundedRectangle(cornerRadius: 10))
-                            
-                            Spacer()
-                            VStack {
-                                Image("placerPicto")
-                                Text(manager.currentUser.ville)
-                            }
-                            .foregroundColor(.black)
-                            .bold()
-                            .padding(10)
-                            .frame(width: 110, height: 80)
-                            .background(Color.newBeige)
-                            .clipShape(RoundedRectangle(cornerRadius: 10))
                             
                         }
-                        .padding(.horizontal, 15)
+                        VStack (alignment: .leading){
+                            Text("Description")
+                                .padding(.leading, 15)
+                                .font(.title2)
+                            Text(userManager.currentUser.description ?? "-")
+                                .frame(maxWidth: .infinity, alignment: .leading)
+                                .padding()
+                                .background(Color.newBeige)
+                                .clipShape(RoundedRectangle(cornerRadius: 10))
+                                .padding(.horizontal, 15)
+                        }
                         
-                    }
-                    VStack (alignment: .leading){
-                        Text("Description")
-                            .padding(.leading, 15)
-                            .font(.title2)
-                        Text(manager.currentUser.description ?? "-")
-                            .frame(maxWidth: .infinity, alignment: .leading)
-                            .padding()
-                            .background(Color.newBeige)
-                            .clipShape(RoundedRectangle(cornerRadius: 10))
-                            .padding(.horizontal, 15)
+                        VStack (alignment: .leading) {
+                            PreferenceView(imageName: user.favoriteCocktail?.imageName ?? "cocktail-1", text: "Mon cocktail préféré : \( Cocktail.cocktailDb.first!.name)")
+                            
+                            
+                            CustomDivider()
+                            
+                            PreferenceView(imageName:"event-3", text: "Mes sorties préférées : \(user.favortieEvent.rawValue)")
+                            
+                            CustomDivider()
+                            
+                            PreferenceView(imageName:"event-1", text: "Je préfère les \(user.favortieGroups.rawValue)" )
+                        }
+                        .padding(.top, 20)
                     }
                     
-                    VStack (alignment: .leading) {
-                        PreferenceView(imageName: manager.currentUser.favoriteCocktail?.imageName ?? "cocktail-1", text: "Mon cocktail préféré : \( Cocktail.cocktailDb.first!.name)")
-                        
-                        
-                        CustomDivider()
-                        
-                        PreferenceView(imageName:"event-3", text: "Mes sorties préférées : \(manager.currentUser.favortieEvent.rawValue)")
-                        
-                        CustomDivider()
-                        
-                        PreferenceView(imageName:"event-1", text: "Je préfère les \(manager.currentUser.favortieGroups.rawValue)" )
-                    }
-                    .padding(.top, 20)
                     
                     HStack (alignment: .center) {
                         ConfirmationButtonView(title: "CONTACTER", action: {})

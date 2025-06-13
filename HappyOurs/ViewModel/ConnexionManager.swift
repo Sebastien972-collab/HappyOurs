@@ -23,9 +23,9 @@ class ConnexionManager: ObservableObject {
         case signUp = "Inscription"
         case signIn = "Connexion"
     }
-    enum SignUpAccountType {
-        case particpant
-        case bussines
+    enum SignUpAccountType: String, CaseIterable {
+        case particpant = "Participant"
+        case bussines = "Entreprise"
     }
     var currentConnexionType: ConnexionType = .signIn
     var currentSignUpAccountType: SignUpAccountType = .particpant
@@ -35,7 +35,7 @@ class ConnexionManager: ObservableObject {
     }
     
     func connection() {
-        guard !username.isEmpty || !email.isEmpty || !city.isEmpty else {
+        guard !username.isEmpty || !email.isEmpty else {
             self.error = ConnectionError.fieldEmpty
             self.showError = true
             return
@@ -44,17 +44,31 @@ class ConnexionManager: ObservableObject {
         case .signUp:
             signUp()
         case .signIn:
-            signIn()
+            signUp()
         }
     }
     ///Inscription User
     private func signUp() {
-        
         switch currentSignUpAccountType {
         case .particpant:
-            manager.currentUser = Participant(username: username, email: email, ville: city)
+            let user = Participant(username: username, email: email, ville: city)
+            user.description = Participant.preview.description
+            user.currentImageName = Participant.preview.currentImageName
+            user.events = Participant.preview.events
+            user.punchline = Participant.preview.punchline
+            user.favortieEvent = Participant.preview.favortieEvent
+            user.favortieGroups = Participant.preview.favortieGroups
+            user.favoriteCocktail = Participant.preview.favoriteCocktail
+            user.drinkingHabit = Participant.preview.drinkingHabit
+            manager.currentUser = user
+            
+            
         case .bussines:
-            manager.currentUser = Business(username: username, email: email, ville: city)
+            manager.signIn(as: Business(username: username, email: email, ville: city))
+            manager.signIn(as:  Participant(username: username, email: email, ville: city))
+            manager.currentUser.description = Business.preview.description
+            manager.currentUser.currentImageName = Business.preview.currentImageName
+            manager.currentUser.events = Business.preview.events
         }
     }
     ///Connexion User
@@ -62,9 +76,9 @@ class ConnexionManager: ObservableObject {
         
         switch currentSignUpAccountType {
         case .particpant:
-            manager.currentUser = Participant.preview
+            manager.signIn(as:  Participant(username: username, email: email, ville: city))
         case .bussines:
-            manager.currentUser = Business.preview
+            manager.signIn(as: Business(username: username, email: email, ville: city))
         }
     }
     
