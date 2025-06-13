@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct ListEvent: View {
-    @EnvironmentObject private var userManger: UserManager
+    @EnvironmentObject private var userManager: UserManager
     @State private var manager = EventManager()
     @State private var eventCreator = EventCreatorManager()
     @State private var isPresented: Bool = false
@@ -20,7 +20,7 @@ struct ListEvent: View {
                     HStack{
                         CircleImage(image: Image("\(manager.currentUser.currentImageName ?? "carolineImage")"))
                         
-                        Text("Bonjour \(manager.currentUser.username)")
+                        Text("Bonjour \(userManager.currentUser.username)")
                             .font(.title3)
                             .fontWeight(.bold)
                             .minimumScaleFactor(0.7)
@@ -28,27 +28,20 @@ struct ListEvent: View {
                     if manager.currentUser is Participant {
                         Carrousel(events: $manager.trandingEvents )
                     } else {
-                        NavigationLink {
-                            EventCreator()
-                        } label: {
-                            AddImageEventButtonView(systemImage: "plus.circle") {
-                                eventCreator.userManager = userManger
-                                isPresented = true
-                            }
-                            .frame(height: 150)
-                            .navigationDestination(isPresented: $isPresented) {
-                                EventCreator(eventCreator: $eventCreator)
-                            }
-                            
-                            
+                        AddImageEventButtonView(systemImage: "plus.circle") {
+                            eventCreator.userManager = userManager
+                            isPresented = true
                         }
-                        ForEach(TypeOfEvent.allCases, id: \.self) { typeOfEvent in
-                            EventNearYouView(type: typeOfEvent, events: manager.allEvents)
+                        .frame(height: 150)
+                        .navigationDestination(isPresented: $isPresented) {
+                            EventCreator(eventCreator: $eventCreator)
                         }
-                        .padding(.horizontal)
-                        Spacer()
                     }
-                    .frame(maxWidth: .infinity)
+                    ForEach(TypeOfEvent.allCases, id: \.self) { typeOfEvent in
+                        EventNearYouView(type: typeOfEvent, events: manager.allEvents)
+                    }
+                    .padding(.horizontal)
+                    Spacer()
                 }
                 VStack {
                     Spacer()
@@ -63,7 +56,7 @@ struct ListEvent: View {
             }
             
         }
-        .environmentObject(userManger)
+        .environmentObject(userManager)
         
         
     }
