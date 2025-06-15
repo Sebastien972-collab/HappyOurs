@@ -36,7 +36,7 @@ struct PreferenceCocktailView: View {
                     Image(imageName)
                         .resizable()
                         .frame(width: 25, height: 50)
-                        .aspectRatio(contentMode: .fit)
+                        .aspectRatio(contentMode: .fill)
                     
                 }
                 .clipShape(Circle())
@@ -55,5 +55,5 @@ struct PreferenceCocktailView: View {
 }
 
 #Preview {
-    PreferenceCocktailView(imageName: "event-1", text: Cocktail.cocktailDb.first!.name)
+    PreferenceCocktailView(imageName: "cocktail-4", text: Cocktail.cocktailDb.first!.name)
 }
