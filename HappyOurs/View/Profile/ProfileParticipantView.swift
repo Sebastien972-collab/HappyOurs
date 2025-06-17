@@ -108,13 +108,6 @@ struct ProfileParticipantView: View {
                         }
                         .padding(.top, 20)
                     }
-                    
-                    
-                    HStack (alignment: .center) {
-                        ConfirmationButtonView(title: "CONTACTER", action: {})
-                    }
-                    .padding(.top, 20)
-                    .frame(maxWidth: .infinity)
                 }
             }
             .toolbar {
@@ -128,7 +121,7 @@ struct ProfileParticipantView: View {
                         SettingsView()
                     } label: {
                         Image(systemName: "gear")
-                            .foregroundStyle(.black)
+                        
                     }
                 }
             }

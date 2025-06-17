@@ -21,6 +21,12 @@ class UserManager: ObservableObject {
         currentUser is Business
     }
     
+    func logOut() {
+        currentUser = .guest
+    }
+    
+    
+    
     //MARK: - Connexion method
     
     ///Sing in User in application

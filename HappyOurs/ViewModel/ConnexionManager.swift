@@ -71,6 +71,7 @@ class ConnexionManager: ObservableObject {
             manager.currentUser.description = Business.preview.description
             manager.currentUser.currentImageName = Business.preview.currentImageName
             manager.currentUser.events = Business.preview.events
+            
 
             manager.currentUser = user
         }
@@ -81,10 +82,11 @@ class ConnexionManager: ObservableObject {
         switch currentSignUpAccountType {
         case .particpant:
             manager.currentUser = Participant.sebAccount
+            manager.currentUser.id = DatabaseParticipants.participantData[0].id
             manager.currentUser.username = username
         case .bussines:
             //manager.signIn(as: Business(username: username, email: email, ville: city))
-            print("Sella")
+            print("En développement")
         }
     }
     

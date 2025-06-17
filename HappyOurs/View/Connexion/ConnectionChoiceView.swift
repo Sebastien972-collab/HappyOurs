@@ -31,17 +31,8 @@ struct ConnectionChoiceView: View {
                             .font(.system(size: 30, weight: .bold, design: .default))
                     }
                     Spacer()
-                    ConnexionButtonView(title: "Inscription", action: {
-                        manager.manager = userManager
-                        manager.currentConnexionType = .signUp
-                        signUpViewIsPresented.toggle()
-                    })
-                    .navigationDestination(isPresented: $signUpViewIsPresented) {
-                        ConnectionView(manager: manager )
-                        
-                    }
                     
-                    ConnexionButtonView(title: "Connexion", color: .tagadaPink50, action: {
+                    ConnexionButtonView(title: "Connexion", action: {
                         manager.manager = userManager
                         manager.currentConnexionType = .signIn
                         signInViewIsPresented.toggle()
@@ -50,6 +41,21 @@ struct ConnectionChoiceView: View {
                         ConnectionView(manager: manager )
                         
                     }
+                    
+
+                    Button {
+                        manager.manager = userManager
+                        manager.currentConnexionType = .signUp
+                        signUpViewIsPresented.toggle()
+                    }label : {
+                        Text("Inscription ")
+                            .foregroundStyle(.white)
+                            .font(.system(size: 18, design: .default))
+                            .underline()
+                    }
+                    .navigationDestination(isPresented: $signUpViewIsPresented) {
+                        ConnectionView(manager: manager )}
+                    
                     Text("By: Arnaud, Carole, Dembo, Sébastien")
                         .foregroundStyle(.newBeige)
                         .font(.system(size: 14, weight: .bold, design: .default))

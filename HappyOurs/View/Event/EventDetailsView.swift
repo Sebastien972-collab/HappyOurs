@@ -11,6 +11,7 @@ import FestivityUIKit
 struct EventDetailsView: View {
     
     @Binding var event: Event
+    @State private var isAttending: Bool = false
     
     var body: some View {
         VStack(alignment: .leading) {
@@ -103,14 +104,39 @@ struct EventDetailsView: View {
                             RoundedRectangle(cornerRadius: 6)
                                 .fill(Color.newBeige)
                                 .frame(width: 360)
-
+                            
                         }
                         Spacer()
                         HStack {
-                            ConfirmationButtonView(title: "JE PARTICIPE", action: {})
+                            if !isAttending {
+                                ConfirmationButtonView(title: isAttending == true ? "Jy vais !" : "Je participe !", action: {
+                                    withAnimation {
+                                        isAttending.toggle()
+                                    }
+                                })
+                            } else {
+                                Button {
+                                    withAnimation {
+                                        isAttending.toggle()
+                                    }
+                                } label: {
+                                    Text("J'y vais !")
+                                        .padding()
+                                        .foregroundStyle(Color.coffe_brown)
+                                        .frame(maxWidth: 300, maxHeight: 40)
+                                        .background {
+                                            RoundedRectangle(cornerRadius: 10)
+                                                .stroke(Color.darkYellow, lineWidth: 0.5)
+                                        }
+                                        .clipShape(RoundedRectangle(cornerRadius: 10))
+                                }
+                            }
+                            
+                            
+                            
                         }
                         .frame(maxWidth: .infinity, alignment: .center)
-                       
+                        
                     }
                     .padding(.horizontal)
                     

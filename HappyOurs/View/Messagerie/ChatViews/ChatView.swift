@@ -28,7 +28,7 @@ struct ChatView : View {
                             MessageBubble(message: message, selectedParticipant: $selectedParticipant)
                         }
                     }
-                }
+                }.padding(.top)
                 
                 ZStack {
                     Rectangle()

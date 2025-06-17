@@ -73,9 +73,39 @@ struct Event: Identifiable, Equatable, Hashable, Comparable  {
         event.imageEventName = "event-4"
         event.address = "3 Rte de Longjumeau, 91380 Chilly-Mazarin"
         event.participants = DatabaseParticipants.participantData + DatabaseParticipants.participantData
+        event.typeOfEvent = .club
         event.description =
         """
-Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.
+Welcome To " Eden Chic By We Love Toubana "
+
+ Saison 2 Episode 08 Edition Dolce Vita
+
+C'est  bientôt  l'été vient découvrir  ou redécouvrir notre nouveau concept dans un lieu atypique en plein air aux portes de Paris !! L'Eden Chic afterwork Open Air est réservé à 300 privilégiés, qui viendront se détendre et s'ambiancer après une journée de travail entre amis, collègues ou encore en famille.
+
+* Dress Code : Chic en couleur pastel 
+
+* Au programme :
+
+Ambiance Chill : Savourez une chicha au KLM
+Restauration sur place : Pas besoin de cuisiner !! Savourez votre meilleur plat à l'Eden Chic
+Détente sous les étoiles : Jeux divers et variés à la demande au bar…
+Surprises : Artistes et Performers au rdv.....
+Mixologie : Bar à cocktail à votre disposition 
+* Line-Up : 
+
+Skety x Tyson x Eladji x Badness X Kawest x Killerz x Spwany x Lou 
+Artiste surprise à venir ! ! 
+* Le spot de l'été :
+
+Auber Garden /
+Un espace extérieur : Paillote
+Un espace couvert : Piste de danse
+Des DJs d'exception seront réunis pour cette occasion.
+Nous vous informons que le stationnement est gratuit et facile au niveau de l'événement ! ! 
+* Anniversaire :
+
+Tu es né dans la semaine de l'évènement ton entrée est offerte sous présentation de ta carte d'identité avant 21h30.
+Le gâteau est offert sous réservation !!
 """
         return event
     }
@@ -87,6 +117,7 @@ Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem
         Event(organisator: .preview, name: "Rock Live", date: Date().addingTimeInterval(86400 * 10), imageEventName: "event-3", participants: [Participant(username: "Sophie Caron", email: "sophie.code@simplon.co", ville: "Pantin", currentImageName: "Emilie"), Participant(username: "Stan Colman", email: "mickael.js@simplon.co", ville: "Ivry-sur-Seine", currentImageName: "Stan"),Participant(username: "Jessica Martin", email: "lina.dev@simplon.co", ville: "Créteil", currentImageName: "Jessica"),Participant(username: "Matthew Bowl", email: "rayan.ux@simplon.co", ville: "Saint-Denis", currentImageName: "Matthew"),Participant(username: "Lise Navarro", email: "emma.react@simplon.co", ville: "Cachan", currentImageName: "Lise"),Participant(username: "Brianna Wallace", email: "nadia.swift@simplon.co", ville: "Noisy-le-Grand", currentImageName: "Brianna")], bestCocktail: Cocktail.cocktailDb[2], typeOfEvent: .concert, address: "42 Avenue du Son, Lille"),
 
         // 🪩 Club
+        Event.defaultEvent,
         Event(organisator: .preview, name: "Night Vibes", date: Date().addingTimeInterval(86400 * 2), imageEventName: "event-4", participants: [Participant(username: "Caroline Payet", email: "caro.94@simplon.co", ville: "Vincennes", currentImageName: "Caroline"), Participant(username: "Jeremy Parot", email: "julien.web@simplon.co", ville: "Montreuil", currentImageName: "Jeremy"), Participant(username: "Sophie Caron", email: "sophie.code@simplon.co", ville: "Pantin", currentImageName: "Emilie"), Participant(username: "Stan Colman", email: "mickael.js@simplon.co", ville: "Ivry-sur-Seine", currentImageName: "Stan")], bestCocktail: Cocktail.cocktailDb[3], typeOfEvent: .club, address: "99 Rue de la Nuit, Marseille"),
         Event(organisator: .preview, name: "Dance Floor Fever", date: Date().addingTimeInterval(86400 * 7), imageEventName: "event-1", participants: [Participant(username: "Caroline Payet", email: "caro.94@simplon.co", ville: "Vincennes", currentImageName: "Caroline"), Participant(username: "Jeremy Parot", email: "julien.web@simplon.co", ville: "Montreuil", currentImageName: "Jeremy"), Participant(username: "Stan Colman", email: "mickael.js@simplon.co", ville: "Ivry-sur-Seine", currentImageName: "Stan"),Participant(username: "Jessica Martin", email: "lina.dev@simplon.co", ville: "Créteil", currentImageName: "Jessica"),Participant(username: "Lise Navarro", email: "emma.react@simplon.co", ville: "Cachan", currentImageName: "Lise")], bestCocktail: Cocktail.cocktailDb[4], typeOfEvent: .club, address: "66 Boulevard Clubbing, Toulouse"),
         Event(organisator: .preview, name: "Electro Pulse", date: Date().addingTimeInterval(86400 * 12), imageEventName: "event-2", participants: [Participant(username: "Caroline Payet", email: "caro.94@simplon.co", ville: "Vincennes", currentImageName: "Caroline"), Participant(username: "Jeremy Parot", email: "julien.web@simplon.co", ville: "Montreuil", currentImageName: "Jeremy"), Participant(username: "Sophie Caron", email: "sophie.code@simplon.co", ville: "Pantin", currentImageName: "Emilie"), Participant(username: "Stan Colman", email: "mickael.js@simplon.co", ville: "Ivry-sur-Seine", currentImageName: "Stan"),Participant(username: "Jessica Martin", email: "lina.dev@simplon.co", ville: "Créteil", currentImageName: "Jessica"),Participant(username: "Matthew Bowl", email: "rayan.ux@simplon.co", ville: "Saint-Denis", currentImageName: "Matthew"),Participant(username: "Lise Navarro", email: "emma.react@simplon.co", ville: "Cachan", currentImageName: "Lise"),Participant(username: "Brianna Wallace", email: "nadia.swift@simplon.co", ville: "Noisy-le-Grand", currentImageName: "Brianna")], bestCocktail: Cocktail.cocktailDb[0], typeOfEvent: .club, address: "17 Allée Électro, Paris"),
